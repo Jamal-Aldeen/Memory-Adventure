@@ -32,6 +32,15 @@
     text-decoration: none;
   }
   
+  .btn{
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
   .container {
       max-width: 960px;
       margin: 20px auto;
