@@ -6,12 +6,22 @@ A fun and interactive memory game to challenge your brain!
 ```
 MemoryAdventure/
 |-- index.html          # Main HTML file
+|-- game.html           # game page for now 
 |-- css/
-|   |-- style.css       # Styling for the game
+|   |-- common.css      # common styles for the game
+|   |-- main.css        # Styling for the homepage
+|   |-- game.css        # Styling for the game
 |-- js/
 |   |-- game.js         # Core game logic
-|   |-- localStorage.js # Save and load game data
-|   |-- tutorial.js     # Tutorial logic
+|   |-- app.js          # here we call all the functions of the game 
+|   |-- start.js        # logic of homepage
+|   |-- storage.js      # logic of saving the scores in local storage
+|   |-- ui.js           # ui settings
+|   |-- utils.js        # logic of all the functions of the project
+|-- assests/
+|   |-- audio/          # all audio files
+|   |-- icons/          # all icons
+|   |-- image/          # all images
 ```
 
 ## How to Run
