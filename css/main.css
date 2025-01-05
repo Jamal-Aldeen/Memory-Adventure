@@ -44,7 +44,7 @@ body, .space-background {
   margin: 5% 0;
   color: white;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   transition: color 0.3s;
 }
 .menu-options a:hover {
