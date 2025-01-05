@@ -37,6 +37,26 @@ body, .space-background {
   justify-content: space-evenly;
 }
 
+select {
+  position: relative;
+  color: black;
+}
+
+select:focus {
+  outline: none;
+}
+
+select[data-placeholder]:not(:focus):invalid {
+  color: gray;
+}
+
+select[data-placeholder]:not(:focus):invalid::after {
+  content: attr(data-placeholder);
+  position: absolute;
+  left: 10px;
+  color: gray;
+}
+
 .eightbit-border{
   border-style: solid;
   border-width: .125em 0;
@@ -45,7 +65,7 @@ body, .space-background {
   margin: 0 .5em;
   padding: .5em .125em;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   &:before {
     background-color: inherit;
@@ -58,7 +78,7 @@ body, .space-background {
     position: absolute;
     top: .375em;
     right: -.5em;
-    z-index: -1;
+    z-index: 1;
 }
 
 &:after {
@@ -71,7 +91,7 @@ body, .space-background {
     position: absolute;
     top: .125em;
     right: -.375em;
-    z-index: -2;
+    z-index: 0;
 }
 }
 
@@ -143,7 +163,8 @@ body, .space-background {
   justify-content: center; 
   align-items: center; 
   min-height: 70vh; 
+  z-index: -1;
   /* animation: pulse 3s infinite; */
-  box-shadow: 0 0 10px #0ce6f2, 0 0 20px #0ce6f2;
+  /* box-shadow: 0 0 10px #0ce6f2, 0 0 20px #0ce6f2; */
   /* box-shadow: 0 0 5px yellow, 0 0 10px yellow; */
 }
