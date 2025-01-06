@@ -15,6 +15,23 @@ memory-adventure/
 │   │   ├── sound-off.png        # Icon for when sound is muted
 │   │   └── page-icon.png        # Icon for homepage
 │   ├── images/                  # Images for cards, backgrounds, and floating GIFs
+│   │   ├── easy/
+│   │   │   ├── card1.png
+│   │   │   ├── card2.png
+│   │   │   ├── card3.png
+│   │   │   ├── card4.png
+│   │   │   ├── card5.png
+│   │   │   ├── card6.png
+│   │   │   ├── card7.png
+│   │   │   └── card8.png
+│   │   ├── medium/
+│   │   │   ├── card1.png
+│   │   │   ├── card2.png
+│   │   │   └── ...
+│   │   └── hard/
+│   │       ├── card1.png
+│   │       ├── card2.png
+│   │       └── ...
 │   │   ├── mario.webp           # Floating GIF for visual effect
 │   │   ├── naruto.webp          # Floating GIF for visual effect
 │   │   ├── JS.png               # Floating GIF for visual effect

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Adventure - Medium</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/medium.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="game-container">
+    <!-- Game Info -->
+    <div class="game-info">
+      <div class="timer">Time: <span id="timer">00:00</span></div>
+      <div class="moves">Moves: <span id="moves">0</span></div>
+    </div>
+
+    <!-- Card Grid -->
+    <div class="card-grid"></div>
+
+    <!-- Game Over Modal -->
+    <div class="game-over hidden">
+      <p>You completed the level!</p>
+      <p>Time: <span id="final-time">00:00</span></p>
+      <p>Moves: <span id="final-moves">0</span></p>
+      <button id="next-level">Next Level</button>
+      <button id="save-score">Save Score & Return Home</button>
+    </div>
+
+    <!-- Level Complete Pop-Up -->
+    <div class="level-complete hidden">
+      <div class="level-complete-content">
+        <h2>Level Complete</h2>
+        <p class="level-name">Level: Medium</p>
+        <button class="next-level">Next Level</button>
+        <button class="close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { GameLogic } from '/js/modules/gameLogic.js';
+    const game = new GameLogic(36, 'medium'); // 6x6 grid (36 cards)
+    game.start();
+  </script>
+</body>
+</html>
