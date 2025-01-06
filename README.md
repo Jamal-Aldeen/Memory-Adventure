@@ -7,18 +7,49 @@ A fun and interactive memory game to challenge your brain!
 memory-adventure/
 │
 ├── assets/                      # Folder for all static assets (images, audio, icons, etc.)
-│   ├── audio/                   # Audio files for background music and sound effects
-│   │   ├── background-music.mp3 # Background music for the game
-│   │   └── click-sound.wav      # Sound effect for button clicks
-│   ├── icons/                   # Icons for UI elements (e.g., sound toggle button)
-│   │   ├── sound-on.png         # Icon for when sound is enabled
-│   │   ├── sound-off.png        # Icon for when sound is muted
-│   │   └── page-icon.png        # Icon for homepage
-│   ├── images/                  # Images for cards, backgrounds, and floating GIFs
-│   │   ├── mario.webp           # Floating GIF for visual effect
-│   │   ├── naruto.webp          # Floating GIF for visual effect
-│   │   ├── JS.png               # Floating GIF for visual effect
-│   │   └── space-background.gif # Background image for home
+│   ├── global/                  # Folder for assets shared across all levels
+│   │   ├── audio/               # Global audio files
+│   │   │   ├── background-music.mp3 # Background music for the game
+│   │   │   └── click-sound.wav  # Sound effect for button clicks
+│   │   ├── icons/               # Global icons
+│   │   │   ├── sound-on.png     # Icon for when sound is enabled
+│   │   │   ├── sound-off.png    # Icon for when sound is muted
+│   │   │   └── page-icon.png    # Icon for homepage
+│   │   ├── images/              # Global images
+│   │   │   ├── mario.webp       # Floating GIF for visual effect
+│   │   │   ├── naruto.webp      # Floating GIF for visual effect
+│   │   │   ├── JS.png           # Floating GIF for visual effect
+│   │   │   └── space-background.gif # Background image for home
+│   │
+│   ├── easy/                    # Folder for easy level assets
+│   │   ├── audio/               # Audio files for easy level
+│   │   │   └── level-music.mp3  # Background music for easy level
+│   │   ├── icons/               # Icons for easy level
+│   │   │   └── level-icon.png   # Icon for easy level
+│   │   ├── images/              # Images for easy level
+│   │   │   ├── card1.png        # Example card image for easy level
+│   │   │   ├── card2.png        # Example card image for easy level
+│   │   │   └── background.gif   # Background image for easy level
+│   │
+│   ├── medium/                  # Folder for medium level assets
+│   │   ├── audio/               # Audio files for medium level
+│   │   │   └── level-music.mp3  # Background music for medium level
+│   │   ├── icons/               # Icons for medium level
+│   │   │   └── level-icon.png   # Icon for medium level
+│   │   ├── images/              # Images for medium level
+│   │   │   ├── card1.png        # Example card image for medium level
+│   │   │   ├── card2.png        # Example card image for medium level
+│   │   │   └── background.gif   # Background image for medium level
+│   │
+│   ├── hard/                    # Folder for hard level assets
+│   │   ├── audio/               # Audio files for hard level
+│   │   │   └── level-music.mp3  # Background music for hard level
+│   │   ├── icons/               # Icons for hard level
+│   │   │   └── level-icon.png   # Icon for hard level
+│   │   ├── images/              # Images for hard level
+│   │   │   ├── card1.png        # Example card image for hard level
+│   │   │   ├── card2.png        # Example card image for hard level
+│   │   │   └── background.gif   # Background image for hard level
 │
 ├── css/                         # Folder for all CSS stylesheets
 │   ├── main.css                 # Main stylesheet for shared styles
