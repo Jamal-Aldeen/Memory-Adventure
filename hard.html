@@ -1,11 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/cssforhard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/96c4538cb1.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
+    <nav>
+        <!-- class="floating-button" -->
+        <button type="submit" class="floating-button">Settings</button>
+        <button type="submit" class="floating-button">Restart</button>
+        <p>Hint: <span id="hint-count">3</span></p>
+        <p>Time: <span id="time">01:59</span></p>
+    </nav>
+
+
+
+    <div class="memory-game ">
+        <div class="card" data-name="p2">
+            <img src="code-solid.svg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="colon_11606911.png" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="greater-than_11606970.png" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="pipe_11607113.png" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="pipe_11607121.png" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="code-solid.svg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p2">
+            <img src="assets/image/space.jpg" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+        <div class="card" data-name="p1">
+            <img src="gif.gif" class="front-face" />
+            <div class="back-face">
+                <img src="b3.jpg" class="front-face">
+            </div>
+        </div>
+    </div>
+
+  
+
 </body>
+
 </html>
