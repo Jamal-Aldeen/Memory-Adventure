@@ -62,10 +62,10 @@ startGameButton.addEventListener('click', () => {
 musicToggle.addEventListener('click', () => {
   if (backgroundMusic.volume > 0) {
     backgroundMusic.volume = 0;
-    soundIcon.src = 'assets/icons/sound-off.png';
+    soundIcon.src = 'assets/global/icons/sound-off.png';
   } else {
     backgroundMusic.volume = 0.5;
-    soundIcon.src = 'assets/icons/sound-on.png';
+    soundIcon.src = 'assets/global/icons/sound-on.png';
   }
   playSound(clickSound);
 });

@@ -60,13 +60,18 @@ export class GameLogic {
         card.classList.add('card');
         card.dataset.value = value;
         card.dataset.index = index;
-  
-        const cardImage = `assets/images/${this.level}/card${value}.png`;
+    
+        // Set the card front image based on the level
+        const cardImage = `assets/${this.level}/images/card${value}.png`;
+    
+        // Set the card back image based on the level
+        const cardBackImage = `assets/${this.level}/images/card-back.png`;
+    
         card.innerHTML = `
           <div class="card-front">
-            <img src="${cardImage}" alt="Card ${value}" onerror="this.src='assets/images/default/card-placeholder.png'">
+            <img src="${cardImage}" alt="Card ${value}" onerror="this.src='assets/global/images/default/card-placeholder.png'">
           </div>
-          <div class="card-back"></div>
+          <div class="card-back" style="background-image: url('${cardBackImage}');"></div>
         `;
         cardGrid.appendChild(card);
       });

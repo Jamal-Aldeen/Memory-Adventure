@@ -2,7 +2,7 @@
 body, .space-background {
   margin: 0;
   padding: 0;
-  background: url('/assets/images/space-background.gif') no-repeat center center fixed;
+  background: url('/assets/global/images/space-background.gif') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Press Start 2P', cursive;
   color: white;
