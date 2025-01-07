@@ -20,26 +20,22 @@
       </select> -->
       <button id="start-button" class="eightbit-btn eightbit-border">Start Game</button>
       <button id="restart-button" class="eightbit-btn eightbit-border">Restart</button>
+      <span>hint ?</span>
     </div>
-    <div class="stats">
-      <p>Moves: <span id="move-counter">0</span></p>
-      <p>Time: <span id="timer">0</span>s</p>
-      <p>Score: <span id="high score">0</span></p>
-    </div>
-    <div id="game-board" class="game-board">
-      <div id="card">  
-        <!-- card front -->
-        <div class="card-front card">
-          
-        </div>
 
-        <!-- card back -->
-        <div class="card-back card">
-          <div class="symbol">?</div>
-          <div class="corner-decor top-left"></div>
-          <div class="corner-decor top-right"></div>
-          <div class="corner-decor bottom-left"></div>
-          <div class="corner-decor bottom-right"></div>
+    <div id="layout">
+      <div class="stats">
+        <p>Moves: <span id="move-counter">0</span></p>
+        <p>Time: <span id="timer">0</span>s</p>
+        <p>Score: <span id="high score">0</span></p>
+      </div>
+      <div id="game-board" class="game-board">
+        <div id="card">  
+          <div class="card-front card">
+          </div>
+          <div class="card-back card">
+            <div class="symbol">?</div>
+          </div>
         </div>
       </div>
     </div>
@@ -67,10 +63,68 @@
     <audio id="hint-sound" src="assets/audio/mario-sounds/"></audio>
     <audio id="shuffle-sound" src="assets/audio/mario-sounds/mario-shuffle.mp3"></audio>
   </div>
-  <script type="module" src="js/storage.js" ></script>
+  <!-- <script type="module" src="js/storage.js" ></script>
   <script type="module" src="js/medium.js"></script>
   <script type="module" src="js/ui.js"></script>
   <script type="module" src="js/app.js"></script>
-  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/utils.js"></script> -->
+
+  <script>
+    // JavaScript Functionality
+    const gameBoard = document.getElementById('game-board');
+    const gridSizeSelector = document.getElementById('grid-size');
+    // const startGameButton = document.getElementById('start-game');
+
+    function createDeck(size) {
+      // Clear the board
+      gameBoard.innerHTML = '';
+
+      // Set grid size dynamically
+      const totalCards = size * size;
+      gameBoard.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+      // Create cards
+      for (let i = 0; i < totalCards; i++) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        // Create inner structure
+        const cardInner = document.createElement('div');
+        cardInner.classList.add('card-inner');
+
+        const cardFront = document.createElement('div');
+        cardFront.classList.add('card-front', 'card');
+        cardFront.textContent = 'Front'; // Replace with a design or image
+
+        const cardBack = document.createElement('div');
+        cardBack.classList.add('card-back', 'card');
+        // cardBack.textContent = 'Back'; // Replace with a design or image
+
+        // Add symbol to back of card
+        const symbol = document.createElement('div');
+        symbol.classList.add('symbol');
+        symbol.textContent = '?'; // Replace '?' with dynamic content if needed
+        cardBack.appendChild(symbol);
+
+        // Assemble card
+        cardInner.appendChild(cardFront);
+        cardInner.appendChild(cardBack);
+        card.appendChild(cardInner);
+        gameBoard.appendChild(card);
+
+        // the event listener to toggle the 'flipped' class on the .card-inner element
+        card.addEventListener('click', () => {
+          card.querySelector('.card-inner').classList.toggle('flipped');
+        });
+      }
+    }
+
+    // Event Listener for Starting the Game
+    window.addEventListener('DOMContentLoaded', () => {
+      // const size = parseInt(gridSizeSelector.value, 10);
+      createDeck(6);
+    });
+  </script>
+  </script>
 </body>
 </html>
