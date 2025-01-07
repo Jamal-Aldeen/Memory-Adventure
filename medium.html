@@ -3,33 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memory Adventure - Game</title>
-  <link rel="stylesheet" href="css/medium.css">
-  <!-- <link rel="stylesheet" href="css/common.css"> -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Memory Adventure - Medium</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/medium.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <h1>Memory Adventure 💻</h1>
     <div class="controls">
-      <!-- <label for="difficulty">Select Difficulty:</label>
-      <select id="difficulty">
-        <option value="4">Easy (4x4)</option>
-        <option value="6">Medium (6x6)</option>
-        <option value="8">Hard (8x8)</option>
-      </select> -->
       <button id="start-button" class="eightbit-btn eightbit-border">Start Game</button>
       <button id="restart-button" class="eightbit-btn eightbit-border">Restart</button>
       <span>hint ?</span>
     </div>
 
-    <div id="layout">
-      <div class="stats">
-        <p>Moves: <span id="move-counter">0</span></p>
-        <p>Time: <span id="timer">0</span>s</p>
-        <p>Score: <span id="high score">0</span></p>
-      </div>
-      <div id="game-board" class="game-board">
+    <div class="game-container">
+    <!-- Game Info -->
+    <div class="game-info">
+      <div class="timer">Time: <span id="timer">00:00</span></div>
+      <div class="moves">Moves: <span id="moves">0</span></div>
+    </div>
+      <!-- <div id="game-board" class="game-board">
         <div id="card">  
           <div class="card-front card">
           </div>
@@ -38,16 +32,43 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <!-- Sound Controls -->
+        <!-- Card Grid -->
+        <div class="card-grid"></div>
+
+        <!-- Game Over Modal -->
+        <div class="game-over hidden">
+          <p>You completed the level!</p>
+          <p>Time: <span id="final-time">00:00</span></p>
+          <p>Moves: <span id="final-moves">0</span></p>
+          <button id="next-level">Next Level</button>
+          <button id="save-score">Save Score & Return Home</button>
+        </div>
+    
+        <!-- Level Complete Pop-Up -->
+        <div class="level-complete hidden">
+          <div class="level-complete-content">
+            <h2>Level Complete</h2>
+            <p class="level-name">Level: Medium</p>
+            <button class="next-level">Next Level</button>
+            <button class="close">Close</button>
+          </div>
+        </div>
+      </div>
+    
+      <script type="module">
+        import { GameLogic } from '/js/modules/gameLogic.js';
+        const game = new GameLogic(36, 'medium'); // 6x6 grid (36 cards)
+        game.start();
+      </script>
+<!-- 
     <div class="sound-controls">
       <button id="music-toggle">
         <img src="assets/icons/sound-on.png" alt="Sound On" id="sound-icon">
       </button>
     </div>
 
-      <!-- Audio Elements -->
       <audio id="background-music" loop>
         <source src="assets/audio/mario-sounds/mario-theme.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -62,69 +83,14 @@
     <audio id="match-sound" src="assets/audio/mario-sounds/mario-flip.mp3"></audio>
     <audio id="hint-sound" src="assets/audio/mario-sounds/"></audio>
     <audio id="shuffle-sound" src="assets/audio/mario-sounds/mario-shuffle.mp3"></audio>
-  </div>
+  </div> -->
   <!-- <script type="module" src="js/storage.js" ></script>
   <script type="module" src="js/medium.js"></script>
   <script type="module" src="js/ui.js"></script>
   <script type="module" src="js/app.js"></script>
   <script type="module" src="js/utils.js"></script> -->
 
-  <script>
-    // JavaScript Functionality
-    const gameBoard = document.getElementById('game-board');
-    const gridSizeSelector = document.getElementById('grid-size');
-    // const startGameButton = document.getElementById('start-game');
 
-    function createDeck(size) {
-      // Clear the board
-      gameBoard.innerHTML = '';
-
-      // Set grid size dynamically
-      const totalCards = size * size;
-      gameBoard.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-
-      // Create cards
-      for (let i = 0; i < totalCards; i++) {
-        const card = document.createElement('div');
-        card.classList.add('card');
-
-        // Create inner structure
-        const cardInner = document.createElement('div');
-        cardInner.classList.add('card-inner');
-
-        const cardFront = document.createElement('div');
-        cardFront.classList.add('card-front', 'card');
-        cardFront.textContent = 'Front'; // Replace with a design or image
-
-        const cardBack = document.createElement('div');
-        cardBack.classList.add('card-back', 'card');
-        // cardBack.textContent = 'Back'; // Replace with a design or image
-
-        // Add symbol to back of card
-        const symbol = document.createElement('div');
-        symbol.classList.add('symbol');
-        symbol.textContent = '?'; // Replace '?' with dynamic content if needed
-        cardBack.appendChild(symbol);
-
-        // Assemble card
-        cardInner.appendChild(cardFront);
-        cardInner.appendChild(cardBack);
-        card.appendChild(cardInner);
-        gameBoard.appendChild(card);
-
-        // the event listener to toggle the 'flipped' class on the .card-inner element
-        card.addEventListener('click', () => {
-          card.querySelector('.card-inner').classList.toggle('flipped');
-        });
-      }
-    }
-
-    // Event Listener for Starting the Game
-    window.addEventListener('DOMContentLoaded', () => {
-      // const size = parseInt(gridSizeSelector.value, 10);
-      createDeck(6);
-    });
-  </script>
   </script>
 </body>
 </html>

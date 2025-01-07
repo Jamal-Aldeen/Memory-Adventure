@@ -5,11 +5,6 @@
   --text-color: white;
   --card-background: #244282;
 
-  /* --button-background:#cf5d24;
-    --sec-button-background: #fda032;
-    --button-border: #3f2113;
-    --shadow-color: #235078; */
-
   --button-background: #fda032;
   --sec-button-background: #e3782b;
   --button-border: #c65921;
@@ -32,69 +27,20 @@ body,
   overflow: hidden;
 }
 
-/* whole body */
+/* whole body
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* game statistics section */
-.stats {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-/* .eightbit-border {
-  border-style: solid;
-  border-width: .125em 0;
-  box-shadow: -.375em 0 0 -.125em,
-    .375em 0 0 -.125em;
-  margin: 0 .5em;
-  padding: .5em .125em;
-  position: relative;
-
-  &:before {
-    background-color: inherit;
-    border: inherit;
-    border-width: 0 .125em;
-    bottom: .375em;
-    content: '';
-    left: -.5em;
-    pointer-events: none;
-    position: absolute;
-    top: .375em;
-    right: -.5em;
-  }
-
-  &:after {
-    background-color: inherit;
-    border: inherit;
-    border-width: 0 .125em;
-    bottom: .125em;
-    content: '';
-    left: -.375em;
-    position: absolute;
-    top: .125em;
-    right: -.375em;
-  }
 } */
 
-.eightbit-btn {
-  background: var(--button-background);
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  padding: 10px 20px;
-  font-family: 'Press Start 2P', cursive;
-  text-decoration: none;
-  color: white;
-  /* border: var(--outline-width) solid var(--button-border); */
-  box-shadow: inset -4px -4px 0px 0px var(--shadow-color);
-  z-index: 1;
-}
+/* game statistics section
+.game-info {
+  display: flex;
+  justify-content: space-evenly;
+} */
 
-.eightbit-btn:hover,
+/* .eightbit-btn:hover,
 .eightbit-btn:focus {
   background: var(--sec-button-background);
   box-shadow: inset -6px -6px 0px 0px var(--shadow-color);
@@ -118,31 +64,18 @@ body,
   top: calc(-1 * var(--outline-width));
   left: 0;
   /* border-top: var(--outline-width) solid var(--button-border);
-  border-bottom: var(--outline-width) solid var(--button-border); */
+  border-bottom: var(--outline-width) solid var(--button-border); 
 }
 
 .eightbit-btn:after {
   left: calc(-1 * var(--outline-width));
   top: 0;
-  /* border-left: var(--outline-width) solid var(--button-border);
-  border-right: var(--outline-width) solid var(--button-border); */
 }
 
-/* Ensure the text is above the pseudo-elements */
 .eightbit-btn span {
   position: relative;
   z-index: 2;
-}
-
-#difficulty {
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  padding: 10px;
-  font-family: 'Press Start 2P', cursive;
-  text-decoration: none;
-  box-shadow: inset -4px -4px 0px 0px var(--shadow-color);
-}
+} */
 
 .stats{
   display: flex;
@@ -150,70 +83,81 @@ body,
   flex-direction: column;
 }
 
-#layout{
+.game-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  width: 600px; /* Adjusted for medium level */
+  margin-bottom: 20px;
+  font-family: 'Press Start 2P', cursive;
+  color: #ffcc00;
+  font-size: 1.2rem;
 }
 
 
 /* the game board */
-#game-board {
+#card-grid{
   display: grid;
-  grid-template-columns: repeat(6, auto);
-  grid-template-rows: repeat(6, auto);
+  grid-template-columns: repeat(6, 80px); /* 6x6 grid */
+  grid-template-rows: repeat(6, 80px);
   gap: 10px;
 
-  width: 80%;
+  /* width: 80%;
   min-height: 70vh;
-  /* height: 70%; */
-
   font-family: 'Arial', sans-serif;
   font-size: 16px;
   color: var(--text-color);
   margin: 50px;
-  z-index: -1;
-  /* animation: pulse 3s infinite; */
-  /* box-shadow: 0 0 10px #0ce6f2, 0 0 20px #0ce6f2; */
-  /* box-shadow: 0 0 5px yellow, 0 0 10px yellow; */
+  z-index: -1; */
 }
 
 .card {
-  min-width: 100px;
-  min-height: 100px;
   position: relative;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* height: 100vh; */
+  width: 80px; /* Smaller cards for medium level */
+  height: 80px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
+
+.card:hover {
+  transform: scale(1.05);
+}
+
 .card-front, .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  border-radius: 10px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 12px;
-  font-family: "Press Start 2P", monospace;
-  font-weight: bold;
+  justify-content: center;
+  transition: transform 0.6s ease;
 }
 
 /* Card Container */
-.card-front {
-  background-color: white;
-  border: 4px solid black;
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
-  background-image: url("assets/image/mario-mushroom.jpeg");
-  background-size: cover;
-  background-position: center;
+.card-front img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover; /* Ensure images fit nicely */
 }
+
 
 .card-back {
   background: linear-gradient(to bottom, #ffc107, #ff9800);
   border: 4px solid #b76e00;
   box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3), inset 0 0 0 4px #ffeb3b, inset 0 0 0 8px #ff9800;
-  transform: rotateY(180deg);
+  transform: rotateY(0deg);
 }
 
 .symbol {
@@ -233,8 +177,84 @@ body,
   transition: transform 0.5s;
 }
 
-.card-inner.flipped {
+.card.flipped .card-front {
+  transform: rotateY(0deg);
+}
+
+.card.flipped .card-back {
   transform: rotateY(180deg);
+}
+
+.game-over, .level-complete {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1a1a40;
+  padding: 20px;
+  border: 4px solid #4fd1c5;
+  box-shadow: 0 0 0 4px #ffd54f, 0 0 0 8px #4fd1c5;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  color: #f0f0f0;
+  z-index: 10000; /* Higher z-index for level complete pop-up */
+  display: none; /* Hidden by default */
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.level-complete.visible, .game-over.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.game-over button, .level-complete button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: #1a1a40;
+  background: #4fd1c5;
+  border: 2px solid #ffd54f;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.game-over button:hover, .level-complete button:hover {
+  background: #ffd54f;
+  border-color: #4fd1c5;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 #4fd1c5;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .game-info {
+      width: 90%;
+      font-size: 1rem;
+  }
+
+  .card-grid {
+      grid-template-columns: repeat(4, 60px); /* Adjusted for smaller screens */
+      grid-template-rows: repeat(4, 60px);
+      gap: 8px;
+  }
+
+  .card {
+      width: 60px;
+      height: 60px;
+  }
+
+  .game-over, .level-complete {
+      width: 90%;
+      padding: 15px;
+  }
+
+  .game-over button, .level-complete button {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+  }
 }
 
 /* Sound Controls */
