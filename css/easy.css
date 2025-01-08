@@ -6,7 +6,7 @@ body {
   animation: background-pan 20s linear infinite;
   background-image: url(../assets/easy/images/Game-Battle.jpg);
   background-repeat: no-repeat;
-  height: 150vh;
+  height: 140vh;
   margin: 0;
   padding: 0;
 }
