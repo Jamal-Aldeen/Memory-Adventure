@@ -6,56 +6,76 @@ A fun and interactive memory game to challenge your brain!
 ```
 memory-adventure/
 │
-├── assets/                      # Folder for all static assets (images, audio, icons, etc.)
-│   ├── audio/                   # Audio files for background music and sound effects
-│   │   ├── background-music.mp3 # Background music for the game
-│   │   └── click-sound.wav      # Sound effect for button clicks
-│   ├── icons/                   # Icons for UI elements (e.g., sound toggle button)
-│   │   ├── sound-on.png         # Icon for when sound is enabled
-│   │   ├── sound-off.png        # Icon for when sound is muted
-│   │   └── page-icon.png        # Icon for homepage
-│   ├── images/                  # Images for cards, backgrounds, and floating GIFs
-│   │   ├── easy/
-│   │   │   ├── card1.png
-│   │   │   ├── card2.png
-│   │   │   ├── card3.png
-│   │   │   ├── card4.png
-│   │   │   ├── card5.png
-│   │   │   ├── card6.png
-│   │   │   ├── card7.png
-│   │   │   └── card8.png
-│   │   ├── medium/
-│   │   │   ├── card1.png
-│   │   │   ├── card2.png
-│   │   │   └── ...
-│   │   └── hard/
-│   │       ├── card1.png
-│   │       ├── card2.png
-│   │       └── ...
-│   │   ├── mario.webp           # Floating GIF for visual effect
-│   │   ├── naruto.webp          # Floating GIF for visual effect
-│   │   ├── JS.png               # Floating GIF for visual effect
-│   │   └── space-background.gif # Background image for home
+├── assets/                      # Static assets (images, audio, icons, etc.)
+│   ├── global/                  # Shared assets across all levels
+│   │   ├── default/             # Default assets (e.g., placeholders)
+│   │   │   └── place-holder.png # Default placeholder image
+│   │   ├── icons/               # Global icons (e.g., sound icons, page icons)
+│   │   │   ├── sound-on.png     # Sound on icon
+│   │   │   ├── sound-off.png    # Sound off icon
+│   │   │   └── page-icon.png    # Favicon for the website
+│   │   ├── images/              # Global images (e.g., floating GIFs, backgrounds)
+│   │   │   ├── space-background.gif # Global background image
+│   │   │   ├── mario.webp       # Floating GIF 1
+│   │   │   ├── naruto.webp      # Floating GIF 2
+│   │   │   └── JS.png           # Floating GIF 3
+│   │   └── audio/               # Global audio files (e.g., background music, sound effects)
+│   │       ├── background-music.mp3 # Global background music
+│   │       ├── click-sound.wav  # Click sound effect
+│   │       ├── match-sound.wav  # Sound for matching cards
+│   │       └── win-sound.wav    # Sound for winning the game
+│   │
+│   ├── easy/                    # Easy level assets
+│   │   ├── icons/               # Icons specific to the easy level
+│   │   │   └── level-icon.png   # Icon for the easy level
+│   │   ├── images/              # Images specific to the easy level
+│   │   │   ├── card1.png        # Card image 1 for easy level
+│   │   │   ├── card2.png        # Card image 2 for easy level
+│   │   │   └── background.gif   # Background image for easy level
+│   │   └── audio/               # Audio files specific to the easy level
+│   │       └── level-music.mp3  # Background music for easy level
+│   │
+│   ├── medium/                  # Medium level assets
+│   │   ├── icons/               # Icons specific to the medium level
+│   │   │   └── level-icon.png   # Icon for the medium level
+│   │   ├── images/              # Images specific to the medium level
+│   │   │   ├── card1.png        # Card image 1 for medium level
+│   │   │   ├── card2.png        # Card image 2 for medium level
+│   │   │   └── background.gif   # Background image for medium level
+│   │   └── audio/               # Audio files specific to the medium level
+│   │       └── level-music.mp3  # Background music for medium level
+│   │
+│   └── hard/                    # Hard level assets
+│       ├── icons/               # Icons specific to the hard level
+│       │   └── level-icon.png   # Icon for the hard level
+│       ├── images/              # Images specific to the hard level
+│       │   ├── card1.png        # Card image 1 for hard level
+│       │   ├── card2.png        # Card image 2 for hard level
+│       │   └── background.gif   # Background image for hard level
+│       └── audio/               # Audio files specific to the hard level
+│           └── level-music.mp3  # Background music for hard level
 │
-├── css/                         # Folder for all CSS stylesheets
-│   ├── main.css                 # Main stylesheet for shared styles
-│   ├── difficulty/              # Folder for difficulty-specific styles
-│   │   ├── easy.css             # Styles for the "Easy" difficulty level
-│   │   ├── medium.css           # Styles for the "Medium" difficulty level
-│   │   └── hard.css             # Styles for the "Hard" difficulty level
+├── css/                         # CSS stylesheets
+│   ├── main.css                 # Shared styles (e.g., fonts, buttons, pop-ups)
+│   ├── easy.css                 # Styles for the "Easy" difficulty level
+│   ├── medium.css               # Styles for the "Medium" difficulty level
+│   └── hard.css                 # Styles for the "Hard" difficulty level
 │
-├── js/                          # Folder for all JavaScript files
+├── js/                          # JavaScript files
 │   ├── modules/                 # Modularized JavaScript files for game logic, sound management, etc.
 │   │   ├── gameLogic.js         # Handles card matching, scoring, and game mechanics
-│   │   └── utils.js             # Manages background music and sound effects
-│   ├── start.js                 # Main JavaScript file that initializes the game and connects modules
-│   └── storage.js               # Additional JavaScript files for specific features
+│   │   ├── utils.js             # Manages background music and sound effects
+│   │   └── storage.js           # Manages high scores and local storage
+│   ├── start.js                 # Main JavaScript file for the landing page
+│   ├── easy.js                  # Easy level-specific logic (if needed)
+│   ├── medium.js                # Medium level-specific logic (if needed)
+│   └── hard.js                  # Hard level-specific logic (if needed)
 │
-├── index.html                   # Main landing page of the game
-├── easy.html                    # Page for the "Easy" difficulty level
-├── medium.html                  # Page for the "Medium" difficulty level
-├── hard.html                    # Page for the "Hard" difficulty level
-└── README.md                    # Documentation file explaining how to set up and run the project
+├── index.html                   # Main landing page
+├── easy.html                    # Easy level page
+├── medium.html                  # Medium level page
+├── hard.html                    # Hard level page
+└──  README.md                    # Project documentation (setup, features, etc.)
 
 ```
 
