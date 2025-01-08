@@ -4,20 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Easy</title>
-  <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/easy.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="game-container">
-    <!-- Game Info -->
-    <div class="game-info">
-      <div class="timer">Time: <span id="timer">00:00</span></div>
-      <div class="moves">Moves: <span id="moves">0</span></div>
-    </div>
+      <!--header-->
+      <header class="header">
+        <div class="timer-section">
+            <div class="timer" id="timer">
+                <p class="timer-text">Time: <span id="timer">0</span>s</p>
+            </div>
+            <div class="best-score">
+                <p class="best-score-text">Best Score: <span id="best-score">0</span></p>
+            </div>
+        </div>
+        <div class="title">
+            <h2>Memory Adventure - Easy</h2>
+        </div>
+        <div class="settings-wrapper">
+            <button id="settings-button">⚙️</button>
+        </div>
+    </header>
 
-    <!-- Card Grid -->
-    <div class="card-grid"></div>
+    <!--game container-->
+    <div class="game-wrapper">
+        <div class="container">
+            <div class="grid">
+                <!-- Cards -->
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+        </div>
+        <!-- Icons -->
+        <div class="controls-icons">
+            <button id="hint-button" class="btn-icons"></button>
+            <button id="restart-button" class="btn-icons"></button>
+        </div>
+        <!-- Difficulty -->
+        <div class="difficulty">
+            <select id="difficulty" class="btn">
+                <option value="4">Easy (4x4)</option>
+                <option value="6">Medium (6x6)</option>
+                <option value="8">Hard (8x8)</option>
+            </select>
+        </div>
+    </div>
 
     <!-- Game Over Modal -->
     <div class="game-over hidden">
