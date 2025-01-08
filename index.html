@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure</title>
-  <link rel="icon" type="image/x-icon" href="/assets/icons/page icon.png"> 
+  <link rel="icon" type="image/x-icon" href="/assets/global/icons/page-icon.png">
   <link rel="stylesheet" href="/css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
@@ -12,19 +12,20 @@
 <body>
   <div class="space-background">
     <!-- Floating GIFs -->
-    <img src="assets/image/mario.webp" alt="Floating Gif 1" class="floating-gif gif1">
-    <img src="assets/image/naruto.webp" alt="Floating Gif 2" class="floating-gif gif2">
-    <img src="assets/image/JS.png" alt="Floating Gif 3" class="floating-gif gif3">
+    <img src="assets/global/images/mario.webp" alt="Floating Gif 1" class="floating-gif gif1">
+    <img src="assets/global/images/naruto.webp" alt="Floating Gif 2" class="floating-gif gif2">
+    <img src="assets/global/images/JS.png" alt="Floating Gif 3" class="floating-gif gif3">
 
     <!-- Start Page Content -->
     <div class="start-container">
       <h1 class="start-title">Memory Adventure</h1>
       <div class="menu-options">
         <a href="#" id="how-to-play">Start Game</a>
+        <a href="#" id="view-scores">View Scores</a>
       </div>
     </div>
 
-    <!-- Pop-up Modal -->
+    <!-- Pop-up Modal for How to Play -->
     <div id="popup" class="popup hidden">
       <div class="popup-content">
         <button id="close-popup" class="close-btn">&times;</button>
@@ -34,41 +35,70 @@
           
           <!-- Difficulty Options -->
           <select id="difficulty-select" class="difficulty-select">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
+            <option value="easy">Easy (4x4)</option>
+            <option value="medium">Medium (6x6)</option>
+            <option value="hard">Hard (8x8)</option>
           </select>
 
           <!-- Start Game Button -->
-          <button
-            aria-label="Start Game"
-            class="start-game-btn"
-            id="start-game"
-          >
-            Start
-          </button>
+          <button aria-label="Start Game" class="start-game-btn" id="start-game">Start</button>
         </div>
       </div>
     </div>
 
-<!-- Sound Controls -->
-<div class="sound-controls">
-  <button id="music-toggle">
-    <img src="assets/icons/sound-on.png" alt="Sound On" id="sound-icon">
-  </button>
-</div>
+    <!-- Pop-up Modal for High Scores -->
+    <div id="scores-popup" class="popup hidden">
+      <div class="popup-content">
+        <button id="close-scores-popup" class="close-btn">&times;</button>
+        <div id="scores-page" class="popup-page">
+          <h2>High Scores</h2>
+          <div class="score-container">
+            <div class="score-item">
+              <span class="score-label">Easy (4x4):</span>
+              <span class="score-value" id="easy-score">No score yet</span>
+            </div>
+            <div class="score-item">
+              <span class="score-label">Medium (6x6):</span>
+              <span class="score-value" id="medium-score">No score yet</span>
+            </div>
+            <div class="score-item">
+              <span class="score-label">Hard (8x8):</span>
+              <span class="score-value" id="hard-score">No score yet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- Audio Elements -->
-  <audio id="background-music" loop>
-    <source src="assets/audio/background-music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+    <!-- Sound Controls -->
+    <div class="sound-controls">
+      <button id="music-toggle" aria-label="Toggle Sound">
+        <img src="assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
+      </button>
+    </div>
 
-  <audio id="click-sound">
-    <source src="assets/audio/click-sound.wav" type="audio/wav">
-    Your browser does not support the audio element.
-  </audio>
+    <!-- Audio Elements -->
+    <audio id="background-music" loop>
+      <source src="assets/global/audio/background-music.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
 
-  <script src="/js/start.js"></script>
+    <audio id="click-sound">
+      <source src="assets/global/audio/click-sound.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="match-sound">
+      <source src="assets/global/audio/match-sound.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="win-sound">
+      <source src="assets/global/audio/win-sound.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+
+    <script src="/js/start.js" type="module"></script>
+  </div>
 </body>
 </html>

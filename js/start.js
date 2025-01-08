@@ -1,7 +1,12 @@
+import { GameLogic } from './modules/gameLogic.js';
+
 // DOM Elements
 const popup = document.getElementById('popup');
 const closePopup = document.getElementById('close-popup');
 const howToPlay = document.getElementById('how-to-play');
+const viewScores = document.getElementById('view-scores');
+const scoresPopup = document.getElementById('scores-popup');
+const closeScoresPopup = document.getElementById('close-scores-popup');
 const startGameButton = document.getElementById('start-game');
 const difficultySelect = document.getElementById('difficulty-select');
 const musicToggle = document.getElementById('music-toggle');
@@ -10,78 +15,65 @@ const backgroundMusic = document.getElementById('background-music');
 const clickSound = document.getElementById('click-sound');
 let musicStarted = false;
 
-// Start background music if not already started
+// Start background music on user interaction
 function startBackgroundMusic() {
   if (!musicStarted) {
     backgroundMusic.volume = 0.5;
-    backgroundMusic.play().then(() => {
-      console.log('Music started!');
-    }).catch((error) => {
-      console.log('Failed to start music:', error);
+    backgroundMusic.play().catch(error => {
+      console.error('Failed to start music:', error);
     });
     musicStarted = true;
   }
 }
 
-// Trigger background music on first valid user interaction
-function handleUserInteraction() {
-  startBackgroundMusic();
-  document.removeEventListener('click', handleUserInteraction);
-  document.removeEventListener('keydown', handleUserInteraction);
-}
-
 // Event listeners for user interaction
-document.addEventListener('click', handleUserInteraction);
-document.addEventListener('keydown', handleUserInteraction);
+document.addEventListener('click', startBackgroundMusic, { once: true });
+document.addEventListener('keydown', startBackgroundMusic, { once: true });
 
-// Show or hide popup
+// Show or hide popups
 howToPlay.addEventListener('click', () => {
   popup.classList.remove('hidden');
-  playClickSound();
+  playSound(clickSound);
 });
 
 closePopup.addEventListener('click', () => {
   popup.classList.add('hidden');
-  playClickSound();
+  playSound(clickSound);
 });
 
-// Start game logic based on selected difficulty
+viewScores.addEventListener('click', () => {
+  scoresPopup.classList.remove('hidden');
+  playSound(clickSound);
+});
+
+closeScoresPopup.addEventListener('click', () => {
+  scoresPopup.classList.add('hidden');
+  playSound(clickSound);
+});
+
+// Start game logic
 startGameButton.addEventListener('click', () => {
   const selectedDifficulty = difficultySelect.value;
-  const difficultyUrls = {
-    easy: 'easy.html',
-    medium: 'medium.html',
-    hard: 'hard.html',
-  };
-  if (selectedDifficulty in difficultyUrls) {
-    window.location.href = difficultyUrls[selectedDifficulty];
-  } else {
-    alert('Please select a difficulty level!');
-  }
-  playClickSound();
+  window.location.href = `/${selectedDifficulty}.html`;
+  playSound(clickSound);
 });
 
-// Play sound on difficulty change
-difficultySelect.addEventListener('change', () => {
-  playClickSound();
-});
-
-// Toggle background music and update sound icon
+// Toggle background music
 musicToggle.addEventListener('click', () => {
   if (backgroundMusic.volume > 0) {
     backgroundMusic.volume = 0;
-    soundIcon.src = 'assets/icons/sound-off.png';
+    soundIcon.src = 'assets/global/icons/sound-off.png';
   } else {
     backgroundMusic.volume = 0.5;
-    soundIcon.src = 'assets/icons/sound-on.png';
+    soundIcon.src = 'assets/global/icons/sound-on.png';
   }
-  playClickSound();
+  playSound(clickSound);
 });
 
 // Play a click sound
-function playClickSound() {
-  clickSound.currentTime = 0;
-  clickSound.play();
+function playSound(sound) {
+  sound.currentTime = 0;
+  sound.play();
 }
 
 // Set random animation duration for floating GIFs
