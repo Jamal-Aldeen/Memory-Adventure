@@ -2,7 +2,7 @@
 body, .space-background {
   margin: 0;
   padding: 0;
-  background: url('/assets/global/images/space-background.gif') no-repeat center center fixed;
+  background: url('/assets/images/space-background.gif') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Press Start 2P', cursive;
   color: white;
@@ -70,7 +70,7 @@ body, .space-background {
 }
 
 .card-back {
-  background-size: cover; /* Ensure the image covers the card */
+  background: #ffd54f;
   transform: rotateY(0deg);
 }
 
