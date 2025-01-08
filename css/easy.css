@@ -70,7 +70,6 @@ body, .space-background {
 }
 
 .card-back {
-    background: url('/assets/easy/images/card-back.png') no-repeat center center;
     background-size: cover; /* Ensure the image covers the card */
     transform: rotateY(0deg);
   }

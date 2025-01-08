@@ -22,24 +22,25 @@ body, .space-background {
 .game-info {
   display: flex;
   justify-content: space-between;
-  width: 800px; /* Adjusted for hard level */
+  width: 1000px; /* Increased width to accommodate larger cards */
   margin-bottom: 20px;
   font-family: 'Press Start 2P', cursive;
   color: #ffcc00;
   font-size: 1.2rem;
 }
 
+/* Updated Card Grid for 4x16 layout with larger cards */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(8, 70px); /* 8x8 grid */
-  grid-template-rows: repeat(8, 70px);
-  gap: 10px;
+  grid-template-columns: repeat(16, 80px); /* 16 columns with larger cards */
+  grid-template-rows: repeat(4, 80px); /* 4 rows with larger cards */
+  gap: 10px; /* Increased gap for better spacing */
 }
 
 .card {
   position: relative;
-  width: 70px; /* Smaller cards for hard level */
-  height: 70px;
+  width: 80px; /* Larger cards */
+  height: 80px;
   perspective: 1000px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -70,7 +71,6 @@ body, .space-background {
 }
 
 .card-back {
-  background: url('/assets/easy/images/card-back.png') no-repeat center center;
   background-size: cover; /* Ensure the image covers the card */
   transform: rotateY(0deg);
 }
@@ -134,14 +134,14 @@ body, .space-background {
   }
 
   .card-grid {
-      grid-template-columns: repeat(4, 50px); /* Adjusted for smaller screens */
-      grid-template-rows: repeat(4, 50px);
+      grid-template-columns: repeat(8, 60px); /* Adjusted for smaller screens */
+      grid-template-rows: repeat(8, 60px);
       gap: 8px;
   }
 
   .card {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
   }
 
   .game-over, .level-complete {
