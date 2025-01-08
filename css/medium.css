@@ -96,31 +96,36 @@ body,
   z-index: 2;
 }
 
-/* Game Info Section */
-.stats {
-  display: flex;
+/* Game Info Container */
+.game-info-container {
+  display: flex
+;
   flex-direction: column;
-  gap: 10px;
-  margin-right: 40px; /* Space between stats and cards */
+  gap: 10p;
+  position: absolute;
+  right: 700px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.stats p {
+.game-info-container p {
   margin: 0;
   font-family: 'Press Start 2P', cursive;
   color: var(--text-color);
 }
 
-.stats span {
+.game-info-container span {
   color: var(--primary-color);
   font-size: 1.2rem;
+  line-height: 4.6;
 }
 
 /* Layout for Game Info and Cards */
 #layout {
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  position: relative; /* For absolute positioning of game info */
+  align-items: center; 
+  justify-content: center; 
+  position: relative;
 }
 
 /* Card Grid */
