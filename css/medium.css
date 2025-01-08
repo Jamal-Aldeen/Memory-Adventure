@@ -44,6 +44,7 @@ body,
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 0 #b76e00;
 }
 
 /* Retro-Style Buttons */
@@ -56,6 +57,7 @@ body,
   font-family: 'Press Start 2P', cursive;
   text-decoration: none;
   color: white;
+  text-shadow: 2px 2px 0 #b76e00;
   box-shadow: inset -4px -4px 0px 0px var(--shadow-color);
   z-index: 1;
 }
@@ -98,8 +100,7 @@ body,
 
 /* Game Info Container */
 .game-info-container {
-  display: flex
-;
+  display: flex;
   flex-direction: column;
   gap: 10p;
   position: absolute;
@@ -172,7 +173,7 @@ body,
 }
 
 .card-back {
-  background: var(--card-background);
+  background-size: cover; /* Ensure the image covers the card */
   transform: rotateY(0deg);
 }
 
