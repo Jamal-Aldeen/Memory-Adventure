@@ -148,7 +148,7 @@ export class GameLogic {
         card2.classList.add('matched');
         this.flippedCards = [];
         this.cardFlipping = false; // Reset cardFlipping to allow further flips
-        playSound(document.getElementById('match-sound'));
+        // playSound(document.getElementById('match-sound'));
   
         // Check if the game is won after each match
         if (this.isGameWon()) {
@@ -179,7 +179,7 @@ export class GameLogic {
       document.getElementById('final-time').textContent = this.formatTime(this.time);
       document.getElementById('final-moves').textContent = this.moves;
   
-      playSound(document.getElementById('win-sound'));
+      // playSound(document.getElementById('win-sound'));
       this.saveScore();
     }
   
