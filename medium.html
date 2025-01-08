@@ -4,28 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Medium</title>
-  <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/medium.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="game-container">
-    <!-- Game Info -->
-    <div class="game-info">
-      <div class="timer">Time: <span id="timer">00:00</span></div>
-      <div class="moves">Moves: <span id="moves">0</span></div>
+  <div class="container">
+    <h1>Memory Adventure 💻</h1>
+
+    <!-- Controls Section -->
+    <div class="controls">
+      <button id="start-button" class="eightbit-btn">Start Game</button>
+      <button id="restart-button" class="eightbit-btn">Restart</button>
+      <span>Hint ?</span>
+    </div>
+
+    <!-- Game Info Section -->
+    <div class="stats">
+      <p>Moves: <span id="moves">0</span></p>
+      <p>Time: <span id="timer">00:00</span></p>
+      <p>Score: <span id="high-score">0</span></p>
     </div>
 
     <!-- Card Grid -->
-    <div class="card-grid"></div>
+    <div id="game-board" class="card-grid"></div>
 
     <!-- Game Over Modal -->
     <div class="game-over hidden">
       <p>You completed the level!</p>
       <p>Time: <span id="final-time">00:00</span></p>
       <p>Moves: <span id="final-moves">0</span></p>
-      <button id="next-level">Next Level</button>
-      <button id="save-score">Save Score & Return Home</button>
+      <button id="next-level" class="eightbit-btn">Next Level</button>
+      <button id="save-score" class="eightbit-btn">Save Score & Return Home</button>
     </div>
 
     <!-- Level Complete Pop-Up -->
@@ -33,14 +42,43 @@
       <div class="level-complete-content">
         <h2>Level Complete</h2>
         <p class="level-name">Level: Medium</p>
-        <button class="next-level">Next Level</button>
-        <button class="close">Close</button>
+        <button class="next-level eightbit-btn">Next Level</button>
+        <button class="close eightbit-btn">Close</button>
       </div>
     </div>
+
+    <!-- Sound Controls -->
+    <div class="sound-controls">
+      <button id="music-toggle">
+        <img src="assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
+      </button>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="background-music" loop>
+      <source src="assets/global/audio/background-music.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="click-sound">
+      <source src="assets/global/audio/click-sound.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="match-sound">
+      <source src="assets/global/audio/match-sound.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="win-sound">
+      <source src="assets/global/audio/win-sound.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
   </div>
 
   <script type="module">
     import { GameLogic } from '/js/modules/gameLogic.js';
+    console.log('Initializing game...'); // Debugging
     const game = new GameLogic(36, 'medium'); // 6x6 grid (36 cards)
     game.start();
   </script>
