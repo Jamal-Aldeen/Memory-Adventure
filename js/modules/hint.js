@@ -39,11 +39,11 @@ function provideHint(gameLogic) {
     // If there are fewer than 2 unflipped cards, no hint can be given
     if (unflippedCards.length < 2) return;
 
-    // Shuffle the unflipped cards to randomize the hint
+    // Shuffle the unflipped cards
     const shuffledCards = shuffleArray(unflippedCards);
 
-    // Reposition the shuffled cards in the DOM
-    repositionCards(shuffledCards);
+    // Reposition the shuffled cards in the grid, keeping matched cards in place
+    repositionCards(shuffledCards, [...cards]);
 
     showUnmatched(shuffledCards);
 }
@@ -57,15 +57,26 @@ function shuffleArray(array) {
     return array;
 }
 
-// Reposition cards in the DOM
-function repositionCards(cards) {
-    const cardGrid = document.querySelector('.card-grid');
+function repositionCards(unflippedCards, allCards) {
+    const cardGrid = document.querySelector('.card-grid'); // Get the card grid element
     if (cardGrid) {
-        // Clear the current card grid
-        cardGrid.innerHTML = '';
+        // Create a copy of allCards to avoid mutating the original array
+        const updatedCards = [...allCards];
 
-        // Append the shuffled cards to the grid
-        cards.forEach(card => cardGrid.appendChild(card));
+        // Replace unflipped and unmatched cards with shuffled cards
+        let shuffledIndex = 0;
+        for (let i = 0; i < updatedCards.length; i++) {
+            const card = updatedCards[i];
+            if (!card.classList.contains('flipped') && !card.classList.contains('matched')) {
+                // Replace this card with the next shuffled card
+                updatedCards[i] = unflippedCards[shuffledIndex];
+                shuffledIndex++;
+            }
+        }
+
+        // Clear the grid and append cards in the updated order
+        cardGrid.innerHTML = '';
+        updatedCards.forEach(card => cardGrid.appendChild(card));
     }
 }
 
