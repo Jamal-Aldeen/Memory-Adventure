@@ -172,6 +172,7 @@ body {
   top: 90%;
   left: 80%;
 }
+
 #difficulty-select:hover {
   background: rgba(224, 180, 58, 0.4);
   border: 2px solid #ffa726;
