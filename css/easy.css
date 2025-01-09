@@ -172,6 +172,16 @@ body {
   top: 90%;
   left: 80%;
 }
+#difficulty-select:hover {
+  background: rgba(224, 180, 58, 0.4);
+  border: 2px solid #ffa726;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 #ffa726;
+  color: #ffa726;
+  cursor: pointer;
+  animation: button-pulse 2s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
 
 .moves-counter {
   position: fixed;

@@ -204,3 +204,50 @@ body, .space-background {
 #music-toggle:hover {
   transform: scale(1.1); 
 }
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .start-title {
+    font-size: 2.5rem; /* Smaller title for mobile */
+  }
+
+  .menu-options a {
+    font-size: 1.5rem; /* Smaller menu options for mobile */
+  }
+
+  .popup-content {
+    width: 90%; /* Wider pop-up for mobile */
+    padding: 20px; /* Reduced padding for mobile */
+  }
+
+  .floating-gif {
+    width: 80px; /* Smaller GIFs for mobile */
+  }
+
+  .gif1 { top: 10%; left: 10%; }
+  .gif2 { top: 40%; left: 60%; }
+  .gif3 { top: 60%; left: 10%; }
+}
+/* High Scores Table */
+.score-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.score-container th,
+.score-container td {
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #4fd1c5;
+}
+
+.score-container th {
+  background-color: #1a1a40;
+  color: #ffd54f;
+}
+
+.score-container td {
+  background-color: #2a2a60;
+  color: #f0f0f0;
+} 
