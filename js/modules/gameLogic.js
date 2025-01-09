@@ -1,4 +1,5 @@
 import { saveScore, getSavedScores } from './storage.js';
+import { initializeHint } from './hint.js';
 
 export class GameLogic {
     constructor(totalCards, level) {
@@ -20,6 +21,7 @@ export class GameLogic {
         this.showCardsTemporarily();
         this.startTimer();
         this.addEventListeners();
+        initializeHint(this.level);
     }
 
     async generateCards() {
