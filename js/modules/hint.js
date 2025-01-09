@@ -1,21 +1,3 @@
-// // hint.js
-// import { shuffleArray, showUnmatched } from "./utils";
-
-// export function provideHint(cards, level) {
-//     // Ensure the game has started and there are cards to provide a hint for
-//     if (!cards || cards.length === 0) return;
-
-//     // Find all unflipped and unmatched cards
-//     const unflippedCards = [...cards].filter(card => 
-//         !card.classList.contains('flipped') && !card.classList.contains('matched')
-//     );
-
-//     const shuffledCards = shuffleArray(unflippedCards);
-//     showCardsTemporarily(shuffledCards);
-// }
-
-// ORR
-
 // hint.js 
 
 export function initializeHint(gameLogic) {
@@ -45,7 +27,7 @@ function provideHint(gameLogic) {
     // Reposition the shuffled cards in the grid, keeping matched cards in place
     repositionCards(shuffledCards, [...cards]);
 
-    showUnmatched(shuffledCards);
+    showUnmatched(shuffledCards, gameLogic.level);
 }
 
 // Shuffle an array
@@ -80,10 +62,20 @@ function repositionCards(unflippedCards, allCards) {
     }
 }
 
+function timeShown(level){
+    let hintTime;
+    switch (level) {
+        case 'easy': hintTime = 2000; break;
+        case 'medium': hintTime = 7000; break;
+        case 'hard': hintTime = 5000; break;
+    }
+return hintTime
+}
+
 // Temporarily show unmatched cards
-function showUnmatched(cards) {
+function showUnmatched(cards, level) {
     cards.forEach(card => card.classList.add('flipped'));
     setTimeout(() => {
         cards.forEach(card => card.classList.remove('flipped'));
-    }, 2000); // 2 seconds delay
+    }, timeShown(level)); // 2 seconds delay
 }
