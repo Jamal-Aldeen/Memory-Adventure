@@ -41,6 +41,10 @@ function provideHint(gameLogic) {
 
     // Shuffle the unflipped cards to randomize the hint
     const shuffledCards = shuffleArray(unflippedCards);
+
+    // Reposition the shuffled cards in the DOM
+    repositionCards(shuffledCards);
+
     showUnmatched(shuffledCards);
 }
 
@@ -51,6 +55,18 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+}
+
+// Reposition cards in the DOM
+function repositionCards(cards) {
+    const cardGrid = document.querySelector('.card-grid');
+    if (cardGrid) {
+        // Clear the current card grid
+        cardGrid.innerHTML = '';
+
+        // Append the shuffled cards to the grid
+        cards.forEach(card => cardGrid.appendChild(card));
+    }
 }
 
 // Temporarily show unmatched cards
