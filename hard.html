@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Hard</title>
-  <!-- <link rel="stylesheet" href="/css/main.css"> -->
+  <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/hard.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,6 +53,37 @@
       </div>
     </div>
   </div>
+
+   <!-- Sound Controls -->
+   <div class="sound-controls">
+    <button id="music-toggle" aria-label="Toggle Sound">
+      <img src="./assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
+    </button>
+  </div>
+
+  <!-- Audio Elements -->
+  <audio id="background-music" loop>
+    <source src="/assets/global/audio/background-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="click-sound">
+    <source src="/assets/global/audio/click-sound.wav" type="audio/wav">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="match-sound">
+    <source src="/assets/global/audio/match-sound.wav" type="audio/wav">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="win-sound">
+    <source src="/assets/global/audio/win-sound.wav" type="audio/wav">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="./js/start.js" type="module"></script>
+
 
   <script type="module">
     import { GameLogic } from '/js/modules/gameLogic.js';

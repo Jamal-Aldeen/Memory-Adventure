@@ -60,16 +60,32 @@ export class GameLogic {
         }
     }
 
+    // showCardsTemporarily based on the level
+
     showCardsTemporarily() {
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => card.classList.add('flipped'));
-
+    
         const countdown = document.createElement('div');
         countdown.id = 'countdown';
         countdown.textContent = '3';
         document.body.appendChild(countdown);
-
-        let count = 3;
+    
+        let count;
+        switch (this.level) {
+            case 'easy':
+                count = 3; 
+                break;
+            case 'medium':
+                count = 5; 
+                break;
+            case 'hard':
+                count = 7; 
+                break;
+            default:
+                count = 5; 
+        }
+    
         const countdownInterval = setInterval(() => {
             count--;
             countdown.textContent = count;
@@ -81,6 +97,7 @@ export class GameLogic {
             }
         }, 1000);
     }
+
 
     startTimer() {
         this.timerInterval = setInterval(() => {
