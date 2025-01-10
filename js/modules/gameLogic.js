@@ -106,8 +106,20 @@ export class GameLogic {
         this.isGameOver = false;
         this.cardFlipping = false;
     
-        clearInterval(this.timerInterval); // Stop the timer
-        this.start(); // Restart the game
+        // Clear the timer interval if it exists
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null; // Reset the timerInterval variable
+        }
+    
+        // Reset the timer display
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+            timerElement.textContent = this.formatTime(this.time);
+        }
+    
+        // Restart the game
+        this.start();
     
         // Change the button text back to "Start"
         if (button) {
@@ -164,6 +176,13 @@ export class GameLogic {
 
     
     startTimer() {
+        // Clear any existing timer interval
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+        }
+    
+        // Start a new timer interval
         this.timerInterval = setInterval(() => {
             this.time++;
             const timerElement = document.getElementById('timer');
