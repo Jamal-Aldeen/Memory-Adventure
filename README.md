@@ -65,18 +65,16 @@ memory-adventure/
 │   ├── modules/                 # Modularized JavaScript files for game logic, sound management, etc.
 │   │   ├── gameLogic.js         # Handles card matching, scoring, and game mechanics
 │   │   ├── utils.js             # Manages background music and sound effects
+│   │   ├── sound.js             # Sound-related utilities
+│   │   ├── hint.js              # Hint functionality
 │   │   └── storage.js           # Manages high scores and local storage
 │   ├── start.js                 # Main JavaScript file for the landing page
-│   ├── easy.js                  # Easy level-specific logic (if needed)
-│   ├── medium.js                # Medium level-specific logic (if needed)
-│   └── hard.js                  # Hard level-specific logic (if needed)
 │
 ├── index.html                   # Main landing page
 ├── easy.html                    # Easy level page
 ├── medium.html                  # Medium level page
 ├── hard.html                    # Hard level page
-└──  README.md                    # Project documentation (setup, features, etc.)
-
+└── README.md                    # Project documentation (setup, features, etc.)
 ```
 
 ## How to Run

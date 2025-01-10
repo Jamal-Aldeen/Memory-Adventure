@@ -82,10 +82,12 @@
         <source src="assets/global/audio/win-sound.wav" type="audio/wav">
     </audio>
 
-  <script type="module">
-    import { GameLogic } from '/js/modules/gameLogic.js';
-    const game = new GameLogic(16, 'easy'); // 4x4 grid (16 cards)
-    game.start();
-  </script>
+    <script type="module">
+        import { GameLogic } from '/js/modules/gameLogic.js';
+        const totalCards = 16; // Define total cards for Easy level
+        const gameLogic = new GameLogic(totalCards, 'easy'); // Pass totalCards and level
+        gameLogic.start();
+        gameLogic.startLevel(); // Initialize the Start/Restart functionality
+    </script>    
 </body>
 </html>
