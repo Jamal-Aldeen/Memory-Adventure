@@ -17,10 +17,11 @@ export class GameLogic {
     async start() {
         await this.generateCards();
         this.renderCards();
-        this.showCardsTemporarily();
-        this.startTimer();
+        this.showCardsTemporarily(); 
         this.addEventListeners();
     }
+
+ 
 
     async generateCards() {
         const cardValues = Array.from({ length: this.totalCards / 2 }, (_, i) => i + 1);
@@ -94,9 +95,19 @@ export class GameLogic {
                 countdown.remove();
                 cards.forEach(card => card.classList.remove('flipped'));
                 this.isGameStarted = true;
+    
+                this.time = 0;
+                const timerElement = document.getElementById('timer');
+                if (timerElement) {
+                    timerElement.textContent = this.formatTime(this.time); 
+                }
+    
+             
+                this.startTimer();
             }
         }, 1000);
     }
+
 
 
     startTimer() {
