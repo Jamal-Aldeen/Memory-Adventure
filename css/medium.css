@@ -392,18 +392,33 @@ h1 {
 
 /* Progress Bar Container */
 .progress-bar-container {
-  width: 100%; /* Match the width of the card grid */
-  height: 10px; /* Height of the progress bar */
-  background-color: #444; /* Background color of the bar */
-  border-radius: 5px; /* Rounded corners */
-  margin-top: 20px; /* Spacing above the progress bar */
-  overflow: hidden; /* Ensures the inner bar doesn't overflow */
+  width: 37%; 
+  height: 10px; 
+  background-color: rgba(0, 0, 0, 0.3); 
+  border-radius: 5px; 
+  margin-top: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
 /* Progress Bar */
 .progress-bar {
-  width: 0%; /* Initial width (empty) */
-  height: 100%; /* Full height of the container */
-  background-color: #4fd1c5; /* Color of the progress bar */
-  transition: width 0.1s linear; /* Smooth animation for width changes */
+  width: 0%; 
+  height: 100%; 
+  background: linear-gradient(90deg, #ffc400, #ff3c00); 
+  border-radius: 5px; 
+  transition: width 0.1s linear; 
+}
+
+/* Glow Effect on Progress Bar */
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%); 
+  opacity: 0.5; 
+  pointer-events: none; 
 }
