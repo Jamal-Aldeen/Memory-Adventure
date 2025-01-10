@@ -77,7 +77,27 @@ export class GameLogic {
             }
         });
     }
-    resetGame() {
+
+    startLevel() {
+        const startRestartButton = document.getElementById('start-restart-btn');
+        const cards = document.querySelectorAll('.card');
+        let gameStarted = false;
+    
+        startRestartButton.addEventListener('click', () => {
+            if (!gameStarted) {
+                gameStarted = true;
+                startRestartButton.textContent = 'Restart'; // Change text to "Restart"
+                this.showCountdownAndStart(cards);
+            } else {
+                this.resetGame(startRestartButton); // Reset game and change button back to "Start"
+                gameStarted = false;
+            }
+        });
+    }
+    
+    
+    resetGame(button) {
+        // Reset all game variables
         this.cards = [];
         this.flippedCards = [];
         this.moves = 0;
@@ -88,7 +108,14 @@ export class GameLogic {
     
         clearInterval(this.timerInterval); // Stop the timer
         this.start(); // Restart the game
+    
+        // Change the button text back to "Start"
+        if (button) {
+            button.textContent = 'Start';
+        }
     }
+    
+    
     showCountdownAndStart(cards) {
         // Show cards initially
         cards.forEach(card => card.classList.add('flipped'));
