@@ -77,7 +77,27 @@ export class GameLogic {
             }
         });
     }
-    resetGame() {
+
+    startLevel() {
+        const startRestartButton = document.getElementById('start-restart-btn');
+        const cards = document.querySelectorAll('.card');
+        let gameStarted = false;
+    
+        startRestartButton.addEventListener('click', () => {
+            if (!gameStarted) {
+                gameStarted = true;
+                startRestartButton.textContent = 'Restart'; // Change text to "Restart"
+                this.showCountdownAndStart(cards);
+            } else {
+                this.resetGame(startRestartButton); // Reset game and change button back to "Start"
+                gameStarted = false;
+            }
+        });
+    }
+    
+    
+    resetGame(button) {
+        // Reset all game variables
         this.cards = [];
         this.flippedCards = [];
         this.moves = 0;
@@ -86,9 +106,28 @@ export class GameLogic {
         this.isGameOver = false;
         this.cardFlipping = false;
     
-        clearInterval(this.timerInterval); // Stop the timer
-        this.start(); // Restart the game
+        // Clear the timer interval if it exists
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null; // Reset the timerInterval variable
+        }
+    
+        // Reset the timer display
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+            timerElement.textContent = this.formatTime(this.time);
+        }
+    
+        // Restart the game
+        this.start();
+    
+        // Change the button text back to "Start"
+        if (button) {
+            button.textContent = 'Start';
+        }
     }
+    
+    
     showCountdownAndStart(cards) {
         // Show cards initially
         cards.forEach(card => card.classList.add('flipped'));
@@ -137,6 +176,13 @@ export class GameLogic {
 
     
     startTimer() {
+        // Clear any existing timer interval
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+        }
+    
+        // Start a new timer interval
         this.timerInterval = setInterval(() => {
             this.time++;
             const timerElement = document.getElementById('timer');
