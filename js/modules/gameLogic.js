@@ -95,7 +95,14 @@ export class GameLogic {
         });
     }
     
-    
+    updateProgressBar(elapsedTime, totalTime) {
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            const progress = (elapsedTime / totalTime) * 100; // Calculate progress percentage
+            progressBar.style.width = `${progress}%`; // Update the progress bar width
+        }
+    }
+
     resetGame(button) {
         // Reset all game variables
         this.cards = [];
@@ -109,13 +116,19 @@ export class GameLogic {
         // Clear the timer interval if it exists
         if (this.timerInterval) {
             clearInterval(this.timerInterval);
-            this.timerInterval = null; // Reset the timerInterval variable
+            this.timerInterval = null;
         }
     
         // Reset the timer display
         const timerElement = document.getElementById('timer');
         if (timerElement) {
             timerElement.textContent = this.formatTime(this.time);
+        }
+    
+        // Reset the progress bar
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            progressBar.style.width = '0%';
         }
     
         // Restart the game
@@ -126,7 +139,6 @@ export class GameLogic {
             button.textContent = 'Start';
         }
     }
-    
     
     showCountdownAndStart(cards) {
         // Show cards initially
@@ -163,12 +175,24 @@ export class GameLogic {
                 clearInterval(countdownInterval);
                 countdownOverlay.remove(); // Remove the overlay
     
+                // Start tracking the progress bar after the countdown ends
+                const startTime = Date.now(); // Record the start time
+                const progressInterval = setInterval(() => {
+                    const elapsedTime = Date.now() - startTime; // Calculate elapsed time
+                    this.updateProgressBar(elapsedTime, flipBackDelay); // Update progress bar
+    
+                    // Stop the progress bar when the delay is over
+                    if (elapsedTime >= flipBackDelay) {
+                        clearInterval(progressInterval);
+                    }
+                }, 100); // Update every 100ms for smooth animation
+    
                 // Wait for the level-specific delay before flipping cards back
                 setTimeout(() => {
                     cards.forEach(card => card.classList.remove('flipped')); // Flip cards back
                     this.isGameStarted = true; // Start the game
                     this.time = 0;
-                    this.startTimer();
+                    this.startTimer(); // Start the main game timer
                 }, flipBackDelay); // Use the level-specific delay
             }
         }, 1000); // Update every second
