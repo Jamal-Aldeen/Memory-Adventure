@@ -9,25 +9,13 @@ export function initializeHint(gameLogic) {
 }
 
 function provideHint(gameLogic) {
+    const cards = document.querySelectorAll('.card:not(.flipped):not(.matched)');
+    if (cards.length < 2) return;
 
-    const cards = document.querySelectorAll('.card');
-    if (!cards || cards.length === 0) return;     // Ensure the game has started and there are cards to provide a hint for
-
-    // Find all unflipped and unmatched cards
-    const unflippedCards = [...cards].filter(card => 
-        !card.classList.contains('flipped') && !card.classList.contains('matched')
-    );
-
-    // If there are fewer than 2 unflipped cards, no hint can be given
-    if (unflippedCards.length < 2) return;
-
-    // Shuffle the unflipped cards
-    const shuffledCards = shuffleArray(unflippedCards);
-
-    // Reposition the shuffled cards in the grid, keeping matched cards in place
-    repositionCards(shuffledCards, [...cards]);
-
-    showUnmatched(shuffledCards, gameLogic.level);
+    cards.forEach(card => card.classList.add('hint'));
+    setTimeout(() => {
+        cards.forEach(card => card.classList.remove('hint'));
+    }, 2000); // Show hint for 2 seconds
 }
 
 // Shuffle an array
