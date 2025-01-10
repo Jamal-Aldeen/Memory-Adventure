@@ -7,7 +7,7 @@ export function initializeHint(gameLogic) {
 
     if (hintButton && hintsRemaining) {
         // Set the initial number of hints based on the level
-        let hintCounter = getHintCount(gameLogic);
+        let hintCounter = getHintCount(gameLogic.level);
         hintsRemaining.textContent = `${hintCounter}`;
 
         hintButton.addEventListener('click', () => {
