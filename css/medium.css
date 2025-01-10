@@ -389,3 +389,21 @@ h1 {
     font-size: var(--font-size-small);
   }
 }
+
+/* Progress Bar Container */
+.progress-bar-container {
+  width: 100%; /* Match the width of the card grid */
+  height: 10px; /* Height of the progress bar */
+  background-color: #444; /* Background color of the bar */
+  border-radius: 5px; /* Rounded corners */
+  margin-top: 20px; /* Spacing above the progress bar */
+  overflow: hidden; /* Ensures the inner bar doesn't overflow */
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 0%; /* Initial width (empty) */
+  height: 100%; /* Full height of the container */
+  background-color: #4fd1c5; /* Color of the progress bar */
+  transition: width 0.1s linear; /* Smooth animation for width changes */
+}
