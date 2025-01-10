@@ -16,8 +16,8 @@
             <div class="timer">
                 <p class="timer-text">Time: <span id="timer">0</span>s</p>
             </div>
-            <div class="best-score">
-                <p class="best-score-text">Best Score: <span id="best-score">0</span></p>
+            <div class="moves-counter">
+                <span>Moves: </span><span id="moves">0</span>
             </div>
         </div>
         <div class="title">
@@ -40,13 +40,8 @@
             <button id="hint-btn" class="btn-icons"></button>
             <button id="restart-btn" class="btn-icons"></button>
         </div>
-        <!-- Difficulty -->
-        <div class="difficulty">
-            <select id="difficulty-select" class="btn">
-                <option value="easy">Easy (4x4)</option>
-                <option value="medium">Medium (6x6)</option>
-                <option value="hard">Hard (8x8)</option>
-            </select>
+        <div class="start-restart-btn">
+            <button id="start-restart-btn" class="btn-icons"></button>
         </div>
     </div>
 
@@ -67,11 +62,6 @@
             <button class="next-level">Next Level</button>
             <button class="close">Close</button>
         </div>
-    </div>
-
-    <!-- Add moves counter -->
-    <div class="moves-counter">
-        <span>Moves: </span><span id="moves">0</span>
     </div>
 
     <!-- Audio Elements -->

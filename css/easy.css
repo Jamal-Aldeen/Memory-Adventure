@@ -47,7 +47,7 @@ body {
   gap: 10px;
 }
 
-.timer, .best-score {
+.timer, .moves-counter {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   animation: timer-pulse 1.5s linear infinite;
   display: flex;
@@ -92,7 +92,7 @@ body {
   cursor: pointer;
   position: relative;
   box-shadow: 2px 2px 4px rgba(240, 225, 16, 1);
-  background-image: url(../assets/easy/images/cards-background\ \(7\).png);
+  background-image: url(../assets/easy/images/cards-background.png);
   background-size: cover;
   overflow: hidden;
   aspect-ratio: 1/1;
@@ -133,7 +133,7 @@ body {
   transform: translateY(-50%);
 }
 
-.btn-icons {
+.btn-icons ,.start-restart-btn {
   background: rgba(255, 231, 11, 0.0);
   border-radius: 50%;
   border: none;
@@ -149,54 +149,26 @@ body {
   background-size: cover;
   width: 50px;
   height: 50px;
+  visibility: hidden;
 }
 
 #hint-btn {
-  background-image: url(../assets/easy/icons/hint-bulb-rounded-icon-rubber-illustration-071609214_iconl_nowm.webp);
+  background-image: url(../assets/easy/icons/hint.webp);
   background-size: cover;
   width: 50px;
   height: 50px;
 }
 
-#difficulty-select {
-  font-size: 15px;
-  border-color: #ffa726;
-  color: whitesmoke;
-  font-weight: bold;
-  box-shadow: 1px 1px 2px rgba(255, 153, 0, 0.7);
-  border-radius: 10px;
-  padding: 15px 15px;
-  font-family: 'Press Start 2P', cursive;
-  background: rgba(224, 180, 58, 0.2);
+#start-restart-btn {
+  background-image: url(../assets/easy/icons/start.png);
+  background-size: cover;
+  width: 70px;
+  height: 70px;
+}
+.start-restart-btn {
   position: absolute;
-  top: 90%;
-  left: 80%;
-}
-
-#difficulty-select:hover {
-  background: rgba(224, 180, 58, 0.4);
-  border: 2px solid #ffa726;
-  transform: translateY(-2px);
-  box-shadow: 4px 4px 0 #ffa726;
-  color: #ffa726;
-  cursor: pointer;
-  animation: button-pulse 2s ease-in-out infinite alternate;
-  transition: all 0.3s ease;
-}
-
-.moves-counter {
-  position: fixed;
-  top: 90%;
-  right: 80%;
-  color: whitesmoke;
-  font-size: 18px;
-  text-shadow: 2px 2px 2px rgba(70,89,164,255), 2px 2px 8px rgba(35,20,55,255);
-  font-weight: bold;
-  font-family: 'Press Start 2P', cursive;
-  background: rgba(224, 180, 58, 0.2);
-  border-radius: 10px;
-  padding: 15px 15px;
-  border: 2px solid #ffa726;
+  top: 38%;
+  right: 2%;
 }
 
 .game-over, .level-complete {
@@ -283,13 +255,6 @@ body {
     height: 40px;
   }
 
-  #difficulty-select {
-    right: 2%;
-    visibility: hidden;
-  }
-  .moves-counter {
-    visibility: hidden;
-  }
 }
 
 @media screen and (max-width: 480px) {
@@ -315,10 +280,4 @@ body {
     height: 35px;
   }
   
-  #difficulty-select {
-    visibility: hidden;
-  }
-  .moves-counter {
-    visibility: hidden;
-  }
 }
