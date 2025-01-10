@@ -89,8 +89,10 @@
 
   <script type="module">
     import { GameLogic } from '/js/modules/gameLogic.js';
-    const game = new GameLogic(64, 'hard'); // 4x16 grid (64 cards)
-    game.start();
-  </script>
+    const totalCards = 64; // Define total cards for Hard level
+    const gameLogic = new GameLogic(totalCards, 'hard'); // Pass totalCards and level
+    gameLogic.start();
+    gameLogic.startLevel(); // Initialize the Start/Restart functionality
+</script>
 </body>
 </html>
