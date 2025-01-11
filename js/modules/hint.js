@@ -1,32 +1,48 @@
-// hint.js 
-
 export function initializeHint(gameLogic) {
-    // Get the hint button & add eventListener
     const hintButton = document.getElementById('hint-button');
     const hintsRemaining = document.getElementById('hints-remaining');
 
     if (hintButton && hintsRemaining) {
+        // Disable the hint button initially
+        hintButton.disabled = true;
+
         // Set the initial number of hints based on the level
         let hintCounter = getHintCount(gameLogic.level);
         hintsRemaining.textContent = `${hintCounter}`;
 
+        // Enable the hint button when the game starts
+        const startRestartButton = document.getElementById('start-restart-btn');
+        if (startRestartButton) {
+            startRestartButton.addEventListener('click', () => {
+                hintButton.disabled = false; // Enable the hint button when the game starts
+            });
+        }
+
         hintButton.addEventListener('click', () => {
+            if (!gameLogic.isGameStarted) {
+                return; 
+            }
+
             if (hintCounter > 0) {
                 provideHint(gameLogic, () => {
                     hintCounter--;
                     hintsRemaining.textContent = `${hintCounter}`;
+
+                    // Disable the hint button if no hints are left
+                    if (hintCounter === 0) {
+                        hintButton.disabled = true;
+                    }
                 });
             } else {
-                alert('No hints remaining!');
+                hintButton.disabled = true;
             }
         });
     }
 }
 
 function provideHint(gameLogic, onHintProvided) {
-
     const cards = document.querySelectorAll('.card');
-    if (!cards || cards.length === 0) return;     // Ensure the game has started and there are cards to provide a hint for
+    if (!cards || cards.length === 0) return; // Ensure the game has started and there are cards to provide a hint for
 
     // Find all unflipped and unmatched cards
     const unflippedCards = [...cards].filter(card => 
@@ -39,7 +55,15 @@ function provideHint(gameLogic, onHintProvided) {
     // Shuffle the unflipped cards & reposition the unmatched cards in the grid
     const shuffledCards = shuffleArray(unflippedCards);
     repositionCards(shuffledCards, [...cards]);
-    showUnmatched(shuffledCards, gameLogic.level);
+
+    // Apply shuffle animation
+    shuffledCards.forEach(card => card.classList.add('shuffling'));
+
+    // Wait for the shuffle animation to complete before showing the unmatched cards
+    setTimeout(() => {
+        shuffledCards.forEach(card => card.classList.remove('shuffling'));
+        showUnmatched(shuffledCards, gameLogic.level);
+    }, 500); // Adjust the delay to match the duration of the shuffle animation
 
     // Call the callback to handle hint counter updates
     if (onHintProvided) onHintProvided(); 
@@ -93,7 +117,7 @@ function timeShown(level){
         case 'medium': hintTime = 7000; break;
         case 'hard': hintTime = 9000; break;
     }
-return hintTime
+    return hintTime;
 }
 
 // Temporarily show unmatched cards

@@ -71,22 +71,6 @@ export class GameLogic {
         startRestartButton.addEventListener('click', () => {
             if (!gameStarted) {
                 gameStarted = true;
-                startRestartButton.textContent = 'Restart';
-                this.showCountdownAndStart(cards);
-            } else {
-                this.resetGame(); // Use resetGame() instead of location.reload()
-            }
-        });
-    }
-
-    startLevel() {
-        const startRestartButton = document.getElementById('start-restart-btn');
-        const cards = document.querySelectorAll('.card');
-        let gameStarted = false;
-    
-        startRestartButton.addEventListener('click', () => {
-            if (!gameStarted) {
-                gameStarted = true;
                 startRestartButton.textContent = 'Restart'; // Change text to "Restart"
                 this.showCountdownAndStart(cards);
             } else {
