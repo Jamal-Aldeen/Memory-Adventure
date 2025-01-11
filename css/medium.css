@@ -198,9 +198,16 @@ h1 {
   transform: rotateY(180deg);
 }
 
+@keyframes glow {
+  0% { box-shadow: 0 0 5px#FFDE68; }
+  50% { box-shadow: 0 0 20px #FFDE68; }
+  100% { box-shadow: 0 0 5px #FFDE68;}
+}
+
 .card.matched {
   opacity: 0.5;
   pointer-events: none;
+  animation: glow 1s;
 }
 
 /* Game Over Modal */
