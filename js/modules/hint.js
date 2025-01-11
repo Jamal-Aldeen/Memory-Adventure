@@ -48,15 +48,11 @@ function provideHint(gameLogic, onHintProvided) {
     const unflippedCards = [...cards].filter(card => 
         !card.classList.contains('flipped') && !card.classList.contains('matched')
     );
-
-    // If there are fewer than 2 unflipped cards, no hint can be given
     if (unflippedCards.length < 2) return;
 
     // Shuffle the unflipped cards & reposition the unmatched cards in the grid
     const shuffledCards = shuffleArray(unflippedCards);
     repositionCards(shuffledCards, [...cards]);
-
-    // Apply shuffle animation
     shuffledCards.forEach(card => card.classList.add('shuffling'));
 
     // Wait for the shuffle animation to complete before showing the unmatched cards
@@ -104,9 +100,9 @@ function repositionCards(unflippedCards, allCards) {
 // Define the number of hints allowed for each level
 function getHintCount(level) {
     switch (level) {
-        case 'easy': return 5;   // Allow 5 hints in easy mode
-        case 'medium': return 3; // Allow 3 hints in medium mode
-        case 'hard': return 2;   // Allow 2 hints in hard mode
+        case 'easy': return 2;  
+        case 'medium': return 3; 
+        case 'hard': return 5;   
     }
 }
 
