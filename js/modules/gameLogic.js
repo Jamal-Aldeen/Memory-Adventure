@@ -48,6 +48,7 @@ export class GameLogic {
                 card.dataset.index = index;
     
                 const cardImage = `assets/${this.level}/images/card${value}.png`;
+                
                 const cardBackImage = `assets/${this.level}/images/card-back.png`;
     
                 card.innerHTML = `
