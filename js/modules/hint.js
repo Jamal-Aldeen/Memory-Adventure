@@ -1,5 +1,3 @@
-// hint.js 
-
 export function initializeHint(gameLogic) {
     const hintButton = document.getElementById('hint-button');
     const hintsRemaining = document.getElementById('hints-remaining');
@@ -57,7 +55,15 @@ function provideHint(gameLogic, onHintProvided) {
     // Shuffle the unflipped cards & reposition the unmatched cards in the grid
     const shuffledCards = shuffleArray(unflippedCards);
     repositionCards(shuffledCards, [...cards]);
-    showUnmatched(shuffledCards, gameLogic.level);
+
+    // Apply shuffle animation
+    shuffledCards.forEach(card => card.classList.add('shuffling'));
+
+    // Wait for the shuffle animation to complete before showing the unmatched cards
+    setTimeout(() => {
+        shuffledCards.forEach(card => card.classList.remove('shuffling'));
+        showUnmatched(shuffledCards, gameLogic.level);
+    }, 500); // Adjust the delay to match the duration of the shuffle animation
 
     // Call the callback to handle hint counter updates
     if (onHintProvided) onHintProvided(); 
