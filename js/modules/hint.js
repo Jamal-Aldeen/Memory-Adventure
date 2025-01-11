@@ -1,17 +1,48 @@
-// hint.js 
-
 export function initializeHint(gameLogic) {
-    // Get the hint button & add eventListener
     const hintButton = document.getElementById('hint-button');
-    if (hintButton) {
-        hintButton.addEventListener('click', () => provideHint(gameLogic));
+    const hintsRemaining = document.getElementById('hints-remaining');
+
+    if (hintButton && hintsRemaining) {
+        // Disable the hint button initially
+        hintButton.disabled = true;
+
+        // Set the initial number of hints based on the level
+        let hintCounter = getHintCount(gameLogic.level);
+        hintsRemaining.textContent = `${hintCounter}`;
+
+        // Enable the hint button when the game starts
+        const startRestartButton = document.getElementById('start-restart-btn');
+        if (startRestartButton) {
+            startRestartButton.addEventListener('click', () => {
+                hintButton.disabled = false; // Enable the hint button when the game starts
+            });
+        }
+
+        hintButton.addEventListener('click', () => {
+            if (!gameLogic.isGameStarted) {
+                return; 
+            }
+
+            if (hintCounter > 0) {
+                provideHint(gameLogic, () => {
+                    hintCounter--;
+                    hintsRemaining.textContent = `${hintCounter}`;
+
+                    // Disable the hint button if no hints are left
+                    if (hintCounter === 0) {
+                        hintButton.disabled = true;
+                    }
+                });
+            } else {
+                hintButton.disabled = true;
+            }
+        });
     }
 }
 
-function provideHint(gameLogic) {
-
+function provideHint(gameLogic, onHintProvided) {
     const cards = document.querySelectorAll('.card');
-    if (!cards || cards.length === 0) return;     // Ensure the game has started and there are cards to provide a hint for
+    if (!cards || cards.length === 0) return; // Ensure the game has started and there are cards to provide a hint for
 
     // Find all unflipped and unmatched cards
     const unflippedCards = [...cards].filter(card => 
@@ -21,13 +52,21 @@ function provideHint(gameLogic) {
     // If there are fewer than 2 unflipped cards, no hint can be given
     if (unflippedCards.length < 2) return;
 
-    // Shuffle the unflipped cards
+    // Shuffle the unflipped cards & reposition the unmatched cards in the grid
     const shuffledCards = shuffleArray(unflippedCards);
-
-    // Reposition the shuffled cards in the grid, keeping matched cards in place
     repositionCards(shuffledCards, [...cards]);
 
-    showUnmatched(shuffledCards, gameLogic.level);
+    // Apply shuffle animation
+    shuffledCards.forEach(card => card.classList.add('shuffling'));
+
+    // Wait for the shuffle animation to complete before showing the unmatched cards
+    setTimeout(() => {
+        shuffledCards.forEach(card => card.classList.remove('shuffling'));
+        showUnmatched(shuffledCards, gameLogic.level);
+    }, 500); // Adjust the delay to match the duration of the shuffle animation
+
+    // Call the callback to handle hint counter updates
+    if (onHintProvided) onHintProvided(); 
 }
 
 // Shuffle an array
@@ -62,14 +101,23 @@ function repositionCards(unflippedCards, allCards) {
     }
 }
 
+// Define the number of hints allowed for each level
+function getHintCount(level) {
+    switch (level) {
+        case 'easy': return 5;   // Allow 5 hints in easy mode
+        case 'medium': return 3; // Allow 3 hints in medium mode
+        case 'hard': return 2;   // Allow 2 hints in hard mode
+    }
+}
+
 function timeShown(level){
     let hintTime;
     switch (level) {
-        case 'easy': hintTime = 2000; break;
+        case 'easy': hintTime = 3000; break;
         case 'medium': hintTime = 7000; break;
-        case 'hard': hintTime = 5000; break;
+        case 'hard': hintTime = 9000; break;
     }
-return hintTime
+    return hintTime;
 }
 
 // Temporarily show unmatched cards
@@ -77,5 +125,5 @@ function showUnmatched(cards, level) {
     cards.forEach(card => card.classList.add('flipped'));
     setTimeout(() => {
         cards.forEach(card => card.classList.remove('flipped'));
-    }, timeShown(level)); // 2 seconds delay
+    }, timeShown(level)); // delay based on level
 }

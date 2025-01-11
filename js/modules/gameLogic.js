@@ -18,12 +18,10 @@ export class GameLogic {
     async start() {
         await this.generateCards();
         this.renderCards();
-        this.showCardsTemporarily(); 
         this.addEventListeners();
-        initializeHint(this.level);
+        this.startLevel();
+        initializeHint(this);
     }
-
- 
 
     async generateCards() {
         const cardValues = Array.from({ length: this.totalCards / 2 }, (_, i) => i + 1);
@@ -45,13 +43,14 @@ export class GameLogic {
             cardGrid.innerHTML = '';
             this.cards.forEach((value, index) => {
                 const card = document.createElement('div');
-                card.classList.add('card');
+                card.classList.add('card'); // Removed 'flipped' class
                 card.dataset.value = value;
                 card.dataset.index = index;
-
+    
                 const cardImage = `assets/${this.level}/images/card${value}.png`;
+                
                 const cardBackImage = `assets/${this.level}/images/card-back.png`;
-
+    
                 card.innerHTML = `
                     <div class="card-front">
                         <img src="${cardImage}" alt="Card ${value}" onerror="this.src='assets/global/images/default/card-placeholder.png'">
@@ -62,57 +61,137 @@ export class GameLogic {
             });
         }
     }
+    
 
-    // showCardsTemporarily based on the level
-
-    showCardsTemporarily() {
+    startLevel() {
+        const startRestartButton = document.getElementById('start-restart-btn');
         const cards = document.querySelectorAll('.card');
-        cards.forEach(card => card.classList.add('flipped'));
+        let gameStarted = false;
     
-        const countdown = document.createElement('div');
-        countdown.id = 'countdown';
-        countdown.textContent = '3';
-        document.body.appendChild(countdown);
-    
-        let count;
-        switch (this.level) {
-            case 'easy':
-                count = 3; 
-                break;
-            case 'medium':
-                count = 5; 
-                break;
-            case 'hard':
-                count = 7; 
-                break;
-            default:
-                count = 5; 
-        }
-    
-        const countdownInterval = setInterval(() => {
-            count--;
-            countdown.textContent = count;
-            if (count === 0) {
-                clearInterval(countdownInterval);
-                countdown.remove();
-                cards.forEach(card => card.classList.remove('flipped'));
-                this.isGameStarted = true;
-    
-                this.time = 0;
-                const timerElement = document.getElementById('timer');
-                if (timerElement) {
-                    timerElement.textContent = this.formatTime(this.time); 
-                }
-    
-             
-                this.startTimer();
+        startRestartButton.addEventListener('click', () => {
+            if (!gameStarted) {
+                gameStarted = true;
+                startRestartButton.textContent = 'Restart'; // Change text to "Restart"
+                this.showCountdownAndStart(cards);
+            } else {
+                this.resetGame(startRestartButton); // Reset game and change button back to "Start"
+                gameStarted = false;
             }
-        }, 1000);
+        });
+    }
+    
+    updateProgressBar(elapsedTime, totalTime) {
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            const progress = (elapsedTime / totalTime) * 100; // Calculate progress percentage
+            progressBar.style.width = `${progress}%`; // Update the progress bar width
+        }
     }
 
+    resetGame(button) {
+        // Reset all game variables
+        this.cards = [];
+        this.flippedCards = [];
+        this.moves = 0;
+        this.time = 0;
+        this.isGameStarted = false;
+        this.isGameOver = false;
+        this.cardFlipping = false;
+    
+        // Clear the timer interval if it exists
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+        }
+    
+        // Reset the timer display
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+            timerElement.textContent = this.formatTime(this.time);
+        }
+    
+        // Reset the progress bar
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            progressBar.style.width = '0%';
+        }
+    
+        // Restart the game
+        this.start();
+    
+        // Change the button text back to "Start"
+        if (button) {
+            button.textContent = 'Start';
+        }
+    }
+    
+    showCountdownAndStart(cards) {
+        // Show cards initially
+        cards.forEach(card => card.classList.add('flipped'));
+    
+        // Determine the delay before flipping cards back based on the level
+        let flipBackDelay;
+        switch (this.level) {
+            case 'easy':
+                flipBackDelay = 3000; // 3 seconds for easy level
+                break;
+            case 'medium':
+                flipBackDelay = 5000; // 5 seconds for medium level
+                break;
+            case 'hard':
+                flipBackDelay = 7000; // 7 seconds for hard level
+                break;
+            default:
+                flipBackDelay = 3000; // Default to 3 seconds
+        }
+    
+        // Create the countdown overlay
+        const countdownOverlay = document.createElement('div');
+        countdownOverlay.id = 'countdown-overlay';
+        countdownOverlay.innerHTML = '<span>3</span>'; // Initial countdown number
+        document.body.appendChild(countdownOverlay);
+    
+        let count = 3;
+        const countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) {
+                countdownOverlay.innerHTML = `<span>${count}</span>`; // Update the number
+            } else {
+                clearInterval(countdownInterval);
+                countdownOverlay.remove(); // Remove the overlay
+    
+                // Start tracking the progress bar after the countdown ends
+                const startTime = Date.now(); // Record the start time
+                const progressInterval = setInterval(() => {
+                    const elapsedTime = Date.now() - startTime; // Calculate elapsed time
+                    this.updateProgressBar(elapsedTime, flipBackDelay); // Update progress bar
+    
+                    // Stop the progress bar when the delay is over
+                    if (elapsedTime >= flipBackDelay) {
+                        clearInterval(progressInterval);
+                    }
+                }, 100); // Update every 100ms for smooth animation
+    
+                // Wait for the level-specific delay before flipping cards back
+                setTimeout(() => {
+                    cards.forEach(card => card.classList.remove('flipped')); // Flip cards back
+                    this.isGameStarted = true; // Start the game
+                    this.time = 0;
+                    this.startTimer(); // Start the main game timer
+                }, flipBackDelay); // Use the level-specific delay
+            }
+        }, 1000); // Update every second
+    }
 
-
+    
     startTimer() {
+        // Clear any existing timer interval
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+        }
+    
+        // Start a new timer interval
         this.timerInterval = setInterval(() => {
             this.time++;
             const timerElement = document.getElementById('timer');
@@ -162,26 +241,20 @@ export class GameLogic {
         const [card1, card2] = this.flippedCards;
 
         if (card1.dataset.value === card2.dataset.value) {
-            // Match found
             card1.classList.add('matched');
             card2.classList.add('matched');
             this.flippedCards = [];
             this.cardFlipping = false;
 
-            // Play match sound
             const matchSound = document.getElementById('match-sound');
             if (matchSound) {
-                matchSound.play().catch(error => {
-                    console.error('Failed to play match sound:', error);
-                });
+                matchSound.play().catch(error => console.error('Failed to play match sound:', error));
             }
 
-            // Check if the game is won after each match
             if (this.isGameWon()) {
                 this.endGame();
             }
         } else {
-            // No match, flip cards back after a delay
             setTimeout(() => {
                 card1.classList.remove('flipped');
                 card2.classList.remove('flipped');
@@ -200,44 +273,25 @@ export class GameLogic {
         clearInterval(this.timerInterval);
         this.isGameOver = true;
 
-        // Show the "Level Complete" popup
         const gameOverModal = document.querySelector('.game-over');
         if (gameOverModal) {
             gameOverModal.classList.remove('hidden');
-            gameOverModal.classList.add('visible'); // Ensure the popup is visible
+            gameOverModal.classList.add('visible');
             document.getElementById('final-time').textContent = this.formatTime(this.time);
             document.getElementById('final-moves').textContent = this.moves;
 
-            // Add event listener for "Save Score & Return Home" button
             const saveScoreButton = document.getElementById('save-score');
             if (saveScoreButton) {
                 saveScoreButton.addEventListener('click', () => {
-                    // Save the score to local storage
                     saveScore(this.level, this.moves, this.time);
-
-                    // Redirect to the home page
                     window.location.href = '/index.html';
                 });
             }
         }
 
-        // Play the win sound
         const winSound = document.getElementById('win-sound');
         if (winSound) {
-            winSound.play().catch(error => {
-                console.error('Failed to play win sound:', error);
-            });
+            winSound.play().catch(error => console.error('Failed to play win sound:', error));
         }
-    }
-
-    goToNextLevel() {
-        let nextLevel;
-        switch (this.level) {
-            case 'easy': nextLevel = 'medium'; break;
-            case 'medium': nextLevel = 'hard'; break;
-            case 'hard': alert('You have completed all levels!'); window.location.href = '/index.html'; return;
-            default: nextLevel = 'easy';
-        }
-        window.location.href = `/${nextLevel}.html`;
     }
 }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Medium</title>
   <link rel="icon" type="image/x-icon" href="./assets/global/icons/page-icon.png">
+  <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/medium.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
@@ -15,9 +16,9 @@
 
     <!-- Controls Section -->
     <div class="controls">
-      <button id="start-button" class="eightbit-btn">Start Game</button>
-      <button id="restart-button" class="eightbit-btn">Restart</button>
-      <span id="hint-button">Hint ?</span>
+      <button id="start-restart-btn" class="eightbit-btn">Start Game</button>
+      <!-- <button id="restart-button" class="eightbit-btn">Restart</button> -->
+      <span id="hint-button">Hint ? <span id="hints-remaining"></span>
     </div>
 
     <!-- Layout for Game Info and Cards -->
@@ -26,7 +27,6 @@
       <div class="game-info-container">
         <p>Moves: <span id="moves">0</span></p>
         <p>Time: <span id="timer">00:00</span></p>
-        <p>Score: <span id="high-score">0</span></p>
       </div>
 
       <!-- Card Grid -->
@@ -59,6 +59,11 @@
       </button>
     </div>
 
+    <!-- Progress Bar Container -->
+<div class="progress-bar-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
     <!-- Audio Elements -->
     <audio id="background-music" loop>
       <source src="assets/medium/audio/mario-theme.mp3" type="audio/mpeg">
@@ -84,9 +89,13 @@
 
   <script type="module">
     import { GameLogic } from '/js/modules/gameLogic.js';
-    console.log('Initializing game...'); // Debugging
-    const game = new GameLogic(36, 'medium'); // 6x6 grid (36 cards)
-    game.start();
+    const totalCards = 36; // Define total cards for Medium level
+    const gameLogic = new GameLogic(totalCards, 'medium'); // Pass totalCards and level
+    gameLogic.start();
+    gameLogic.startLevel(); // Initialize the Start/Restart functionality
+</script>
+
+
   </script>
 </body>
 </html>

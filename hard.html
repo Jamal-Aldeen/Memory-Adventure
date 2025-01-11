@@ -78,7 +78,7 @@
 
   <!-- Audio Elements -->
   <audio id="background-music" loop>
-    <source src="/assets/global/audio/background-music.mp3" type="audio/mpeg">
+    <source src="/assets/hard/audio/2020-06-18_-_8_Bit_Retro_Funk_-_www.FesliyanStudios.com_David_Renda.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -100,9 +100,11 @@
   <script src="./js/start.js" type="module"></script>
   <script type="module">
     import { GameLogic } from '/js/modules/gameLogic.js';
-    const game = new GameLogic(64, 'hard'); // 4x16 grid (64 cards)
-    game.start();
-  </script>
+    const totalCards = 64; // Define total cards for Hard level
+    const gameLogic = new GameLogic(totalCards, 'hard'); // Pass totalCards and level
+    gameLogic.start();
+    gameLogic.startLevel(); // Initialize the Start/Restart functionality
+</script>
   <script src="./js/modules/settings.js"></script>
 </body>
 
