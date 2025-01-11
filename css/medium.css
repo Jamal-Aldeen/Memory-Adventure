@@ -58,24 +58,26 @@ h1 {
 
 #hint-button {
   color: #fff; /* Text color */
-  text-shadow: 0 0 5px #ff9, 0 0 10px #ff9, 0 0 20px #ff9; /* Glow effect */
-  /* animation: glow 1.5s infinite alternate;
-  background: none; 
-  border: none; 
-  padding: 0; */
+  margin: 0px 10px;
+  cursor: pointer;
+  text-shadow: 0 0 5px #ff9, 0 0 10px #ff9, 0 0 20px #ff9; /*Glow effect */
+  transition: transform 0.1s;
 }
-/* #hint-button:hover {
-  text-shadow: 0 0 5px #ff9, 0 0 10px #ff9, 0 0 20px #ff9, 0 0 30px #ff9;
-  animation: glow 1.5s infinite alternate;
-} */
 
-@keyframes glow {
-  from {
-      text-shadow: 0 0 5px #ff9;
-  }
-  to {
-      text-shadow: 0 0 20px #ff9, 0 0 30px #ff9;
-  }
+#hint-button:hover {
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-2px);
+    }
+    75% {
+        transform: translateX(2px);
+    }
 }
 
 
@@ -130,14 +132,13 @@ h1 {
   z-index: 2;
 }
 
-/* .settings-button{
-  background: none;
-  border: none;
-  color: #fff;
-  text-shadow: 2px 2px 0 #b76e00;
+.settings-button{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
   cursor: pointer;
-  padding: 0;
-  } */
+  }
 
 .floating-mario{
   position: absolute;
@@ -304,14 +305,6 @@ h1 {
 
 .hidden {
   display: none;
-}
-
-/* Sound Controls */
-.sound-controls {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
 }
 
 #music-toggle {
