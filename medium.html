@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/popup.css"> <!-- ملف CSS الخاص بالـ pop-up -->
   <link rel="stylesheet" href="/css/medium.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -17,9 +18,9 @@
 
     <!-- Controls Section -->
     <div class="controls">
+      <!-- <button type="button" class="settings-button material-icons">settings</button>     -->
       <button id="start-restart-btn" class="eightbit-btn">Start Game</button>
       <span id="hint-button">Hint ? <span id="hints-remaining"></span>
-      <button type="button" class="settings-button floating-button">Settings</button>
     </div>
 
     <!-- Layout for Game Info and Cards -->
@@ -28,12 +29,13 @@
       <div class="game-info-container">
         <p>Moves: <span id="moves">0</span></p>
         <p>Time: <span id="timer">00:00</span></p>
+        <button type="button" class="settings-button eightbit-btn">settings</button>
+
       </div>
 
       <!-- Card Grid -->
       <div id="game-board" class="card-grid"></div>
     </div>
-
     <!-- Game Over Modal -->
     <div class="game-over hidden">
       <p>You completed the level!</p>
