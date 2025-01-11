@@ -272,23 +272,65 @@ export class GameLogic {
     endGame() {
         clearInterval(this.timerInterval);
         this.isGameOver = true;
-
+    
         const gameOverModal = document.querySelector('.game-over');
         if (gameOverModal) {
             gameOverModal.classList.remove('hidden');
             gameOverModal.classList.add('visible');
             document.getElementById('final-time').textContent = this.formatTime(this.time);
             document.getElementById('final-moves').textContent = this.moves;
-
+    
+            // Check if the current score is a high score
+            const isHighScore = saveScore(this.level, this.moves, this.time);
+    
+            // Display high score message in the existing modal
+            if (isHighScore) {
+                const highScoreMessage = document.createElement('p');
+                highScoreMessage.textContent = "Congratulations! You achieved a new high score!";
+                highScoreMessage.style.color = "#ffd54f"; // Optional: Add some styling
+                highScoreMessage.style.fontSize = "1.2rem";
+                highScoreMessage.style.marginTop = "10px";
+    
+                // Append the message to the existing game over modal
+                const gameOverContent = gameOverModal.querySelector('.game-over-content');
+                if (gameOverContent) {
+                    gameOverContent.appendChild(highScoreMessage);
+                }
+            }
+    
+            // Save score button
             const saveScoreButton = document.getElementById('save-score');
             if (saveScoreButton) {
                 saveScoreButton.addEventListener('click', () => {
-                    saveScore(this.level, this.moves, this.time);
+                    // Redirect to the main menu after saving the score
                     window.location.href = '/index.html';
                 });
             }
+    
+            // Next level button
+            const nextLevelButton = document.getElementById('next-level');
+            if (nextLevelButton) {
+                nextLevelButton.addEventListener('click', () => {
+                    let nextLevel;
+                    switch (this.level) {
+                        case 'easy':
+                            nextLevel = 'medium';
+                            break;
+                        case 'medium':
+                            nextLevel = 'hard';
+                            break;
+                        case 'hard':
+                            // If it's the last level, redirect to the main menu
+                            nextLevel = 'index';
+                            break;
+                        default:
+                            nextLevel = 'index';
+                    }
+                    window.location.href = `/${nextLevel}.html`;
+                });
+            }
         }
-
+    
         const winSound = document.getElementById('win-sound');
         if (winSound) {
             winSound.play().catch(error => console.error('Failed to play win sound:', error));
