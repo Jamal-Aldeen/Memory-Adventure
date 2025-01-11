@@ -111,13 +111,22 @@ h1 {
   z-index: 2;
 }
 
+/* .settings-button{
+  background: none;
+  border: none;
+  color: #fff;
+  text-shadow: 2px 2px 0 #b76e00;
+  cursor: pointer;
+  padding: 0;
+  } */
+
 /* Game Info Container */
 .game-info-container {
   display: flex;
   flex-direction: column;
   gap: 10p;
   position: absolute;
-  right: 700px;
+  right: 800px;
   top: 50%;
   transform: translateY(-50%);
 }
