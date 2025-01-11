@@ -1,7 +1,6 @@
 // hint.js 
 
 export function initializeHint(gameLogic) {
-    // Get the hint button & add eventListener
     const hintButton = document.getElementById('hint-button');
     const hintsRemaining = document.getElementById('hints-remaining');
 
@@ -17,7 +16,7 @@ export function initializeHint(gameLogic) {
                     hintsRemaining.textContent = `${hintCounter}`;
                 });
             } else {
-                alert('No hints remaining!');
+                ahintButton.disabled = true;
             }
         });
     }
