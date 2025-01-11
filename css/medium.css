@@ -120,15 +120,21 @@ h1 {
   padding: 0;
   } */
 
+.floating-mario{
+  position: absolute;
+  width: 150px;
+  /* margin:20px 0px; */
+  right: -200px;
+  animation: float 6s ease-in-out infinite;
+}
+
 /* Game Info Container */
 .game-info-container {
   display: flex;
   flex-direction: column;
   gap: 10p;
   position: absolute;
-  right: 800px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 750px;
 }
 
 .game-info-container p {
@@ -318,6 +324,87 @@ h1 {
   transform: scale(1.1);
 }
 
+/* Adjustments for screens between 1128px and 768px */
+@media (max-width: 1128px) {
+  /* Game Info Container */
+  .game-info-container {
+    right: 700px; /* Move closer to the center */
+  }
+
+  /* Floating Mario GIF */
+  .floating-mario {
+    width: 120px; /* Reduce size */
+    right: -150px; /* Move closer to the center */
+  }
+}
+
+@media (max-width: 1024px){
+  body {
+    font-size: var(--font-size-small);
+  }
+
+  .container {
+    padding: 10px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  #layout {
+    flex-direction: column;
+  }
+
+  .floating-mario{
+    position: absolute;
+    width: 100px;
+    top:-50px;
+    right: 50px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .game-info-container {
+    position: static;
+    transform: none;
+    text-align: center;
+    flex-direction: row;
+  }
+  .game-info-container span {
+    font-size: 0.7rem;
+    margin: 0px 10px 0px 0px;
+  }
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 90px);
+  grid-template-rows: repeat(6, 90px);
+  gap: 10px;
+  justify-content: center;
+}
+
+  .card {
+    width: 90px;
+    height: 90px;
+  }
+
+  .game-over,
+  .level-complete {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .game-over button,
+  .level-complete button {
+    font-size: var(--font-size-small);
+    padding: 8px 16px;
+  }
+}
+
+
 /* For screens smaller than 768px (phones) */
 @media (max-width: 768px) {
   body {
@@ -339,11 +426,18 @@ h1 {
     flex-direction: column;
   }
 
+  .floating-mario{
+    position: absolute;
+    width: 70px;
+    top:-30px;
+    right: 20px;
+    animation: float 6s ease-in-out infinite;
+  }
+
   .game-info-container {
     position: static;
     transform: none;
     text-align: center;
-    margin-bottom: 20px;
     flex-direction: row;
   }
   .game-info-container span {
@@ -402,6 +496,14 @@ h1 {
   .card {
     width: 40px;
     height: 40px;
+  }
+
+  .floating-mario{
+    position: absolute;
+    width: 50px;
+    top: -40px;
+    right: 20px;
+    animation: float 6s ease-in-out infinite;
   }
 
   .game-info-container p {
