@@ -109,7 +109,11 @@ export class GameLogic {
         if (timerElement) {
             timerElement.textContent = this.formatTime(this.time);
         }
-    
+        // Reset the moves display
+        const movesElement = document.getElementById('moves');
+        if (movesElement) {
+            movesElement.textContent = this.moves; // Update the moves counter in the DOM
+        }
         // Reset the progress bar
         const progressBar = document.getElementById('progress-bar');
         if (progressBar) {
@@ -272,23 +276,15 @@ export class GameLogic {
     endGame() {
         clearInterval(this.timerInterval);
         this.isGameOver = true;
-
-        // Get previous best scores
-        const previousScores = getSavedScores(this.level);
-        const isNewBestScore = this.isBestScore(previousScores);
-
+    
         const gameOverModal = document.querySelector('.game-over');
         if (gameOverModal) {
             gameOverModal.classList.remove('hidden');
             gameOverModal.classList.add('visible');
             document.getElementById('final-time').textContent = this.formatTime(this.time);
             document.getElementById('final-moves').textContent = this.moves;
-
-            // Show best score message if applicable
-            if (isNewBestScore) {
-                this.showBestScorePopup();
-            }
-
+    
+            // Save score button
             const saveScoreButton = document.getElementById('save-score');
             if (saveScoreButton) {
                 saveScoreButton.addEventListener('click', () => {
@@ -296,8 +292,30 @@ export class GameLogic {
                     window.location.href = '/index.html';
                 });
             }
+    
+            // Next level button
+            const nextLevelButton = document.getElementById('next-level');
+            if (nextLevelButton) {
+                nextLevelButton.addEventListener('click', () => {
+                    let nextLevel;
+                    switch (this.level) {
+                        case 'easy':
+                            nextLevel = 'medium';
+                            break;
+                        case 'medium':
+                            nextLevel = 'hard';
+                            break;
+                        case 'hard':
+                            nextLevel = 'index'; 
+                            break;
+                        default:
+                            nextLevel = 'index';
+                    }
+                    window.location.href = `/${nextLevel}.html`;
+                });
+            }
         }
-
+    
         const winSound = document.getElementById('win-sound');
         if (winSound) {
             winSound.play().catch(error => console.error('Failed to play win sound:', error));

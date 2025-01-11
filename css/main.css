@@ -83,7 +83,15 @@ body, .space-background {
 
 /* Add spacing between elements in the pop-up */
 .popup-content h2 {
+  color: #ffd54f; /* Highlight title */
   margin-bottom: 20px; /* Space below the heading */
+}
+
+.popup-content ol {
+  font-size: 12px; 
+  text-align:start;
+  line-height: 1.8; 
+  margin: 0 20px; 
 }
 
 .popup-content p {

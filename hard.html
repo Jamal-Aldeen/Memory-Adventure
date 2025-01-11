@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Hard</title>
   <link rel="icon" type="image/x-icon" href="./assets/global/icons/page-icon.png">
+  <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/hard.css">
   <link rel="stylesheet" href="/css/popup.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -18,9 +19,9 @@
 <body>
 
   <nav>
-    <button type="button" class="settings-button floating-button">Settings</button>
-    <button type="button" id="hint-button" class="floating-button">Hint:<span id="hints-remaining"></span></button>
-    <button type="button" id="start-restart-btn" class="floating-button">Start Game</button>
+    <button class="settings-button floating-button">Settings</button>
+    <button id="hint-button" class="floating-button">Hint:<span id="hints-remaining"></span></button>
+    <button id="start-restart-btn" class="floating-button">Start Game</button>
   </nav>
 
   <!-- Settings Pop-Up -->
@@ -53,7 +54,7 @@
   </div>
 
   <div class="game-container">
-    <h1>Memory Adventure Hard Level</h1>
+    <h1>Cosmic Quest</h1>
 
     <!-- Game Info -->
     <div class="game-info">
@@ -64,6 +65,12 @@
     <!-- Card Grid -->
     <div class="card-grid"></div>
 
+
+    <!-- Progress Bar Container -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
     <!-- Game Over Modal -->
     <div class="game-over hidden">
       <p>You completed the level!</p>
@@ -73,16 +80,9 @@
       <button id="save-score">Save Score & Return Home</button>
     </div>
 
-    <!-- Level Complete Pop-Up -->
-    <div class="level-complete hidden">
-      <div class="level-complete-content">
-        <h2>Level Complete</h2>
-        <p class="level-name">Level: Hard</p>
-        <button class="next-level">Next Level</button>
-        <button class="close">Close</button>
-      </div>
-    </div>
   </div>
+
+
 
   <!-- Audio Elements -->
   <audio id="background-music" loop>
