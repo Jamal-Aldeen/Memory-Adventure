@@ -1,4 +1,3 @@
-/* Hard Level Styles */
 body {
   margin: 0;
   padding: 0;
@@ -142,7 +141,7 @@ nav button {
 .card.matched {
   opacity: 0.5;
   pointer-events: none;
-  animation: glow 1s;
+  animation: glow 1s;
 }
 
 .game-over, .level-complete {
