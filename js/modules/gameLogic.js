@@ -109,7 +109,11 @@ export class GameLogic {
         if (timerElement) {
             timerElement.textContent = this.formatTime(this.time);
         }
-    
+        // Reset the moves display
+        const movesElement = document.getElementById('moves');
+        if (movesElement) {
+            movesElement.textContent = this.moves; // Update the moves counter in the DOM
+        }
         // Reset the progress bar
         const progressBar = document.getElementById('progress-bar');
         if (progressBar) {
