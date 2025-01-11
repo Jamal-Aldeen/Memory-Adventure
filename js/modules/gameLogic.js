@@ -273,12 +273,21 @@ export class GameLogic {
         clearInterval(this.timerInterval);
         this.isGameOver = true;
 
+        // Get previous best scores
+        const previousScores = getSavedScores(this.level);
+        const isNewBestScore = this.isBestScore(previousScores);
+
         const gameOverModal = document.querySelector('.game-over');
         if (gameOverModal) {
             gameOverModal.classList.remove('hidden');
             gameOverModal.classList.add('visible');
             document.getElementById('final-time').textContent = this.formatTime(this.time);
             document.getElementById('final-moves').textContent = this.moves;
+
+            // Show best score message if applicable
+            if (isNewBestScore) {
+                this.showBestScorePopup();
+            }
 
             const saveScoreButton = document.getElementById('save-score');
             if (saveScoreButton) {
@@ -292,6 +301,61 @@ export class GameLogic {
         const winSound = document.getElementById('win-sound');
         if (winSound) {
             winSound.play().catch(error => console.error('Failed to play win sound:', error));
+        }
+    }
+
+    isBestScore(previousScores) {
+        if (!previousScores.length) return true;
+        
+        // Sort by moves first, then by time
+        const sortedScores = [...previousScores].sort((a, b) => {
+            if (a.moves === b.moves) {
+                return a.time - b.time;
+            }
+            return a.moves - b.moves;
+        });
+
+        // Check if current score is better than the best score
+        return this.moves < sortedScores[0].moves || 
+               (this.moves === sortedScores[0].moves && this.time < sortedScores[0].time);
+    }
+
+    showBestScorePopup() {
+        const bestScorePopup = document.createElement('div');
+        bestScorePopup.className = 'best-score-popup';
+        bestScorePopup.innerHTML = `
+            <div class="best-score-content">
+                <h2>🏆 New Best Score! 🏆</h2>
+                <p>Congratulations! You've achieved the best score for ${this.level} level!</p>
+                <p>Moves: ${this.moves}</p>
+                <p>Time: ${this.formatTime(this.time)}</p>
+                <button class="close-best-score">OK</button>
+            </div>
+        `;
+
+        document.body.appendChild(bestScorePopup);
+
+        // Add celebration animation
+        this.addConfetti();
+
+        // Close button functionality
+        const closeButton = bestScorePopup.querySelector('.close-best-score');
+        closeButton.addEventListener('click', () => {
+            bestScorePopup.remove();
+        });
+    }
+
+    addConfetti() {
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(confetti);
+
+            // Remove confetti after animation
+            confetti.addEventListener('animationend', () => confetti.remove());
         }
     }
 }

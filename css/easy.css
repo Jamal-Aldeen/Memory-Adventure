@@ -70,6 +70,11 @@ h1 {
   text-shadow: 2px 2px 0 #050505;
 }
 
+#hint-button:hover {
+  background-color: rgba(135, 240, 109, 0.7);
+}
+
+
 /* Retro-Style Buttons */
 .eightbit-btn {
   background: var(--button-background);
@@ -190,6 +195,7 @@ h1 {
   align-items: center;
   justify-content: center;
   transition: transform 0.6s ease;
+  background-position: center;
 }
 
 .card-front img {
@@ -442,4 +448,14 @@ h1 {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%); 
   opacity: 0.5; 
   pointer-events: none; 
+}
+.settings-button{
+  cursor: pointer;
+  background-color: rgba(135, 240, 109, 0.5);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none;
+  color: white;
+  text-shadow: 2px 2px 0 #050505;
 }
