@@ -16,7 +16,7 @@ export function initializeHint(gameLogic) {
                     hintsRemaining.textContent = `${hintCounter}`;
                 });
             } else {
-                ahintButton.disabled = true;
+                hintButton.disabled = true;
             }
         });
     }
