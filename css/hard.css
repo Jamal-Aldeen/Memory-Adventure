@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('/assets/global/images/space-background.gif') no-repeat center center fixed;
+  background: url('/assets/hard/images/pxsprite-space.gif') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Sixtyfour';
   color: white;
