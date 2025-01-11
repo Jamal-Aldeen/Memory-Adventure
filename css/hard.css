@@ -20,6 +20,7 @@ nav {
   top: 0;
   left: 0;
   z-index: 1000;
+  margin-top: 20px;
 }
 
 nav button {
@@ -108,6 +109,7 @@ nav button {
 
 .card-back {
   background-size: cover;
+  border: 2px solid white;
   transform: rotateY(0deg);
 }
 
