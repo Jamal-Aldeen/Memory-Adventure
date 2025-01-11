@@ -18,9 +18,9 @@
 <body>
 
   <nav>
-    <button  class="settings-button floating-button">Settings</button>
-    <button  id="hint-button" class="floating-button">Hint:<span id="hints-remaining"></span></button>
-    <button  id="start-restart-btn" class="floating-button">Start Game</button>
+    <button class="settings-button floating-button">Settings</button>
+    <button id="hint-button" class="floating-button">Hint:<span id="hints-remaining"></span></button>
+    <button id="start-restart-btn" class="floating-button">Start Game</button>
   </nav>
 
   <!-- Settings Pop-Up -->
@@ -64,6 +64,12 @@
     <!-- Card Grid -->
     <div class="card-grid"></div>
 
+
+    <!-- Progress Bar Container -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
     <!-- Game Over Modal -->
     <div class="game-over hidden">
       <p>You completed the level!</p>
@@ -83,6 +89,8 @@
       </div>
     </div>
   </div>
+
+
 
   <!-- Audio Elements -->
   <audio id="background-music" loop>
