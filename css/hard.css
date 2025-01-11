@@ -119,6 +119,30 @@ nav button {
   transform: rotateY(180deg);
 }
 
+@keyframes shuffle {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(10px, -10px); }
+  50% { transform: translate(-10px, 10px); }
+  75% { transform: translate(5px, -5px); }
+  100% { transform: translate(0, 0); }
+}
+
+.card.shuffling {
+  animation: shuffle 0.5s ease-in-out;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px#FFDE68; }
+  50% { box-shadow: 0 0 20px #FFDE68; }
+  100% { box-shadow: 0 0 5px #FFDE68;}
+}
+
+.card.matched {
+  opacity: 0.5;
+  pointer-events: none;
+  animation: glow 1s;
+}
+
 .game-over, .level-complete {
   position: fixed;
   top: 50%;
@@ -189,3 +213,4 @@ nav button {
     padding: 8px 16px;
   }
 }
+

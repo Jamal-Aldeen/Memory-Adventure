@@ -58,17 +58,6 @@
     align-items: center;
   }
   
-  .settings-popup .sound-controls button {
-    background-color: #396cb38f;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    font-family: 'Sixtyfour', sans-serif;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
   
   .settings-popup .sound-controls button:hover {
     background-color: #4fd1c5;
@@ -86,7 +75,7 @@
   
   #volume-slider {
     width: 100px;
-    margin-left: 10px;
+    margin-left: 70px;
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;

@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Hard</title>
   <link rel="icon" type="image/x-icon" href="./assets/global/icons/page-icon.png">
-  <link rel="stylesheet" href="/css/hard.css"> <!-- ملف CSS الرئيسي -->
-  <link rel="stylesheet" href="/css/popup.css"> <!-- ملف CSS الخاص بالـ pop-up -->
+  <link rel="stylesheet" href="/css/hard.css">
+  <link rel="stylesheet" href="/css/popup.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
 
   <nav>
     <button type="button" class="settings-button floating-button">Settings</button>
-    <button type="button" class="floating-button">Hint</button>
-    <button type="button"  id="start-restart-btn" class="floating-button">Start Game</button>
+    <button type="button" id="hint-button" class="floating-button">Hint<span id="hints-remaining"></span></button>
+    <button type="button" id="start-restart-btn" class="floating-button">Start Game</button>
   </nav>
 
   <!-- Settings Pop-Up -->
@@ -30,17 +30,25 @@
       <h2>Settings</h2>
       <ul>
         <li><a href="index.html" onclick="selectOption('Home')">Home</a></li>
-        <li><a href="#" onclick="selectOption('Music')">Music</a></li>
-        <li><a href="#" onclick="selectOption('Sound')">Sound</a></li>
+        <li><a href="#" onclick="selectOption('Music')">Music</a>
+          <button id="music-toggle" aria-label="Toggle Sound" style="   background-color: #396cb38f;
+          color: #396cb38f;
+          padding: 10px 20px;
+          border-radius: 50px;
+          margin-left: 80px;
+          border: none;
+          cursor: pointer;
+          font-family: 'Sixtyfour', sans-serif;
+          font-size: 16px;
+          transition: background-color 0.3s;">
+            <img src="./assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
+          </button>
+        </li>
+        <li><a href="#" onclick="selectOption('Sound')">Sound</a>
+          <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+        </li>
       </ul>
 
-      <!-- Sound Controls -->
-      <div class="sound-controls">
-        <button id="music-toggle" aria-label="Toggle Sound">
-          <img src="./assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
-        </button>
-        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
-      </div>
     </div>
   </div>
 
@@ -78,7 +86,8 @@
 
   <!-- Audio Elements -->
   <audio id="background-music" loop>
-    <source src="/assets/hard/audio/2020-06-18_-_8_Bit_Retro_Funk_-_www.FesliyanStudios.com_David_Renda.mp3" type="audio/mpeg">
+    <source src="/assets/hard/audio/2020-06-18_-_8_Bit_Retro_Funk_-_www.FesliyanStudios.com_David_Renda.mp3"
+      type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -104,8 +113,9 @@
     const gameLogic = new GameLogic(totalCards, 'hard'); // Pass totalCards and level
     gameLogic.start();
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
-</script>
+  </script>
   <script src="./js/modules/settings.js"></script>
+  <!-- <script src="js/modules/hint.js"></script> -->
 </body>
 
 </html>
