@@ -272,14 +272,15 @@ export class GameLogic {
     endGame() {
         clearInterval(this.timerInterval);
         this.isGameOver = true;
-
+    
         const gameOverModal = document.querySelector('.game-over');
         if (gameOverModal) {
             gameOverModal.classList.remove('hidden');
             gameOverModal.classList.add('visible');
             document.getElementById('final-time').textContent = this.formatTime(this.time);
             document.getElementById('final-moves').textContent = this.moves;
-
+    
+            // Save score button
             const saveScoreButton = document.getElementById('save-score');
             if (saveScoreButton) {
                 saveScoreButton.addEventListener('click', () => {
@@ -287,8 +288,30 @@ export class GameLogic {
                     window.location.href = '/index.html';
                 });
             }
+    
+            // Next level button
+            const nextLevelButton = document.getElementById('next-level');
+            if (nextLevelButton) {
+                nextLevelButton.addEventListener('click', () => {
+                    let nextLevel;
+                    switch (this.level) {
+                        case 'easy':
+                            nextLevel = 'medium';
+                            break;
+                        case 'medium':
+                            nextLevel = 'hard';
+                            break;
+                        case 'hard':
+                            nextLevel = 'index'; 
+                            break;
+                        default:
+                            nextLevel = 'index';
+                    }
+                    window.location.href = `/${nextLevel}.html`;
+                });
+            }
         }
-
+    
         const winSound = document.getElementById('win-sound');
         if (winSound) {
             winSound.play().catch(error => console.error('Failed to play win sound:', error));
