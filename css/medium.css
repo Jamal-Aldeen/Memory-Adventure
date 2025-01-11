@@ -56,9 +56,28 @@ h1 {
   text-shadow: 2px 2px 0 #b76e00;
 }
 
-#hint-button{
-  cursor: pointer;
+#hint-button {
+  color: #fff; /* Text color */
+  text-shadow: 0 0 5px #ff9, 0 0 10px #ff9, 0 0 20px #ff9; /* Glow effect */
+  /* animation: glow 1.5s infinite alternate;
+  background: none; 
+  border: none; 
+  padding: 0; */
 }
+/* #hint-button:hover {
+  text-shadow: 0 0 5px #ff9, 0 0 10px #ff9, 0 0 20px #ff9, 0 0 30px #ff9;
+  animation: glow 1.5s infinite alternate;
+} */
+
+@keyframes glow {
+  from {
+      text-shadow: 0 0 5px #ff9;
+  }
+  to {
+      text-shadow: 0 0 20px #ff9, 0 0 30px #ff9;
+  }
+}
+
 
 /* Retro-Style Buttons */
 .eightbit-btn {
