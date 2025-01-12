@@ -259,9 +259,20 @@ export class GameLogic {
                 this.endGame();
             }
         } else {
+            // Play mismatch sound
+            const clickSound = document.getElementById('click-sound');
+            if (clickSound) {
+                clickSound.play().catch(error => console.error('Failed to play click sound:', error));
+            }
+
+            // Add shake animation
+            card1.classList.add('shake');
+            card2.classList.add('shake');
+
             setTimeout(() => {
-                card1.classList.remove('flipped');
-                card2.classList.remove('flipped');
+                // Remove shake animation and flip cards back
+                card1.classList.remove('shake', 'flipped');
+                card2.classList.remove('shake', 'flipped');
                 this.flippedCards = [];
                 this.cardFlipping = false;
             }, 1000);
@@ -334,7 +345,7 @@ export class GameLogic {
         });
 
         // Check if current score is better than the best score
-        return this.moves < sortedScores[0].moves || 
+                return this.moves < sortedScores[0].moves || 
                (this.moves === sortedScores[0].moves && this.time < sortedScores[0].time);
     }
 
