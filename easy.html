@@ -7,18 +7,20 @@
   <link rel="icon" type="image/x-icon" href="./assets/global/icons/page-icon.png">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/easy.css">
+  <link rel="stylesheet" href="/css/popup.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
-  <div class="container">
-    <h1>Anime Adventures</h1>
 
+  <!-- Game Countainer-->
+  <div class="container">
+
+    <!--Game Title-->
+    <h1>Anime Adventures</h1>
+    
     <!-- Controls Section -->
     <div class="controls">
-      <button id="start-restart-btn" class="eightbit-btn">Start Game</button>
-      
-      <!-- <button id="restart-button" class="eightbit-btn">Restart</button> -->
+      <button id="start-restart-btn" class="eightbit-btn">Start Game</button>   
       <span id="hint-button">Hint : <span id="hints-remaining"></span>
     </div>
 
@@ -36,6 +38,11 @@
       <img src="./assets/easy/images/luffy3.gif" alt="Floating Gif 1" class="floating-gif">
     </div>
 
+    <!-- Settings -->
+    <div class="sittings">
+      <button class="settings-button">Settings</button>
+    </div>
+
     <!-- Game Over Modal -->
     <div class="game-over hidden">
       <p>You completed the level!</p>
@@ -45,34 +52,43 @@
       <button id="save-score">Save Score & Return Home</button>
     </div>
 
-    <!-- Level Complete Pop-Up -->
-    <div class="level-complete hidden">
-      <div class="level-complete-content">
-        <h2>Level Complete</h2>
-        <p class="level-name">Level: Medium</p>
-        <button class="next-level eightbit-btn">Next Level</button>
-        <button class="close eightbit-btn">Close</button>
-      </div>
-    </div>
-
-    <!-- Sound Controls -->
-    <!-- <div class="sound-controls">
-      <button id="music-toggle">
-        <img src="assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
-      </button>
-    </div> -->
-
-    <!-- Settings -->
-    <div class="sittings">
-      <button class="settings-button">Settings</button>
-    </div>
     
+    <!-- Settings Pop-Up -->
+  <div id="settings-popup" class="settings-popup hidden">
+    <div class="settings-popup-content">
+      <span class="close" onclick="closeSettingsPopup()">&times;</span>
+      <h2>Settings</h2>
+      <ul>
+        <li><a href="index.html" onclick="selectOption('Home')">Home</a></li>
+        <li><a href="#" onclick="selectOption('Music')">Music</a>
+          <button id="music-toggle" aria-label="Toggle Sound" style="   background-color: #396cb38f;
+          color: #396cb38f;
+          padding: 10px 20px;
+          border-radius: 50px;
+          position: absolute;
+          top: 40px;
+          left: 200px;
+          border: none;
+          cursor: pointer;
+          font-family: 'Sixtyfour', sans-serif;
+          font-size: 16px;
+          transition: background-color 0.3s;">
+            <img src="./assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
+          </button>
+        </li>
+        <li><a href="#" onclick="selectOption('Sound')">Sound</a>
+          <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+        </li>
+      </ul>
+
+    </div>
+  </div>
 
 
-    <!-- Progress Bar Container -->
-<div class="progress-bar-container">
-  <div class="progress-bar" id="progress-bar"></div>
-</div>
+      <!-- Progress Bar Container -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
 
     <!-- Audio Elements -->
     <audio id="background-music" loop>
@@ -97,6 +113,7 @@
     <script src="./js/modules/sound.js" type="module"></script>
   </div>
 
+  <!-- Main Moudle -->
   <script type="module">
     import { GameLogic } from '/js/modules/gameLogic.js';
     const totalCards = 16; // Define total cards for Easy level
@@ -105,6 +122,8 @@
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
 </script>
 
+<!-- calling the settings script -->
+<script src="./js/modules/settings.js"></script>
 
   </script>
 </body>

@@ -1,7 +1,6 @@
 /* Root Variables */
 :root {
   --primary-color: rgba(135, 240, 109);
-  --secondary-color: #ab2472;
   --background-color: #f8f9fa;
   --text-color: white;
   --card-background: #244282;
@@ -18,28 +17,7 @@
     --font-size-large: 24px;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: url('/assets/easy/images/background.gif') no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'Press Start 2P', cursive;
-  color: white;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* Floating GIFs */
-.floating-gif {
-  position: absolute;
-  width: 200px;
-  animation: float 6s ease-in-out infinite;
-  z-index: 10; /* Ensure GIFs are above the cards */
-  top: 30%;
-  right: -65%;
-  animation-duration: 8s;
-}
-
+/* Animation Section..*/
 
 /* Floating Animation */
 @keyframes float {
@@ -56,6 +34,51 @@ body {
     transform: translateY(20px) rotate(-5deg);
   }
 }
+ /* Button effict */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(135, 240, 109, 0.4);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(135, 240, 109, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(135, 240, 109, 0);
+  }
+}
+
+/* cards effict*/
+@keyframes glow {
+  0% { box-shadow: 0 0 5px#FFDE68; }
+  50% { box-shadow: 0 0 20px #FFDE68; }
+  100% { box-shadow: 0 0 5px #FFDE68;}
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url('/assets/easy/images/background.gif') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Floating GIF */
+.floating-gif {
+  position: absolute;
+  width: 200px;
+  animation: float 6s ease-in-out infinite;
+  z-index: 10; 
+  top: 30%;
+  right: -65%;
+  animation-duration: 8s;
+}
+
 
 
 /* Title */
@@ -88,7 +111,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-
+/* Hint Button*/
 #hint-button{
   cursor: pointer;
   background-color: rgba(135, 240, 109, 0.5);
@@ -104,21 +127,6 @@ h1 {
 
 #hint-button:hover {
   background-color: rgba(135, 240, 109, 0.7);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(135, 240, 109, 0.4);
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(135, 240, 109, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(135, 240, 109, 0);
-  }
 }
 
 /* Retro-Style Buttons */
@@ -264,11 +272,6 @@ h1 {
   transform: rotateY(180deg);
 }
 
-@keyframes glow {
-  0% { box-shadow: 0 0 5px#FFDE68; }
-  50% { box-shadow: 0 0 20px #FFDE68; }
-  100% { box-shadow: 0 0 5px #FFDE68;}
-}
 
 .card.matched {
   opacity: 0.5;
@@ -326,7 +329,7 @@ h1 {
   display: none;
 }
 
-
+/* Music Icon*/
 #music-toggle {
   padding: 0;
   background: none;
@@ -354,102 +357,6 @@ h1 {
 
 #music-toggle:hover {
   transform: scale(1.1);
-}
-
-/* For screens smaller than 768px (phones) */
-@media (max-width: 768px) {
-  body {
-    font-size: var(--font-size-small);
-  }
-
-  .container {
-    padding: 10px;
-    height: auto;
-    min-height: 100vh;
-  }
-
-  .controls {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  #layout {
-    flex-direction: column;
-  }
-
-  .game-info-container {
-    position: static;
-    transform: none;
-    text-align: center;
-    margin-bottom: 20px;
-    flex-direction: row;
-  }
-  .game-info-container span {
-    font-size: 0.7rem;
-    margin: 0px 10px 0px 0px;
-  }
-
-/* Card Grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 60px);
-  grid-template-rows: repeat(4, 60px);
-  gap: 10px;
-  justify-content: center;
-}
-
-  .card {
-    width: 60px;
-    height: 60px;
-  }
-
-  .game-over,
-  .level-complete {
-    width: 90%;
-    padding: 10px;
-  }
-
-  .game-over button,
-  .level-complete button {
-    font-size: var(--font-size-small);
-    padding: 8px 16px;
-  }
-
-
-  #sound-icon {
-    width: 36px;
-    height: 36px;
-  }
-}
-
-/* For screens smaller than 480px (very small phones) */
-@media (max-width: 480px) {
-/* Card Grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 40px);
-  grid-template-rows: repeat(4, 40px);
-  gap: 10px;
-  justify-content: center;
-}
-
-  .card {
-    width: 40px;
-    height: 40px;
-  }
-
-  .game-info-container p {
-    font-size: var(--font-size-small);
-  }
-
-  .game-info-container span {
-    font-size: 0.7rem;
-  }
-
-  .eightbit-btn {
-    padding: 8px 16px;
-    font-size: var(--font-size-small);
-  }
 }
 
 /* Progress Bar Container */
@@ -484,6 +391,8 @@ h1 {
   opacity: 0.5; 
   pointer-events: none; 
 }
+
+/* Settings Button*/
 .settings-button{
   cursor: pointer;
   background-color: rgba(135, 240, 109, 0.5);
@@ -508,10 +417,10 @@ h1 {
 
 /* Create a wrapper for the settings button */
 .settings-wrapper {
-  width: 100%;         /* Take full width */
+  width: 100%;        
   display: flex;
   justify-content: center;
-  margin-top: 10px;    /* Space between controls and settings */
+  margin-top: 10px;    
 }
 
 .settings-button {
@@ -529,7 +438,73 @@ h1 {
   font-size: 0.8rem;
 }
 
+/* Responsive Design*/
+
+/* For screens smaller than 768px (phones) */
 @media (max-width: 768px) {
+  body {
+    font-size: var(--font-size-small);
+  }
+
+  .container {
+    padding: 10px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  #layout {
+    flex-direction: column;
+  }
+
+  .game-info-container {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-bottom: 20px;
+    flex-direction: row;
+  }
+  .game-info-container span {
+    font-size: 0.7rem;
+    margin: 0px 10px 0px 0px;
+  }
+
+/* Card Grid Responsive */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  grid-template-rows: repeat(4, 60px);
+  gap: 10px;
+  justify-content: center;
+}
+
+  .card {
+    width: 60px;
+    height: 60px;
+  }
+
+  .game-over,
+  .level-complete {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .game-over button,
+  .level-complete button {
+    font-size: var(--font-size-small);
+    padding: 8px 16px;
+  }
+
+
+  #sound-icon {
+    width: 36px;
+    height: 36px;
+  }
+
   .controls {
     gap: 10px;
   }
@@ -538,11 +513,50 @@ h1 {
     padding: 10px 10px;
     font-size: 0.7rem;
   }
-}
+  .floating-gif {
+    width: 100px;
+    right: -45%;
+    top: 40%;
+  }
 
-@media (max-width: 480px) {
-  .settings-button {
-    padding: 8px 8px;
-    font-size: 0.6rem;
+  #hint-button {
+    font-size: var(--font-size-small);
+    padding: 8px 16px;
   }
 }
+
+/* For screens smaller than 480px (very small phones) */
+@media (max-width: 480px) {
+/* Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 40px);
+  grid-template-rows: repeat(4, 40px);
+  gap: 10px;
+  justify-content: center;
+}
+
+  .card {
+    width: 40px;
+    height: 40px;
+  }
+
+  .game-info-container p {
+    font-size: var(--font-size-small);
+  }
+
+  .game-info-container span {
+    font-size: 0.7rem;
+  }
+
+  .eightbit-btn {
+    padding: 8px 16px;
+    font-size: var(--font-size-small);
+
+    .settings-button {
+      padding: 8px 8px;
+      font-size: 0.6rem;
+    }
+  }
+}
+
