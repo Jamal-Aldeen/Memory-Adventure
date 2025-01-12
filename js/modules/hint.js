@@ -118,8 +118,50 @@ function timeShown(level){
 
 // Temporarily show unmatched cards
 function showUnmatched(cards, level) {
+    // Get hint button position
+    const hintButton = document.getElementById('hint-button');
+    const hintButtonRect = hintButton.getBoundingClientRect();
+
+    // Create and add timer
+    const timerContainer = document.createElement('div');
+    timerContainer.className = 'hint-timer-container';
+    timerContainer.innerHTML = `
+        <div class="hint-timer">
+            <svg class="timer-svg">
+                <circle class="timer-circle-bg" cx="20" cy="20" r="18"></circle>
+                <circle class="timer-circle" cx="20" cy="20" r="18"></circle>
+            </svg>
+            <div class="timer-number"></div>
+        </div>
+    `;
+
+    // Position timer next to hint button
+    timerContainer.style.top = `${hintButtonRect.top}px`;
+    timerContainer.style.left = `${hintButtonRect.right + 10}px`;
+    timerContainer.style.transform = 'none'; // Remove default transform
+
+    document.body.appendChild(timerContainer);
+
+    // Rest of the function remains the same...
     cards.forEach(card => card.classList.add('flipped'));
+
+    const hintTime = timeShown(level) / 1000;
+    const timerCircle = timerContainer.querySelector('.timer-circle');
+    const timerNumber = timerContainer.querySelector('.timer-number');
+    
+    timerCircle.style.animation = `timer-countdown ${hintTime}s linear forwards`;
+    
+    let timeLeft = hintTime;
+    const updateTimer = setInterval(() => {
+        timeLeft -= 1;
+        if (timeLeft >= 0) {
+            timerNumber.textContent = timeLeft;
+        }
+    }, 1000);
+
     setTimeout(() => {
         cards.forEach(card => card.classList.remove('flipped'));
-    }, timeShown(level)); // delay based on level
+        timerContainer.remove();
+        clearInterval(updateTimer);
+    }, hintTime * 1000);
 }

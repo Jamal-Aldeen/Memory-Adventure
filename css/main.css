@@ -343,3 +343,172 @@ body, .space-background {
       opacity: 0.5;
   }
 }
+
+/* Best Score Popup */
+.best-score-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.best-score-content {
+    background: #1a1a40;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 4px solid #4fd1c5;
+    box-shadow: 0 0 0 4px #ffd54f;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.best-score-content h2 {
+    color: #ffd54f;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.best-score-content p {
+    color: white;
+    margin: 0.5rem 0;
+}
+
+.close-best-score {
+    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+    background: #4fd1c5;
+    border: 2px solid #ffd54f;
+    color: white;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+}
+
+.close-best-score:hover {
+    background: #ffd54f;
+    transform: translateY(-2px);
+}
+
+/* Confetti Animation */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Hint Timer Styles */
+.hint-timer-container {
+    position: fixed;
+    top: 50%;
+    left: calc(50% + 60px); /* Position it to the right of the hint button */
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: inline-block;
+    margin-left: 10px; /* Add some spacing between button and timer */
+}
+
+.hint-timer {
+    position: relative;
+    width: 40px; /* Made smaller to fit next to button */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-svg {
+    width: 40px; /* Match container size */
+    height: 40px;
+    transform: rotate(-90deg);
+}
+
+.timer-circle-bg {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.3);
+    stroke-width: 4px; /* Made thinner for smaller size */
+}
+
+.timer-circle {
+    fill: none;
+    stroke: #4fd1c5;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-dasharray: 113; /* 2 * π * 18 (new radius) */
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 8px rgba(79, 209, 197, 0.8));
+}
+
+.timer-number {
+    position: absolute;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    font-size: 14px; /* Smaller font size */
+    text-shadow: 0 0 8px rgba(79, 209, 197, 0.8);
+}
+
+@keyframes timer-countdown {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: 113; /* Match new stroke-dasharray */
+    }
+}
+
+/* Update the hint button to accommodate the timer */
+#hint-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .hint-timer {
+        width: 30px;
+        height: 30px;
+    }
+
+    .timer-svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .timer-number {
+        font-size: 12px;
+    }
+}
