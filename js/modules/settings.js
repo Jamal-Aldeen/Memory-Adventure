@@ -11,16 +11,16 @@ function updateVolumeIcon() {
   const volume = backgroundMusic.volume;
 
   if (volume === 0 || backgroundMusic.paused) {
-    soundIcon.src = 'assets/global/icons/sound-off.png'; // أيقونة الصوت مغلق
+    soundIcon.src = 'assets/global/icons/sound-off.png'; 
   } else {
-    soundIcon.src = 'assets/global/icons/sound-on.png'; // أيقونة الصوت مفتوح
+    soundIcon.src = 'assets/global/icons/sound-on.png'; 
   }
 }
 
 // Start background music on user interaction
 function startBackgroundMusic() {
   if (!musicStarted) {
-    backgroundMusic.volume = volumeSlider.value; // تعيين مستوى الصوت الافتراضي
+    backgroundMusic.volume = volumeSlider.value;
     backgroundMusic.play().catch(error => {
       console.error('Failed to start music:', error);
     });
@@ -29,8 +29,8 @@ function startBackgroundMusic() {
 }
 
 // Event listeners for user interaction
-document.addEventListener('click', startBackgroundMusic); // تمت إزالة { once: true }
-document.addEventListener('keydown', startBackgroundMusic); // تمت إزالة { once: true }
+document.addEventListener('click', startBackgroundMusic); 
+document.addEventListener('keydown', startBackgroundMusic); 
 
 // Toggle background music (play/pause)
 musicToggle.addEventListener('click', () => {
@@ -39,29 +39,29 @@ musicToggle.addEventListener('click', () => {
   } else {
     backgroundMusic.pause();
   }
-  updateVolumeIcon(); // تحديث الأيقونة هنا
+  updateVolumeIcon(); 
 });
 
 // Adjust volume using slider
 volumeSlider.addEventListener('input', () => {
   backgroundMusic.volume = volumeSlider.value;
-  updateVolumeIcon(); // تحديث الأيقونة هنا
+  updateVolumeIcon();
 });
 
 // Update icon on page load
 window.addEventListener('load', () => {
-  backgroundMusic.volume = volumeSlider.value; // تعيين مستوى الصوت الافتراضي
+  backgroundMusic.volume = volumeSlider.value;
   backgroundMusic.play().catch(error => {
     console.error('Failed to start music:', error);
   });
   musicStarted = true;
-  updateVolumeIcon(); // تحديث الأيقونة هنا
+  updateVolumeIcon(); 
 });
 
 // Open Settings Pop-Up
 function openSettingsPopup() {
   settingsPopup.classList.add("visible");
-  updateVolumeIcon(); // تحديث الأيقونة هنا
+  updateVolumeIcon(); 
 }
 
 // Close Settings Pop-Up

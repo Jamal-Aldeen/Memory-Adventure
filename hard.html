@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Hard</title>
   <link rel="icon" type="image/x-icon" href="./assets/global/icons/page-icon.png">
-  <link rel="stylesheet" href="/css/main.css">
+   <link rel="stylesheet" href="css/count down for hard.css">
   <link rel="stylesheet" href="/css/hard.css">
   <link rel="stylesheet" href="/css/popup.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -36,7 +36,9 @@
           color: #396cb38f;
           padding: 10px 20px;
           border-radius: 50px;
-          margin-left: 80px;
+          position: absolute;
+          top: 40px;
+          left: 200px;
           border: none;
           cursor: pointer;
           font-family: 'Sixtyfour', sans-serif;
@@ -114,8 +116,12 @@
     gameLogic.start();
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
   </script>
+
+
+  <!-- calling the settings script -->
   <script src="./js/modules/settings.js"></script>
-  <!-- <script src="js/modules/hint.js"></script> -->
+
+  
 </body>
 
 </html>
