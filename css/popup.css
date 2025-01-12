@@ -1,4 +1,8 @@
 /* Settings Pop-Up Styles */
+
+h2{
+  margin:0px;
+}
 .settings-popup {
     display: none;
     position: fixed;
@@ -25,8 +29,7 @@
   
   .settings-popup-content .close {
     position: absolute;
-    right: 10px;
-    top: 5px;
+    right: -5px;
     cursor: pointer;
     font-size: 20px;
   }

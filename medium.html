@@ -43,17 +43,7 @@
       <button id="save-score" class="eightbit-btn">Save Score & Return Home</button>
     </div>
 
-    <!-- Level Complete Pop-Up -->
-    <div class="level-complete hidden">
-      <div class="level-complete-content">
-        <h2>Level Complete</h2>
-        <p class="level-name">Level: Medium</p>
-        <button class="next-level eightbit-btn">Next Level</button>
-        <button class="close eightbit-btn">Close</button>
-      </div>
-    </div>
-
-    <button type="button" class="settings-button sound-controls material-icons">settings</button>    
+    <button id="settings-button" type="button" class="settings-button material-icons">settings</button>    
 
 
     <!-- Progress Bar Container -->
@@ -93,25 +83,29 @@
 
     <!-- Audio Elements -->
     <audio id="background-music" loop>
-      <source src="assets/medium/audio/mario-theme.mp3" type="audio/mpeg">
+      <source src="assets/medium/audio/background-music.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
 
     <audio id="click-sound">
-      <source src="assets/global/audio/click-sound.wav" type="audio/wav">
+      <source src="assets/medium/audio/click-sound.wav" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
 
     <audio id="match-sound">
-      <source src="assets/medium/audio/mario-match.mp3" type="audio/wav">
+      <source src="assets/medium/audio/match-sound.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="wrong-sound">
+      <source src="/assets/medium/audio/wrong-sound.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
 
     <audio id="win-sound">
-      <source src="/assets/medium/audio/mario-match.mp3" type="audio/wav">
+      <source src="/assets/medium/audio/win-sound.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
-    <script src="./js/modules/sound.js" type="module"></script>
   </div>
 
   <script type="module">
@@ -121,8 +115,9 @@
     gameLogic.start();
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
 </script>
-<script src="./js/modules/settings.js"></script>
 <script src="./js/modules/preload.js" type="module"></script>
 <script src="./js/start.js" type="module"></script>
+<script src="./js/modules/settings.js" type="module"></script>
+<script src="./js/modules/gameSound.js" type="module"></script>
 </body>
 </html>

@@ -1,9 +1,12 @@
+import { playSound } from './sound.js';
+
 // DOM Elements
 const settingsPopup = document.getElementById('settings-popup');
 const musicToggle = document.getElementById('music-toggle');
 const soundIcon = document.getElementById('sound-icon');
 const backgroundMusic = document.getElementById('background-music');
 const volumeSlider = document.getElementById('volume-slider');
+const clickSound = document.getElementById('click-sound');
 let musicStarted = false;
 
 // Update volume icon based on current volume level
@@ -17,21 +20,6 @@ function updateVolumeIcon() {
   }
 }
 
-// Start background music on user interaction
-function startBackgroundMusic() {
-  if (!musicStarted) {
-    backgroundMusic.volume = volumeSlider.value;
-    backgroundMusic.play().catch(error => {
-      console.error('Failed to start music:', error);
-    });
-    musicStarted = true;
-  }
-}
-
-// Event listeners for user interaction
-document.addEventListener('click', startBackgroundMusic); 
-document.addEventListener('keydown', startBackgroundMusic); 
-
 // Toggle background music (play/pause)
 musicToggle.addEventListener('click', () => {
   if (backgroundMusic.paused) {
@@ -39,6 +27,7 @@ musicToggle.addEventListener('click', () => {
   } else {
     backgroundMusic.pause();
   }
+  playSound(clickSound);
   updateVolumeIcon(); 
 });
 
@@ -46,6 +35,7 @@ musicToggle.addEventListener('click', () => {
 volumeSlider.addEventListener('input', () => {
   backgroundMusic.volume = volumeSlider.value;
   updateVolumeIcon();
+  playSound(clickSound);
 });
 
 // Update icon on page load
@@ -62,12 +52,17 @@ window.addEventListener('load', () => {
 function openSettingsPopup() {
   settingsPopup.classList.add("visible");
   updateVolumeIcon(); 
+  playSound(clickSound);
 }
 
 // Close Settings Pop-Up
 function closeSettingsPopup() {
-  settingsPopup.classList.remove("visible");
+  settingsPopup.classList.remove("visible");  
+  playSound(clickSound);
 }
+
+// Attach to window object to make it globally accessible
+window.closeSettingsPopup = closeSettingsPopup;
 
 // Add event listeners to all settings buttons
 document.querySelectorAll('.settings-button').forEach(button => {

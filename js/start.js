@@ -1,6 +1,7 @@
 import { GameLogic } from './modules/gameLogic.js';
 import { getSavedScores } from './modules/storage.js';
 import { preloadAssets } from './modules/preload.js';
+import { startBackgroundMusic, playSound } from './modules/sound.js';
 
 // DOM Elements
 const popup = document.getElementById('popup');
@@ -11,26 +12,20 @@ const scoresPopup = document.getElementById('scores-popup');
 const closeScoresPopup = document.getElementById('close-scores-popup');
 const startGameButton = document.getElementById('start-game');
 const difficultySelect = document.getElementById('difficulty-select');
-const musicToggle = document.getElementById('music-toggle');
-const soundIcon = document.getElementById('sound-icon');
-const backgroundMusic = document.getElementById('background-music');
 const clickSound = document.getElementById('click-sound');
 let musicStarted = false;
 
-// Start background music on user interaction
-function startBackgroundMusic() {
+// Function to start background music on user interaction
+function handleUserInteraction() {
     if (!musicStarted) {
-        backgroundMusic.volume = 0.5;
-        backgroundMusic.play().catch(error => {
-            console.error('Failed to start music:', error);
-        });
+        startBackgroundMusic();
         musicStarted = true;
     }
 }
 
 // Event listeners for user interaction
-document.addEventListener('click', startBackgroundMusic, { once: true });
-document.addEventListener('keydown', startBackgroundMusic, { once: true });
+document.addEventListener('click', handleUserInteraction, { once: true });
+document.addEventListener('keydown', handleUserInteraction, { once: true });
 
 // Show or hide popups
 if (howToPlay) {
@@ -132,31 +127,6 @@ if (startGameButton) {
         playSound(clickSound);
     });
 }
-
-// Toggle background music
-if (musicToggle) {
-    musicToggle.addEventListener('click', () => {
-        if (backgroundMusic.volume > 0) {
-            backgroundMusic.volume = 0;
-            soundIcon.src = 'assets/global/icons/sound-off.png';
-        } else {
-            backgroundMusic.volume = 0.5;
-            soundIcon.src = 'assets/global/icons/sound-on.png';
-        }
-        playSound(clickSound);
-    });
-}
-
-// Play a click sound
-function playSound(sound) {
-    if (sound) {
-        sound.currentTime = 0;
-        sound.play().catch(error => {
-            console.error('Failed to play sound:', error);
-        });
-    }
-}
-
 // Helper function to format time
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
