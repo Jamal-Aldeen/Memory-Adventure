@@ -29,6 +29,35 @@ body {
   overflow: hidden;
 }
 
+/* Floating GIFs */
+.floating-gif {
+  position: absolute;
+  width: 200px;
+  animation: float 6s ease-in-out infinite;
+  z-index: 10; /* Ensure GIFs are above the cards */
+  top: 30%;
+  right: -65%;
+  animation-duration: 8s;
+}
+
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(20px) rotate(-5deg);
+  }
+}
+
+
 /* Title */
 h1 {
   text-align: center;
@@ -179,22 +208,22 @@ h1 {
 /* Card Grid */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-rows: repeat(4, 100px);
-  gap: 20px;
+  grid-template-columns: repeat(4, 150px);
+  grid-template-rows: repeat(4, 150px);
+  gap: 15px;
   justify-content: center;
 }
 
 /* Card Styling */
 .card {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   perspective: 1000px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  border-radius: 10px;
-  border: 2px solid var(--primary-color);
+  border-radius: 15px;
+  border: 2px solid white;
 }
 
 .card:hover {

@@ -17,7 +17,7 @@ body, .space-background {
   animation: float 6s ease-in-out infinite;
 }
 .gif1 { top: 20%; left: 20%; }
-.gif2 { top: 50%; left: 70%; }
+.gif2 { top: 50%; left: 70%; width: 150px; }
 .gif3 { top: 70%; left: 20%; }
 
 /* Start Title */
