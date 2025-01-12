@@ -51,6 +51,7 @@ h1 {
 /* Controls Section */
 .controls {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -457,6 +458,8 @@ h1 {
 .settings-button{
   cursor: pointer;
   background-color: rgba(135, 240, 109, 0.5);
+  box-shadow: 2px 2px 8px rgba(135, 240, 109, 0.7);
+   border: none;
   border-radius: 10px;
   padding: 20px 20px;
   font-family: 'Press Start 2P', cursive;
@@ -466,7 +469,7 @@ h1 {
   position: absolute;
   border-radius: 30px;
   font-weight: bolder;
-  font-size: 1em;
+  font-size: 0.8rem;
   right: 2%;
   bottom: 5%;
 }
