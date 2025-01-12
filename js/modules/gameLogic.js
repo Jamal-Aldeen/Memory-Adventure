@@ -284,17 +284,27 @@ export class GameLogic {
         return matchedCards.length === this.totalCards;
     }
 
-    endGame() {
+    async endGame() {
         clearInterval(this.timerInterval);
         this.isGameOver = true;
-    
+
+        // Get previous scores and check if current score is the best
+        const previousScores = await getSavedScores(this.level);
+        const isBest = this.isBestScore(previousScores);
+
+        // If it's the best score, show the best score popup first
+        if (isBest) {
+            this.showBestScorePopup();
+        }
+
+        // Show the game over modal
         const gameOverModal = document.querySelector('.game-over');
         if (gameOverModal) {
             gameOverModal.classList.remove('hidden');
             gameOverModal.classList.add('visible');
             document.getElementById('final-time').textContent = this.formatTime(this.time);
             document.getElementById('final-moves').textContent = this.moves;
-    
+
             // Save score button
             const saveScoreButton = document.getElementById('save-score');
             if (saveScoreButton) {
@@ -303,7 +313,7 @@ export class GameLogic {
                     window.location.href = '/index.html';
                 });
             }
-    
+
             // Next level button
             const nextLevelButton = document.getElementById('next-level');
             if (nextLevelButton) {
@@ -326,7 +336,7 @@ export class GameLogic {
                 });
             }
         }
-    
+
         const winSound = document.getElementById('win-sound');
         if (winSound) {
             winSound.play().catch(error => console.error('Failed to play win sound:', error));
