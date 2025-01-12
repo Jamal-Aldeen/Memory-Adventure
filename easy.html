@@ -97,20 +97,19 @@
     </audio>
 
     <audio id="click-sound">
-      <source src="assets/easy/audio/click.mp3" type="audio/wav">
+      <source src="assets/easy/audio/click-sound.mp3" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
 
     <audio id="match-sound">
-      <source src="assets/easy/audio/true.mp3" type="audio/wav">
+      <source src="assets/easy/audio/match-sound.mp3" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
 
     <audio id="win-sound">
-      <source src="assets/easy/audio/win.mp3" type="audio/wav">
+      <source src="assets/easy/audio/win-sound.mp3" type="audio/wav">
       Your browser does not support the audio element.
     </audio>
-    <script src="./js/modules/sound.js" type="module"></script>
   </div>
 
   <!-- Main Moudle -->
@@ -121,6 +120,8 @@
     gameLogic.start();
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
 </script>
+
+<script src="./js/modules/sound.js" type="module"></script>
 
 <!-- calling the settings script -->
 <script src="./js/modules/settings.js"></script>
