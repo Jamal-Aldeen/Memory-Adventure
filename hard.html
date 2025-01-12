@@ -20,11 +20,10 @@
 <body>
 
   <nav>
-    <button class="settings-button floating-button">Settings</button>
+    <button id="settings-button" class="settings-button floating-button">Settings</button>
     <button id="hint-button" class="floating-button">Hint:<span id="hints-remaining"></span></button>
     <button id="start-restart-btn" class="floating-button">Start Game</button>
   </nav>
-
   <!-- Settings Pop-Up -->
   <div id="settings-popup" class="settings-popup hidden">
     <div class="settings-popup-content">
@@ -117,12 +116,10 @@
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
   </script>
 
-<script src="./js/modules/sound.js" type="module"></script>
 <script src="./js/modules/preload.js" type="module"></script>
 <script src="./js/start.js" type="module"></script>
-  <!-- calling the settings script -->
-  <script src="./js/modules/settings.js"></script>
-
+<script src="./js/modules/settings.js" type="module"></script>
+<script src="./js/modules/gameSound.js" type="module"></script>
   
 </body>
 

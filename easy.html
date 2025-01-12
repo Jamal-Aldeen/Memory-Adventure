@@ -52,7 +52,7 @@
       <button id="save-score">Save Score & Return Home</button>
     </div>
 
-    
+    <button id="settings-button" type="button" class="settings-button material-icons">settings</button>    
     <!-- Settings Pop-Up -->
   <div id="settings-popup" class="settings-popup hidden">
     <div class="settings-popup-content">
@@ -120,14 +120,10 @@
     gameLogic.start();
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
 </script>
-
-<script src="./js/modules/sound.js" type="module"></script>
 <script src="./js/modules/preload.js" type="module"></script>
 <script src="./js/start.js" type="module"></script>
-
-<!-- calling the settings script -->
-<script src="./js/modules/settings.js"></script>
-
+<script src="./js/modules/settings.js" type="module"></script>
+<script src="./js/modules/gameSound.js" type="module"></script>
   </script>
 </body>
 </html>
