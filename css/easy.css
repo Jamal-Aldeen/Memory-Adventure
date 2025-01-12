@@ -513,7 +513,16 @@ h1 {
     padding: 10px 10px;
     font-size: 0.7rem;
   }
-  
+  .floating-gif {
+    width: 100px;
+    right: -45%;
+    top: 40%;
+  }
+
+  #hint-button {
+    font-size: var(--font-size-small);
+    padding: 8px 16px;
+  }
 }
 
 /* For screens smaller than 480px (very small phones) */
@@ -551,12 +560,3 @@ h1 {
   }
 }
 
-
-
-@media (max-width: 768px) {
-
-}
-
-@media (max-width: 480px) {
-
-}
