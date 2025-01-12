@@ -14,7 +14,7 @@ export function initializeHint(gameLogic) {
         const startRestartButton = document.getElementById('start-restart-btn');
         if (startRestartButton) {
             startRestartButton.addEventListener('click', () => {
-                hintButton.disabled = false; // Enable the hint button when the game starts
+                hintButton.disabled = false;
             });
         }
 
