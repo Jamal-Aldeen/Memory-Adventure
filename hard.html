@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Hard</title>
   <link rel="icon" type="image/x-icon" href="./assets/global/icons/page-icon.png">
-   <link rel="stylesheet" href="css/count down for hard.css">
+   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="/css/hard.css">
   <link rel="stylesheet" href="/css/popup.css">
+  <style>#countdown-overlay {text-shadow: 0 0 20px #4fd1c5, 0 0 40px #4fd1c5, 0 0 60px #4fd1c5;}</style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,23 +89,22 @@
 
   <!-- Audio Elements -->
   <audio id="background-music" loop>
-    <source src="/assets/hard/audio/2020-06-18_-_8_Bit_Retro_Funk_-_www.FesliyanStudios.com_David_Renda.mp3"
-      type="audio/mpeg">
+    <source src="assets/hard/audio/background-music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <audio id="click-sound">
-    <source src="/assets/global/audio/click-sound.wav" type="audio/wav">
+    <source src="assets/hard/audio/click-sound.wav" type="audio/wav">
     Your browser does not support the audio element.
   </audio>
 
   <audio id="match-sound">
-    <source src="/assets/global/audio/match-sound.wav" type="audio/wav">
+    <source src="assets/hard/audio/match-sound.wav" type="audio/wav">
     Your browser does not support the audio element.
   </audio>
 
   <audio id="win-sound">
-    <source src="/assets/global/audio/win-sound.wav" type="audio/wav">
+    <source src="assets/hard/audio/win-sound.wav" type="audio/wav">
     Your browser does not support the audio element.
   </audio>
 
@@ -117,7 +117,7 @@
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
   </script>
 
-
+<script src="./js/modules/sound.js" type="module"></script>
   <!-- calling the settings script -->
   <script src="./js/modules/settings.js"></script>
 
