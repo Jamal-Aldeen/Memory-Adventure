@@ -260,7 +260,7 @@ export class GameLogic {
             }
         } else {
             // Play mismatch sound
-            const clickSound = document.getElementById('click-sound');
+            const clickSound = document.getElementById('wrong-sound');
             if (clickSound) {
                 clickSound.play().catch(error => console.error('Failed to play click sound:', error));
             }
