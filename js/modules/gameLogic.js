@@ -158,101 +158,52 @@ export class GameLogic {
       default:
         flipBackDelay = 3000; // Default to 3 seconds
     }
-showCountdownAndStart(cards) {
-  // Show cards initially
-  cards.forEach(card => card.classList.add('flipped'));
 
-  // Determine the delay before flipping cards back based on the level
-  let flipBackDelay;
-  switch (this.level) {
-    case 'easy':
-      flipBackDelay = 3000; // 3 seconds for easy level
-      break;
-    case 'medium':
-      flipBackDelay = 5000; // 5 seconds for medium level
-      break;
-    case 'hard':
-      flipBackDelay = 7000; // 7 seconds for hard level
-      break;
-    default:
-      flipBackDelay = 3000; // Default to 3 seconds
+    // Create the countdown overlay
+    const countdownOverlay = document.createElement('div');
+    countdownOverlay.id = 'countdown-overlay';
+    countdownOverlay.innerHTML = '<span>3</span>'; // Initial countdown number
+    document.body.appendChild(countdownOverlay);
+
+    let count = 3;
+    const countdownInterval = setInterval(() => {
+      count--;
+      if (count > 0) {
+        countdownOverlay.innerHTML = `<span>${count}</span>`; // Update the number
+      } else {
+        clearInterval(countdownInterval);
+        countdownOverlay.remove(); // Remove the overlay
+
+        // Start tracking the progress bar after the countdown ends
+        const startTime = Date.now(); // Record the start time
+        const progressInterval = setInterval(() => {
+          const elapsedTime = Date.now() - startTime; // Calculate elapsed time
+          this.updateProgressBar(elapsedTime, flipBackDelay); // Update progress bar
+
+          // Stop the progress bar when the delay is over
+          if (elapsedTime >= flipBackDelay) {
+            clearInterval(progressInterval);
+          }
+        }, 100); // Update every 100ms for smooth animation
+
+        // Wait for the level-specific delay before flipping cards back
+        setTimeout(() => {
+          cards.forEach(card => card.classList.remove('flipped')); // Flip cards back
+          this.isGameStarted = true; // Start the game
+          this.time = 0;
+          this.startTimer(); // Start the main game timer
+        }, flipBackDelay); // Use the level-specific delay
+      }
+    }, 1000); // Update every second
   }
 
-  // Create the countdown overlay
-  const countdownOverlay = document.createElement('div');
-  countdownOverlay.id = 'countdown-overlay';
-  countdownOverlay.innerHTML = '<span>3</span>'; // Initial countdown number
-  document.body.appendChild(countdownOverlay);
-
-  let count = 3;
-  const countdownInterval = setInterval(() => {
-    count--;
-    if (count > 0) {
-      countdownOverlay.innerHTML = `<span>${count}</span>`; // Update the number
-    } else {
-      clearInterval(countdownInterval);
-      countdownOverlay.remove(); // Remove the overlay
-
-      // Start tracking the progress bar after the countdown ends
-      const startTime = Date.now(); // Record the start time
-      const progressInterval = setInterval(() => {
-        const elapsedTime = Date.now() - startTime; // Calculate elapsed time
-        this.updateProgressBar(elapsedTime, flipBackDelay); // Update progress bar
-
-        // Stop the progress bar when the delay is over
-        if (elapsedTime >= flipBackDelay) {
-          clearInterval(progressInterval);
-        }
-      }, 100); // Update every 100ms for smooth animation
-
-      // Wait for the level-specific delay before flipping cards back
-      setTimeout(() => {
-        cards.forEach(card => card.classList.remove('flipped')); // Flip cards back
-        this.isGameStarted = true; // Start the game
-        this.time = 0;
-        this.startTimer(); // Start the main game timer
-      }, flipBackDelay); // Use the level-specific delay
-    }
-  }, 1000); // Update every second
-}
-
-checkForMatch() {
-  const [card1, card2] = this.flippedCards;
-
-  if (card1.dataset.value === card2.dataset.value) {
-    card1.classList.add('matched');
-    card2.classList.add('matched');
-    this.flippedCards = [];
-    this.cardFlipping = false;
-
-    const matchSound = document.getElementById('match-sound');
-    if (matchSound) {
-      matchSound.play().catch(error => console.error('Failed to play match sound:', error));
+  startTimer() {
+    // Clear any existing timer interval
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
     }
 
-    if (this.isGameWon()) {
-      this.endGame();
-    }
-  } else {
-    // Play mismatch sound
-    const clickSound = document.getElementById('wrong-sound');
-    if (clickSound) {
-      clickSound.play().catch(error => console.error('Failed to play click sound:', error));
-    }
-
-    // Add shake animation
-    card1.classList.add('shake');
-    card2.classList.add('shake');
-
-    setTimeout(() => {
-      // Remove shake animation and flip cards back
-      card1.classList.remove('shake', 'flipped');
-      card2.classList.remove('shake', 'flipped');
-      this.flippedCards = [];
-      this.cardFlipping = false;
-    }, 1000);
-  }
-}
     // Start a new timer interval
     this.timerInterval = setInterval(() => {
       this.time++;
@@ -318,7 +269,7 @@ checkForMatch() {
       }
     } else {
       // Play mismatch sound
-      const clickSound = document.getElementById('click-sound');
+      const clickSound = document.getElementById('wrong-sound');
       if (clickSound) {
         clickSound.play().catch(error => console.error('Failed to play click sound:', error));
       }
