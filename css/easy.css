@@ -51,12 +51,12 @@ h1 {
 /* Controls Section */
 .controls {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 0 #b76e00;
 }
 
 
@@ -475,4 +475,45 @@ h1 {
 }
 .settings-button:hover{
   background-color: rgba(135, 240, 109, 0.7);
+}
+
+/* Create a wrapper for the settings button */
+.settings-wrapper {
+  width: 100%;         /* Take full width */
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;    /* Space between controls and settings */
+}
+
+.settings-button {
+  cursor: pointer;
+  background-color: rgba(135, 240, 109, 0.5);
+  box-shadow: 2px 2px 8px rgba(135, 240, 109, 0.7);
+  border: none;
+  border-radius: 30px;
+  padding: 15px 15px;
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none;
+  color: rgb(226, 217, 217);
+  text-shadow: 2px 2px 0 #050505;
+  font-weight: bolder;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    gap: 10px;
+  }
+  
+  .settings-button {
+    padding: 10px 10px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-button {
+    padding: 8px 8px;
+    font-size: 0.6rem;
+  }
 }
