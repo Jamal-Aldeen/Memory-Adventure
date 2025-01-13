@@ -6,10 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Adventure - Hard</title>
   <link rel="icon" type="image/x-icon" href="./assets/global/icons/page-icon.png">
-   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="/css/hard.css">
   <link rel="stylesheet" href="/css/popup.css">
-  <style>#countdown-overlay {text-shadow: 0 0 20px #4fd1c5, 0 0 40px #4fd1c5, 0 0 60px #4fd1c5;}</style>
+  <style>
+    #countdown-overlay {
+      text-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--primary-color), 0 0 60px var(--primary-color);
+    }
+  </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,56 +23,29 @@
 
 <body>
 
-  <nav>
-    <button id="settings-button" class="settings-button floating-button">Settings</button>
-    <button id="hint-button" class="floating-button">Hint:<span id="hints-remaining"></span></button>
-    <button id="start-restart-btn" class="floating-button">Start Game</button>
-  </nav>
-  <!-- Settings Pop-Up -->
-  <div id="settings-popup" class="settings-popup hidden">
-    <div class="settings-popup-content">
-      <span class="close" onclick="closeSettingsPopup()">&times;</span>
-      <h2>Settings</h2>
-      <ul>
-        <li><a href="index.html" onclick="selectOption('Home')">Home</a></li>
-        <li><a href="#" onclick="selectOption('Music')">Music</a>
-          <button id="music-toggle" aria-label="Toggle Sound" style="   background-color: #396cb38f;
-          color: #396cb38f;
-          padding: 10px 20px;
-          border-radius: 50px;
-          position: absolute;
-          top: 40px;
-          left: 200px;
-          border: none;
-          cursor: pointer;
-          font-family: 'Sixtyfour', sans-serif;
-          font-size: 16px;
-          transition: background-color 0.3s;">
-            <img src="./assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
-          </button>
-        </li>
-        <li><a href="#" onclick="selectOption('Sound')">Sound</a>
-          <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
-        </li>
-      </ul>
-
-    </div>
-  </div>
-
+  <!-- Game Container -->
   <div class="game-container">
     <h1>Cosmic Quest</h1>
 
-    <!-- Game Info -->
+    <!-- Controls (Buttons at the top center) -->
+    <div class="controls">
+      <button id="start-restart-btn" class="eightbit-btn">Start Game</button>
+      <button id="hint-button" class="eightbit-btn">Hint: <span id="hints-remaining"></span></button>
+    </div>
+
+    <!-- Game Info (Time and Moves on the right) -->
     <div class="game-info">
       <div class="moves">Moves: <span id="moves">0</span></div>
       <div class="timer">Time: <span id="timer">00:00</span></div>
     </div>
 
+    <!-- Settings Button (Top-right corner) -->
+    <button id="settings-button" class="settings-button">Settings</button>
+
     <!-- Card Grid -->
     <div class="card-grid"></div>
 
-
-    <!-- Progress Bar Container -->
+    <!-- Progress Bar -->
     <div class="progress-bar-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
@@ -81,10 +58,26 @@
       <button id="next-level">Next Level</button>
       <button id="save-score">Save Score & Return Home</button>
     </div>
-
   </div>
 
-
+  <!-- Settings Pop-Up -->
+  <div id="settings-popup" class="settings-popup hidden">
+    <div class="settings-popup-content">
+      <span class="close" onclick="closeSettingsPopup()">&times;</span>
+      <h2>Settings</h2>
+      <ul>
+        <li><a href="index.html" onclick="selectOption('Home')">Home</a></li>
+        <li><a href="#" onclick="selectOption('Music')">Music</a>
+          <button id="music-toggle" aria-label="Toggle Sound">
+            <img src="./assets/global/icons/sound-on.png" alt="Sound On" id="sound-icon">
+          </button>
+        </li>
+        <li><a href="#" onclick="selectOption('Sound')">Sound</a>
+          <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Audio Elements -->
   <audio id="background-music" loop>
@@ -107,6 +100,7 @@
     Your browser does not support the audio element.
   </audio>
 
+  <!-- Scripts -->
   <script src="./js/start.js" type="module"></script>
   <script type="module">
     import { GameLogic } from '/js/modules/gameLogic.js';
@@ -116,11 +110,11 @@
     gameLogic.startLevel(); // Initialize the Start/Restart functionality
   </script>
 
-<script src="./js/modules/preload.js" type="module"></script>
-<script src="./js/start.js" type="module"></script>
-<script src="./js/modules/settings.js" type="module"></script>
-<script src="./js/modules/gameSound.js" type="module"></script>
-  
+  <script src="./js/modules/preload.js" type="module"></script>
+  <script src="./js/start.js" type="module"></script>
+  <script src="./js/modules/settings.js" type="module"></script>
+  <script src="./js/modules/gameSound.js" type="module"></script>
+
 </body>
 
 </html>

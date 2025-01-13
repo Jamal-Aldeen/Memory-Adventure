@@ -1,78 +1,258 @@
+/* Root Variables */
+:root {
+  --primary-color: #4fd1c5; /* Neon teal for accents */
+  --secondary-color: #ab2472; /* Deep magenta for contrast */
+  --background-color: #0a0a1a; /* Dark space background */
+  --text-color: #ffffff; /* White text for readability */
+  --card-background: #1a1a40; /* Dark blue for cards */
+  --button-background: #396cb3; /* Space blue for buttons */
+  --sec-button-background: #2a4d7a; /* Darker blue for button hover */
+  --button-border: #4fd1c5; /* Neon teal for button borders */
+  --shadow-color: #0a0a1a; /* Dark shadow for depth */
+  --outline-width: 3px;
+  --shadow-width: 2px;
+
+  /* Responsive font sizes */
+  --font-size-small: 12px;
+  --font-size-medium: 16px;
+  --font-size-large: 24px;
+}
+
+/* Space Background */
 body {
   margin: 0;
   padding: 0;
   background: url('/assets/hard/images/pxsprite-space.gif') no-repeat center center fixed;
   background-size: cover;
-  font-family: 'Sixtyfour', sans-serif;
-  color: white;
+  font-family: 'Press Start 2P', cursive;
+  color: var(--text-color);
   height: 100vh;
   overflow: hidden;
 }
 
-nav {
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  margin-top: 20px;
-}
-
-nav button {
-  font-family: "Sixtyfour", sans-serif;
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #396cb38f;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: none;
-  transition: background-color 0.3s;
-}
-
-.floating-button {
-  position: relative;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(20px);
-  }
-}
-
+/* Game Container */
 .game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: rgba(10, 10, 26, 0.8); /* Semi-transparent dark space background */
 }
 
-.game-info {
-  display: flex;
-  justify-content: space-between;
-  width: 1000px;
+/* Game Title (Enhanced Glow and Color) */
+.game-container h1 {
+  font-size: 3rem;
+  text-align: center;
   margin-bottom: 20px;
-  font-family: 'Sixtyfour', sans-serif;
-  color: #ffffff;
-  font-size: 1.2rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color);
+  animation: glow-title 2s infinite alternate;
 }
 
+@keyframes glow-title {
+  0% {
+    text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color);
+  }
+  100% {
+    text-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--primary-color), 0 0 60px var(--primary-color);
+  }
+}
+
+/* Controls (Buttons at the top center) */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Increased gap for bigger buttons */
+  margin-bottom: 20px;
+}
+
+/* Retro-Style Buttons (Enhanced) */
+.eightbit-btn {
+  background: var(--button-background);
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  padding: 15px 30px; /* Bigger padding for larger buttons */
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none;
+  color: var(--text-color);
+  text-shadow: 2px 2px 0 var(--shadow-color);
+  box-shadow: inset -4px -4px 0px 0px var(--button-border);
+  z-index: 1;
+  font-size: var(--font-size-medium); /* Larger font size */
+  border: 2px solid var(--button-border);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.eightbit-btn:hover,
+.eightbit-btn:focus {
+  background: var(--sec-button-background);
+  box-shadow: inset -6px -6px 0px 0px var(--button-border);
+}
+
+.eightbit-btn:active {
+  box-shadow: inset 4px 4px 0px 0px var(--button-border);
+}
+
+/* Game Info (Moves and Timer in the center of the left side) */
+.game-info {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 20px; /* Position on the left */
+  transform: translateY(-50%); /* Center vertically */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Press Start 2P', cursive;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.game-info span {
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Settings Button (Small and in the right-down corner) */
+#settings-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  background-color: var(--button-background);
+  color: var(--text-color);
+  padding: 8px 16px; /* Smaller padding */
+  border-radius: 50px;
+  border: 2px solid var(--button-border);
+  font-family: 'Press Start 2P', cursive;
+  font-size: var(--font-size-small); /* Smaller font size */
+  transition: background-color 0.3s;
+}
+
+#settings-button:hover {
+  background-color: var(--sec-button-background);
+}
+
+/* Settings Pop-Up (Matching the original style) */
+.settings-popup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background-color: var(--card-background);
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 0 0 4px var(--secondary-color), 0 0 0 8px var(--primary-color);
+  z-index: 10000;
+  font-family: 'Press Start 2P', cursive;
+  color: var(--text-color);
+}
+
+.settings-popup.visible {
+  display: block;
+}
+
+.settings-popup-content {
+  position: relative;
+}
+
+.settings-popup-content .close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+.settings-popup ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.settings-popup ul li {
+  margin: 10px 0;
+}
+
+.settings-popup ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+.settings-popup ul li a:hover {
+  color: var(--primary-color);
+}
+
+.settings-popup .sound-controls {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.settings-popup .sound-controls button:hover {
+  background-color: var(--primary-color);
+}
+
+#music-toggle img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+#music-toggle:hover img {
+  transform: scale(1.1);
+}
+
+#volume-slider {
+  width: 100px;
+  margin-left: 70px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--button-background);
+  height: 8px;
+  border-radius: 5px;
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Card Grid */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(8, 80px);
   grid-template-rows: repeat(8, 80px);
   gap: 10px;
+  justify-content: center;
+  margin-top: 20px; /* Add space for the buttons */
 }
 
+/* Card Styling */
 .card {
   position: relative;
   width: 80px;
@@ -80,10 +260,14 @@ nav button {
   perspective: 1000px;
   cursor: pointer;
   transition: transform 0.3s ease;
+  background-color: var(--card-background);
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
 }
 
 .card:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 10px var(--primary-color);
 }
 
 .card-front,
@@ -108,8 +292,8 @@ nav button {
 
 .card-back {
   background-size: cover;
-  border: 2px solid white;
   transform: rotateY(0deg);
+  background-color: var(--card-background);
 }
 
 .card.flipped .card-front {
@@ -120,76 +304,99 @@ nav button {
   transform: rotateY(180deg);
 }
 
-@keyframes shuffle {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(10px, -10px); }
-  50% { transform: translate(-10px, 10px); }
-  75% { transform: translate(5px, -5px); }
-  100% { transform: translate(0, 0); }
-}
-
-.card.shuffling {
-  animation: shuffle 0.5s ease-in-out;
-}
-
 @keyframes glow {
-  0% { box-shadow: 0 0 5px#FFDE68; }
-  50% { box-shadow: 0 0 20px #FFDE68; }
-  100% { box-shadow: 0 0 5px #FFDE68;}
+  0% { box-shadow: 0 0 5px var(--primary-color); }
+  50% { box-shadow: 0 0 20px var(--primary-color); }
+  100% { box-shadow: 0 0 5px var(--primary-color); }
 }
 
 .card.matched {
   opacity: 0.5;
   pointer-events: none;
-  animation: glow 1s;
+  animation: glow 1s infinite;
 }
 
-.game-over, .level-complete {
+/* Game Over Modal */
+.game-over {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #1a1a40;
+  background: var(--card-background);
   padding: 20px;
-  border: 4px solid #4fd1c5;
-  box-shadow: 0 0 0 4px #ffd54f, 0 0 0 8px #4fd1c5;
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 0 0 4px var(--secondary-color), 0 0 0 8px var(--primary-color);
   text-align: center;
   font-family: 'Press Start 2P', cursive;
-  color: #f0f0f0;
+  color: var(--text-color);
   z-index: 10000;
-  display: none;
-  opacity: 0;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.level-complete.visible, .game-over.visible {
+.game-over.visible {
   opacity: 1;
   transform: translate(-50%, -50%);
 }
 
-.game-over button, .level-complete button {
+.game-over button {
   padding: 10px 20px;
   margin: 10px;
   font-family: 'Press Start 2P', cursive;
   font-size: 1rem;
-  color: #1a1a40;
-  background: #4fd1c5;
-  border: 2px solid #ffd54f;
+  color: var(--card-background);
+  background: var(--primary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 0;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.game-over button:hover, .level-complete button:hover {
-  background: #ffd54f;
-  border-color: #4fd1c5;
+.game-over button:hover {
+  background: var(--secondary-color);
+  border-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 4px 4px 0 #4fd1c5;
+  box-shadow: 4px 4px 0 var(--primary-color);
 }
 
+.hidden {
+  display: none;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  width: 57%; 
+  height: 12px; 
+  background-color: rgba(10, 10, 26, 0.5); /* Semi-transparent dark space background */
+  border-radius: 5px; 
+  margin-top: 25px; 
+  overflow: hidden; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  z-index: 10000;
+}
+
+.progress-bar {
+  width: 0%; 
+  height: 100%; 
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); 
+  border-radius: 5px; 
+  transition: width 0.1s linear; 
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%); 
+  opacity: 0.5; 
+  pointer-events: none; 
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .game-info {
-    width: 90%;
     font-size: 1rem;
   }
 
@@ -204,48 +411,13 @@ nav button {
     height: 60px;
   }
 
-  .game-over, .level-complete {
+  .game-over {
     width: 90%;
     padding: 15px;
   }
 
-  .game-over button, .level-complete button {
+  .game-over button {
     font-size: 0.9rem;
     padding: 8px 16px;
   }
-}
-
-
-/* Progress Bar Container */
-.progress-bar-container {
-  width: 57%; 
-  height: 12px; 
-  background-color: #396cb300; 
-  border-radius: 5px; 
-  margin-top: 25px; 
-  overflow: hidden; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-  z-index: 10000;
-}
-
-/* Progress Bar */
-.progress-bar {
-  width: 0%; 
-  height: 100%; 
-  background: linear-gradient(90deg, #396cb38f, #1a1a40); 
-  border-radius: 5px; 
-  transition: width 0.1s linear; 
-}
-
-/* Glow Effect on Progress Bar */
-.progress-bar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%); 
-  opacity: 0.5; 
-  pointer-events: none; 
 }
