@@ -27,10 +27,21 @@ export async function preloadAssets(level) {
     return;
   }
 
+  // Ensure images is a flat array of individual paths
+  const levelImages = Object.values(levelAssets.images);
+  const globalImages = Object.values(globalAssets.images);
+
+  // Flatten the arrays if they contain nested arrays
+  const flattenArray = (arr) => {
+    return arr.flatMap(item => Array.isArray(item) ? item : [item]);
+  };
+
   const allAssets = {
     audio: [...Object.values(levelAssets.audio), ...Object.values(globalAssets.audio)],
-    images: [...Object.values(levelAssets.images), ...Object.values(globalAssets.images)]
+    images: [...flattenArray(levelImages), ...flattenArray(globalImages)]
   };
+
+  console.log('Images to preload:', allAssets.images); // Debugging: Log the image paths
 
   const promises = [];
 
