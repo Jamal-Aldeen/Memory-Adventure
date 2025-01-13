@@ -9,16 +9,32 @@ const volumeSlider = document.getElementById('volume-slider');
 const clickSound = document.getElementById('click-sound');
 let musicStarted = false;
 
-// Update volume icon based on current volume level
+// Function to update the volume icon based on the current volume level
 function updateVolumeIcon() {
   const volume = backgroundMusic.volume;
 
   if (volume === 0 || backgroundMusic.paused) {
-    soundIcon.src = 'assets/global/icons/sound-off.png'; 
+    soundIcon.src = 'assets/global/icons/sound-off.png'; // Use the sound-off icon
   } else {
-    soundIcon.src = 'assets/global/icons/sound-on.png'; 
+    soundIcon.src = 'assets/global/icons/sound-on.png'; // Use the sound-on icon
   }
 }
+
+// Function to handle user interaction and start music
+function handleUserInteraction() {
+  if (!musicStarted) {
+    backgroundMusic.volume = volumeSlider.value;
+    backgroundMusic.play().catch(error => {
+      console.error('Failed to start music:', error);
+    });
+    musicStarted = true;
+    updateVolumeIcon();
+  }
+}
+
+// Listen for user interaction (click or keypress) to start music
+document.addEventListener('click', handleUserInteraction, { once: true });
+document.addEventListener('keydown', handleUserInteraction, { once: true });
 
 // Toggle background music (play/pause)
 musicToggle.addEventListener('click', () => {
@@ -28,7 +44,7 @@ musicToggle.addEventListener('click', () => {
     backgroundMusic.pause();
   }
   playSound(clickSound);
-  updateVolumeIcon(); 
+  updateVolumeIcon(); // Update the icon after toggling
 });
 
 // Adjust volume using slider
@@ -40,24 +56,20 @@ volumeSlider.addEventListener('input', () => {
 
 // Update icon on page load
 window.addEventListener('load', () => {
-  backgroundMusic.volume = volumeSlider.value;
-  backgroundMusic.play().catch(error => {
-    console.error('Failed to start music:', error);
-  });
-  musicStarted = true;
-  updateVolumeIcon(); 
+  backgroundMusic.volume = volumeSlider.value; // Set initial volume
+  updateVolumeIcon(); // Update the icon to reflect the current state
 });
 
 // Open Settings Pop-Up
 function openSettingsPopup() {
   settingsPopup.classList.add("visible");
-  updateVolumeIcon(); 
+  updateVolumeIcon(); // Ensure the icon reflects the current state
   playSound(clickSound);
 }
 
 // Close Settings Pop-Up
 function closeSettingsPopup() {
-  settingsPopup.classList.remove("visible");  
+  settingsPopup.classList.remove("visible");
   playSound(clickSound);
 }
 
