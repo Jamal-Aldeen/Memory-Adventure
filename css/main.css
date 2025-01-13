@@ -437,7 +437,7 @@ body, .space-background {
 .timer-circle-bg {
     fill: none;
     stroke: rgba(0, 0, 0, 0.3);
-    stroke-width: 4px; /* Made thinner for smaller size */
+    stroke-width: 4px; 
 }
 
 .timer-circle {
@@ -446,8 +446,8 @@ body, .space-background {
     stroke-width: 4px;
     stroke-linecap: round;
     stroke-dasharray: 113; /* 2 * π * 18 (new radius) */
-    stroke-dashoffset: 0;
-    filter: drop-shadow(0 0 8px rgba(79, 209, 197, 0.8));
+    /* stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 8px rgba(79, 209, 197, 0.8)); */
 }
 
 .timer-number {
