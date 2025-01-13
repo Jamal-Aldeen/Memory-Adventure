@@ -32,6 +32,7 @@ h2 {
   right: -5px;
   cursor: pointer;
   font-size: 20px;
+  margin-top: -25px;
 }
 
 .settings-popup ul {
@@ -42,8 +43,15 @@ h2 {
 .settings-popup ul li {
   margin: 10px 0;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
+}
+
+.icons-container {
+  display: flex;
+  flex-direction: row; 
+  gap: 10px; 
+  align-items: center;
 }
 
 .settings-popup ul li a {
@@ -56,14 +64,15 @@ h2 {
   color: #4fd1c5;
 }
 
-#music-toggle , .img1 {
+#music-toggle,
+.img1 {
   background-color: #396cb38f;
   color: #396cb38f;
   padding: 10px 20px;
   border-radius: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   border: none;
   cursor: pointer;
   font-family: 'Sixtyfour', sans-serif;
@@ -74,7 +83,7 @@ h2 {
 #music-toggle img,
 .img1,
 .img2 {
-  margin: 10px 0; 
+  margin: 10px 0;
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease;
@@ -83,12 +92,13 @@ h2 {
 #music-toggle:hover img {
   transform: scale(1.1);
 }
-.img1:hover{
+
+.img1:hover {
   transform: scale(1.1);
 }
 
 #volume-slider {
-  width: 100px;
+  width: 200px;
   margin-top: 10px;
   cursor: pointer;
   -webkit-appearance: none;
@@ -98,7 +108,7 @@ h2 {
   border-radius: 5px;
 }
 
-#volume-slider:hover{
+#volume-slider:hover {
   transform: scale(1.1);
 }
 
@@ -118,4 +128,9 @@ h2 {
   background: #4fd1c5;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.img1{
+  width: 30px;
+  height: 30px;
 }
