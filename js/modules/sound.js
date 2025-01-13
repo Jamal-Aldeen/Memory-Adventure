@@ -1,5 +1,4 @@
 const settingsButton = document.getElementById('settings-button');
-// const settingsPopup = document.getElementById('settings-popup');
 const musicToggle = document.getElementById('music-toggle');
 const soundIcon = document.getElementById('sound-icon');
 const backgroundMusic = document.getElementById('background-music');
