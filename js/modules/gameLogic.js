@@ -297,12 +297,11 @@ export class GameLogic {
     clearInterval(this.timerInterval);
     this.isGameOver = true;
 
-    // Get previous scores and check if current score is the best
-    const previousScores = await getSavedScores(this.level);
-    const isBest = this.isBestScore(previousScores);
+    // Save score and check if it's in top 3
+    const isTopScore = await saveScore(this.level, this.moves, this.time);
 
-    // If it's the best score, show the best score popup first
-    if (isBest) {
+    // Show best score popup if it's a top score
+    if (isTopScore) {
       this.showBestScorePopup();
     }
 
@@ -318,7 +317,6 @@ export class GameLogic {
       const saveScoreButton = document.getElementById('save-score');
       if (saveScoreButton) {
         saveScoreButton.addEventListener('click', () => {
-          saveScore(this.level, this.moves, this.time);
           window.location.href = '/index.html';
         });
       }
