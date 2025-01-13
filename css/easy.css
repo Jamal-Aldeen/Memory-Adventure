@@ -74,12 +74,9 @@ body {
   width: 200px;
   animation: float 6s ease-in-out infinite;
   z-index: 10; 
-  top: 30%;
-  right: -65%;
-  animation-duration: 8s;
+  right: -50%;
+  animation-duration: 6s;
 }
-
-
 
 /* Title */
 h1 {
@@ -439,6 +436,85 @@ h1 {
 }
 
 /* Responsive Design*/
+@media (max-width: 1128px) {
+  /* Game Info Container */
+  .game-info-container {
+    right: 700px; 
+  }
+
+  /* Floating GIF */
+  .floating-gif {
+    width: 120px;
+    right: -150px; 
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    font-size: var(--font-size-small);
+  }
+
+  .container {
+    padding: 10px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .controls {
+    flex-direction: row;
+    margin-bottom: 0;
+    gap: 5px;
+  }
+
+  #layout {
+    flex-direction: column;
+  }
+
+  .floating-gif {
+    position: absolute;
+    width: 100px;
+    top: -50px;
+    right: 0px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .game-info-container {
+    position: static;
+    transform: none;
+    text-align: center;
+    flex-direction: row;
+  }
+  .game-info-container span {
+    font-size: 0.7rem;
+    margin: 0px 10px 0px 0px;
+  }
+
+  /* Card Grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 130px);
+    grid-template-rows: repeat(4, 130px);
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .card {
+    width: 130px;
+    height: 130px;
+  }
+
+  .game-over,
+  .level-complete {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .game-over button,
+  .level-complete button {
+    font-size: var(--font-size-small);
+    padding: 8px 16px;
+  }
+}
 
 /* For screens smaller than 768px (phones) */
 @media (max-width: 768px) {
@@ -461,11 +537,18 @@ h1 {
     flex-direction: column;
   }
 
+  .floating-gif {
+    position: absolute;
+    width: 70px;
+    top: -30px;
+    right: 20px;
+    animation: float 6s ease-in-out infinite;
+  }
+
   .game-info-container {
     position: static;
     transform: none;
     text-align: center;
-    margin-bottom: 20px;
     flex-direction: row;
   }
   .game-info-container span {
@@ -473,18 +556,18 @@ h1 {
     margin: 0px 10px 0px 0px;
   }
 
-/* Card Grid Responsive */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 60px);
-  grid-template-rows: repeat(4, 60px);
-  gap: 10px;
-  justify-content: center;
-}
+  /* Card Grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    justify-content: center;
+  }
 
   .card {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
   }
 
   .game-over,
@@ -499,46 +582,39 @@ h1 {
     padding: 8px 16px;
   }
 
+  .sound-controls {
+    bottom: 10px;
+    right: 10px;
+  }
 
   #sound-icon {
     width: 36px;
     height: 36px;
   }
-
-  .controls {
-    gap: 10px;
-  }
-  
-  .settings-button {
-    padding: 10px 10px;
-    font-size: 0.7rem;
-  }
-  .floating-gif {
-    width: 100px;
-    right: -45%;
-    top: 40%;
-  }
-
-  #hint-button {
-    font-size: var(--font-size-small);
-    padding: 8px 16px;
-  }
 }
 
 /* For screens smaller than 480px (very small phones) */
 @media (max-width: 480px) {
-/* Card Grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 40px);
-  grid-template-rows: repeat(4, 40px);
-  gap: 10px;
-  justify-content: center;
-}
+  /* Card Grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: repeat(4, 90px);
+    gap: 10px;
+    justify-content: center;
+  }
 
   .card {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .floating-gif {
+    position: absolute;
+    width: 50px;
+    top: -40px;
+    right: 20px;
+    animation: float 6s ease-in-out infinite;
   }
 
   .game-info-container p {
@@ -552,11 +628,7 @@ h1 {
   .eightbit-btn {
     padding: 8px 16px;
     font-size: var(--font-size-small);
-
-    .settings-button {
-      padding: 8px 8px;
-      font-size: 0.6rem;
-    }
   }
 }
+
 
