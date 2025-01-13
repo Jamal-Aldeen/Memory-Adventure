@@ -10,9 +10,17 @@
       "spaceBackground": "assets/global/images/space-background.gif",
       "mario": "assets/global/images/mario.webp",
       "luffy": "assets/global/images/luffy3.gif",
-      "js": "assets/global/images/JS.png"
+      "js": "assets/global/images/JS.png",
+      "naruto": "assets/global/images/naruto.webp",
+      "space1": "assets/global/images/space1.gif",
+      "space2": "assets/global/images/space2.gif",
+      "space3": "assets/global/images/space3.gif",
+      "space": "assets/global/images/space.jpg",
+      "storm": "assets/global/images/storm.gif",
+      "cardPlaceholder": "assets/global/images/default/card-placeholder.png"
     },
     "icons": {
+      "home": "assets/global/icons/home.png",
       "pageIcon": "assets/global/icons/page-icon.png",
       "soundOn": "assets/global/icons/sound-on.png",
       "soundOff": "assets/global/icons/sound-off.png"
@@ -23,7 +31,8 @@
       "backgroundMusic": "assets/easy/audio/background-music.mp3",
       "clickSound": "assets/easy/audio/click-sound.mp3",
       "matchSound": "assets/easy/audio/match-sound.mp3",
-      "winSound": "assets/easy/audio/win-sound.mp3"
+      "winSound": "assets/easy/audio/win-sound.mp3",
+      "wrongSound": "assets/easy/audio/wrong-sound.mp3"
     },
     "images": {
       "background": "assets/easy/images/background.gif",
@@ -35,17 +44,20 @@
         "assets/easy/images/card5.png",
         "assets/easy/images/card6.png",
         "assets/easy/images/card7.png",
-        "assets/easy/images/card8.png"
+        "assets/easy/images/card8.png",
+        "assets/easy/images/card9.png"
       ],
-      "cardBack": "assets/easy/images/card-back.png"
+      "cardBack": "assets/easy/images/card-back.png",
+      "luffy": "assets/easy/images/luffy3.gif"
     }
   },
   "medium": {
     "audio": {
-      "backgroundMusic": "assets/medium/audio/mario-theme.mp3",
+      "backgroundMusic": "assets/medium/audio/background-music.mp3",
       "clickSound": "assets/medium/audio/click-sound.wav",
-      "matchSound": "assets/medium/audio/mario-match.mp3",
-      "winSound": "assets/medium/audio/win-sound.wav"
+      "matchSound": "assets/medium/audio/match-sound.mp3",
+      "winSound": "assets/medium/audio/win-sound.mp3",
+      "wrongSound": "assets/medium/audio/wrong-sound.mp3"
     },
     "images": {
       "background": "assets/medium/images/supermario-background.gif",
@@ -69,7 +81,9 @@
         "assets/medium/images/card17.png",
         "assets/medium/images/card18.png"
       ],
-      "cardBack": "assets/medium/images/card-back.png"
+      "cardBack": "assets/medium/images/card-back.png",
+      "marioDance": "assets/medium/images/mario-dance.gif",
+      "marioDance1": "assets/medium/images/mario-dance1.gif"
     }
   },
   "hard": {
@@ -77,7 +91,8 @@
       "backgroundMusic": "assets/hard/audio/background-music.mp3",
       "clickSound": "assets/hard/audio/click-sound.wav",
       "matchSound": "assets/hard/audio/match-sound.wav",
-      "winSound": "assets/hard/audio/win-sound.wav"
+      "winSound": "assets/hard/audio/win-sound.wav",
+      "wrongSound": "assets/hard/audio/wrong-sound.mp3"
     },
     "images": {
       "background": "assets/hard/images/pxsprite-space.gif",
@@ -113,7 +128,9 @@
         "assets/hard/images/card29.png",
         "assets/hard/images/card30.png",
         "assets/hard/images/card31.png",
-        "assets/hard/images/card32.png"
+        "assets/hard/images/card32.png",
+        "assets/hard/images/card33.png",
+        "assets/hard/images/card34.png"
       ],
       "cardBack": "assets/hard/images/card-back.png"
     }
