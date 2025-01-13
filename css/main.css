@@ -446,8 +446,6 @@ body, .space-background {
     stroke-width: 4px;
     stroke-linecap: round;
     stroke-dasharray: 113; /* 2 * π * 18 (new radius) */
-    /* stroke-dashoffset: 0;
-    filter: drop-shadow(0 0 8px rgba(79, 209, 197, 0.8)); */
 }
 
 .timer-number {
