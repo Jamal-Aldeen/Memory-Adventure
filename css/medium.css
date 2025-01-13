@@ -1,5 +1,7 @@
 /* Root Variables */
 :root {
+  --primary-color: #0ce6f2;
+
   --button-background: #fda032;
   --sec-button-background: #e3782b;
   --button-border: #c65921;
@@ -315,6 +317,7 @@ h1 {
 
   .controls {
     flex-direction: column;
+    margin-bottom: 0px;
     gap: 5px;
   }
 
@@ -383,6 +386,7 @@ h1 {
 
   .controls {
     flex-direction: column;
+    margin-bottom: 0px;
     gap: 5px;
   }
 
