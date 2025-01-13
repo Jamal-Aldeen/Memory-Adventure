@@ -33,6 +33,10 @@ if (howToPlay) {
         popup.classList.remove('hidden');
         playSound(clickSound);
     });
+
+    difficultySelect.addEventListener('click', () => {
+        playSound(clickSound);
+    });
 }
 
 if (closePopup) {
@@ -114,6 +118,8 @@ if (closeScoresPopup) {
 // Start game logic
 if (startGameButton) {
     startGameButton.addEventListener('click', async () => {
+        playSound(clickSound);
+
         const selectedDifficulty = difficultySelect.value;
 
         try {
@@ -123,10 +129,9 @@ if (startGameButton) {
         } catch (error) {
             console.error('Failed to preload assets:', error);
         }
-
-        playSound(clickSound);
     });
 }
+
 // Helper function to format time
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
