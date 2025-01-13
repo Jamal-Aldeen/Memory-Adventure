@@ -3,31 +3,27 @@ export function saveScore(level, moves, time) {
   const score = {
       moves: moves,
       time: time,
-      timestamp: Date.now() // Changed to timestamp for easier sorting
+      timestamp: new Date().toISOString() // Optional: Add a timestamp for sorting
   };
 
-  // Get existing scores
-  let scores = JSON.parse(localStorage.getItem(`highScores_${level}`)) || [];
+  // Retrieve existing scores or initialize an empty array
+  const scores = JSON.parse(localStorage.getItem(`highScores_${level}`)) || [];
   
-  // Add new score
+  // Add the new score
   scores.push(score);
 
-  // Sort scores first by moves, then by time
+  // Sort scores by moves and time (lower moves and time are better)
   scores.sort((a, b) => {
       if (a.moves === b.moves) {
-          return a.time - b.time;
+          return a.time - b.time; // If moves are equal, sort by time
       }
-      return a.moves - b.moves;
+      return a.moves - b.moves; // Sort by moves first
   });
 
-  // Keep only top 3 scores
-  scores = scores.slice(0, 3);
+  const topScores = scores.slice(0,3);
 
-  // Save to localStorage
-  localStorage.setItem(`highScores_${level}`, JSON.stringify(scores));
-  
-  // Return true if this score made it to top 3
-  return scores.some(s => s.moves === score.moves && s.time === score.time);
+  // Save back to local storage
+  localStorage.setItem(`highScores_${level}`, JSON.stringify(topScores));
 }
 
 // Function to retrieve the saved scores for a specific level
