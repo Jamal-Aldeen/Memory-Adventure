@@ -26,16 +26,16 @@ Welcome to **Memory Adventure**, a fun and challenging memory card game with thr
 ## Screenshots and GIFs 📸
 
 ### Main Page
-![Main Page](Documentation/start.gif)
+![Main Page](documentation/start.gif)
 
 ### Easy Level
-![Easy Level](Documentation/easy.gif)
+![Easy Level](documentation/easy.gif)
 
 ### Medium Level
-![Medium Level](Documentation/medium.gif)
+![Medium Level](documentation/medium.gif)
 
 ### Hard Level
-![Hard Level](Documentation/hard.gif)
+![Hard Level](documentation/hard.gif)
 
 ## Installation 🛠️
 
