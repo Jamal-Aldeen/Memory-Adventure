@@ -1,6 +1,3 @@
-Here's a `README.md` file for your project. You can add the GIFs for each page as described:
-
-```markdown
 # Memory Adventure 🎮
 
 Welcome to **Memory Adventure**, a fun and challenging memory card game with three difficulty levels: Easy, Medium, and Hard. Test your memory skills by matching pairs of cards in the shortest time and with the fewest moves possible!
@@ -29,7 +26,7 @@ Welcome to **Memory Adventure**, a fun and challenging memory card game with thr
 ## Screenshots and GIFs 📸
 
 ### Main Page
-![Main Page](Documentation/start.giff)
+![Main Page](Documentation/start.gif)
 
 ### Easy Level
 ![Easy Level](Documentation/easy.gif)
