@@ -1,97 +1,66 @@
-# Memory Adventure
+# Memory Adventure 🎮
 
-A fun and interactive memory game to challenge your brain!
+Welcome to **Memory Adventure**, a fun and challenging memory card game with three difficulty levels: Easy, Medium, and Hard. Test your memory skills by matching pairs of cards in the shortest time and with the fewest moves possible!
 
-## Project Structure
-```
-memory-adventure/
-│
-├── assets/                      # Static assets (images, audio, icons, etc.)
-│   ├── global/                  # Shared assets across all levels
-│   │   ├── default/             # Default assets (e.g., placeholders)
-│   │   │   └── place-holder.png # Default placeholder image
-│   │   ├── icons/               # Global icons (e.g., sound icons, page icons)
-│   │   │   ├── sound-on.png     # Sound on icon
-│   │   │   ├── sound-off.png    # Sound off icon
-│   │   │   └── page-icon.png    # Favicon for the website
-│   │   ├── images/              # Global images (e.g., floating GIFs, backgrounds)
-│   │   │   ├── space-background.gif # Global background image
-│   │   │   ├── mario.webp       # Floating GIF 1
-│   │   │   ├── naruto.webp      # Floating GIF 2
-│   │   │   └── JS.png           # Floating GIF 3
-│   │   └── audio/               # Global audio files (e.g., background music, sound effects)
-│   │       ├── background-music.mp3 # Global background music
-│   │       ├── click-sound.wav  # Click sound effect
-│   │       ├── match-sound.wav  # Sound for matching cards
-│   │       └── win-sound.wav    # Sound for winning the game
-│   │
-│   ├── easy/                    # Easy level assets
-│   │   ├── icons/               # Icons specific to the easy level
-│   │   │   └── level-icon.png   # Icon for the easy level
-│   │   ├── images/              # Images specific to the easy level
-│   │   │   ├── card1.png        # Card image 1 for easy level
-│   │   │   ├── card2.png        # Card image 2 for easy level
-│   │   │   └── background.gif   # Background image for easy level
-│   │   └── audio/               # Audio files specific to the easy level
-│   │       └── level-music.mp3  # Background music for easy level
-│   │
-│   ├── medium/                  # Medium level assets
-│   │   ├── icons/               # Icons specific to the medium level
-│   │   │   └── level-icon.png   # Icon for the medium level
-│   │   ├── images/              # Images specific to the medium level
-│   │   │   ├── card1.png        # Card image 1 for medium level
-│   │   │   ├── card2.png        # Card image 2 for medium level
-│   │   │   └── background.gif   # Background image for medium level
-│   │   └── audio/               # Audio files specific to the medium level
-│   │       └── level-music.mp3  # Background music for medium level
-│   │
-│   └── hard/                    # Hard level assets
-│       ├── icons/               # Icons specific to the hard level
-│       │   └── level-icon.png   # Icon for the hard level
-│       ├── images/              # Images specific to the hard level
-│       │   ├── card1.png        # Card image 1 for hard level
-│       │   ├── card2.png        # Card image 2 for hard level
-│       │   └── background.gif   # Background image for hard level
-│       └── audio/               # Audio files specific to the hard level
-│           └── level-music.mp3  # Background music for hard level
-│
-├── css/                         # CSS stylesheets
-│   ├── main.css                 # Shared styles (e.g., fonts, buttons, pop-ups)
-│   ├── easy.css                 # Styles for the "Easy" difficulty level
-│   ├── medium.css               # Styles for the "Medium" difficulty level
-│   └── hard.css                 # Styles for the "Hard" difficulty level
-│
-├── js/                          # JavaScript files
-│   ├── modules/                 # Modularized JavaScript files for game logic, sound management, etc.
-│   │   ├── gameLogic.js         # Handles card matching, scoring, and game mechanics
-│   │   ├── utils.js             # Manages background music and sound effects
-│   │   ├── sound.js             # Sound-related utilities
-│   │   ├── hint.js              # Hint functionality
-│   │   └── storage.js           # Manages high scores and local storage
-│   ├── start.js                 # Main JavaScript file for the landing page
-│
-├── index.html                   # Main landing page
-├── easy.html                    # Easy level page
-├── medium.html                  # Medium level page
-├── hard.html                    # Hard level page
-└── README.md                    # Project documentation (setup, features, etc.)
-```
+## Features 🌟
 
-## How to Run
-1. Clone this repository:
+- **Three Difficulty Levels**: 
+  - **Easy**: 4x4 grid (16 cards)
+  - **Medium**: 6x6 grid (36 cards)
+  - **Hard**: 8x8 grid (64 cards)
+  
+- **Interactive Gameplay**: Flip cards, match pairs, and track your progress with moves and time.
+- **Hint System**: Get hints to help you find matching pairs (limited hints per level).
+- **High Scores**: Save and view your best scores for each difficulty level.
+- **Sound Effects & Music**: Enjoy immersive sound effects and background music.
+- **Responsive Design**: Play on any device, from desktops to mobile phones.
+
+## How to Play 🕹️
+
+1. **Start the Game**: Click the "Start Game" button to begin.
+2. **Match Cards**: Flip two cards at a time to find matching pairs.
+3. **Use Hints**: Click the "Hint" button to reveal unmatched cards temporarily.
+4. **Track Progress**: Keep an eye on your moves and time to beat your best score.
+5. **Complete the Level**: Match all pairs to finish the level and save your score.
+
+## Screenshots and GIFs 📸
+
+### Main Page
+![Main Page](documentation/start.gif)
+
+### Easy Level
+![Easy Level](documentation/easy.gif)
+
+### Medium Level
+![Medium Level](documentation/medium.gif)
+
+### Hard Level
+![Hard Level](documentation/hard.gif)
+
+## Installation 🛠️
+
+1. Clone the repository:
    ```bash
-   git clone <git@github.com:Jamal-Aldeen/Memory-Adventure.git>
+   git clone https://github.com/your-username/memory-adventure.git
    ```
-2. Open `index.html` in your browser to start the game.
+2. Navigate to the project directory:
+   ```bash
+   cd memory-adventure
+   ```
+3. Open the `index.html` file in your browser to start playing!
 
-## Features
-- Engaging memory gameplay.
-- Tracks your progress using `localStorage`.
-- Easy-to-follow tutorial.
+## Technologies Used 💻
 
-## Technologies Used
-- HTML
-- CSS
-- JavaScript
+- **HTML5**: Structure of the game.
+- **CSS3**: Styling and animations.
+- **JavaScript**: Game logic and interactivity.
+- **Web Audio API**: Sound effects and background music.
+
+## Acknowledgments 🙏
+
+- **Assets**: All images, sounds, and icons used in this project are either created by the developer or sourced from free resources.
+- **Inspiration**: Inspired by classic memory card games.
 
 ---
+
+Enjoy the game and happy matching! 🎉
